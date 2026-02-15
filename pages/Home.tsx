@@ -39,7 +39,7 @@ const Home: React.FC = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div className="pt-24 md:pt-28">
       <SEOHead
         title={SEO_CONFIG.PAGES.home.title}
         description={SEO_CONFIG.PAGES.home.description}
