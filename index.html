@@ -63,6 +63,18 @@
 
         .heart-animated { display: inline-block; animation: heartbeat 1.5s infinite; color: var(--primary); }
         @keyframes heartbeat { 0%, 100% { transform: scale(1); } 10%, 30% { transform: scale(1.15); } 20%, 40% { transform: scale(0.95); } }
+
+        #error-report {
+            display: none;
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 8px;
+            font-size: 10px;
+            z-index: 10000;
+            font-family: monospace;
+        }
     </style>
 
     <script type="importmap">
@@ -71,9 +83,9 @@
     "react": "https://esm.sh/react@18.3.1",
     "react-dom": "https://esm.sh/react-dom@18.3.1",
     "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
-    "react-router-dom": "https://esm.sh/react-router-dom@6.28.0",
-    "lucide-react": "https://esm.sh/lucide-react@0.460.0",
-    "framer-motion": "https://esm.sh/framer-motion@11.11.17",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.28.0?external=react,react-dom",
+    "lucide-react": "https://esm.sh/lucide-react@0.460.0?external=react",
+    "framer-motion": "https://esm.sh/framer-motion@11.11.17?external=react,react-dom",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react/": "https://esm.sh/react@^19.2.4/"
   }
@@ -87,16 +99,25 @@
     </div>
 
     <div id="root"></div>
+    <div id="error-report"></div>
 
-    <!-- Garantia de que o loader saia após 5 segundos mesmo se o React demorar -->
     <script>
+        // Report errors if they occur during startup
+        window.onerror = function(msg, url, line) {
+            const report = document.getElementById('error-report');
+            report.style.display = 'block';
+            report.innerText = "Erro de inicialização: " + msg + " em " + line;
+        };
+
+        // Safety timeout to remove loader if React fails silently
         setTimeout(() => {
             const loader = document.getElementById('initial-loader');
-            if (loader) {
+            if (loader && loader.style.opacity !== '0') {
+                console.warn("Loader removido por timeout de segurança.");
                 loader.style.opacity = '0';
                 setTimeout(() => loader.remove(), 800);
             }
-        }, 5000);
+        }, 8000);
     </script>
 
     <script type="module" src="./index.tsx"></script>
