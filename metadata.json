@@ -1,0 +1,7 @@
+{
+  "name": "Divas da Micro - Especialista em Correção",
+  "description": "Site profissional para Divas da Micro, especialista em correção de micropigmentação em Curitiba e RMC. Foco em mulheres 60+, atendimento domiciliar e procedimentos indolores.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
