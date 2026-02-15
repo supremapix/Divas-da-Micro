@@ -25,7 +25,7 @@ const LocationTemplate: React.FC = () => {
       "@type": "BeautySalon",
       "name": `Divas da Micro - Correção em ${locationName}`,
       "description": `Especialista em correção de micropigmentação de sobrancelhas, olhos e lábios em ${locationName}. Atendimento domiciliar exclusivo para mulheres 60+.`,
-      "image": "https://www.divasespacodabeleza.com.br/assets/images/microblading-falhado-corrija-em-curitiba-divas-da-micro-1920x1080.png",
+      "image": "/imagem-do-whatsapp-de-2024-10-20-s-15.00.26-3df1d2ba-1200x1600.jpeg",
       "@id": `https://www.divasespacodabeleza.com.br/#/correcao-em-${locationSlug}`,
       "url": `https://www.divasespacodabeleza.com.br/#/correcao-em-${locationSlug}`,
       "telephone": "+55-41-99787-9392",
@@ -116,9 +116,9 @@ const LocationTemplate: React.FC = () => {
       {/* Hero */}
       <section className="bg-gray-950 text-white py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://www.divasespacodabeleza.com.br/assets/images/microblading-falhado-corrija-em-curitiba-divas-da-micro-1920x1080.png" 
-            alt={`Correção de Micropigmentação Profissional em ${locationName}`} 
+          <img
+            src="/imagem-do-whatsapp-de-2024-10-20-s-15.00.26-3df1d2ba-1200x1600.jpeg"
+            alt={`Correção de Micropigmentação Profissional em ${locationName}`}
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/40"></div>

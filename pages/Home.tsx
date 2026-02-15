@@ -31,9 +31,9 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center bg-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://www.divasespacodabeleza.com.br/assets/images/microblading-falhado-corrija-em-curitiba-divas-da-micro-1920x1080.png" 
-            alt="Correção de Micropigmentação em Curitiba" 
+          <img
+            src="/imagem-do-whatsapp-de-2024-10-20-s-15.00.26-3df1d2ba-1200x1600.jpeg"
+            alt="Correção de Micropigmentação em Curitiba"
             className="w-full h-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
