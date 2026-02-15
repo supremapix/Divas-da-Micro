@@ -25,12 +25,6 @@ const AnimatedRoutes = () => {
   const location = useLocation();
   
   useEffect(() => {
-    // Remover o loader HTML assim que o componente de rotas for montado
-    const loader = document.getElementById('initial-loader');
-    if (loader) {
-      loader.style.opacity = '0';
-      setTimeout(() => loader.remove(), 800);
-    }
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
