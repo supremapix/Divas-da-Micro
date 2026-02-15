@@ -1,10 +1,12 @@
 
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { CheckCircle, Shield, User, Home as HomeIcon, Star, MessageSquare, Zap, Clock, MapPin, Heart, Info } from 'lucide-react';
+import { CheckCircle, Shield, User, Home as HomeIcon, Star, MessageSquare, Zap, Clock, MapPin, Heart, Info, AlertCircle } from 'lucide-react';
 import { CONTACT_INFO, ALL_LOCATIONS, getWhatsAppLink, PROCEDURES_TIPS } from '../constants';
 import FacebookFeed from '../components/FacebookFeed';
 import ReviewMarquee from '../components/ReviewMarquee';
+import SEOHead from '../components/SEOHead';
+import { SEO_CONFIG, generateLocalBusinessSchema, generateBreadcrumbSchema } from '../seoConstants';
 import { motion } from 'framer-motion';
 
 const LocationTemplate: React.FC = () => {
@@ -15,60 +17,17 @@ const LocationTemplate: React.FC = () => {
   const locationName = location.name;
 
   useEffect(() => {
-    // Garantir que a página sempre comece no topo ao navegar
     window.scrollTo(0, 0);
-    document.title = `Correção de Micropigmentação em ${locationName} | Divas da Micro`;
-
-    // Inject Schema Markup (JSON-LD)
-    const schemaData = {
-      "@context": "https://schema.org",
-      "@type": "BeautySalon",
-      "name": `Divas da Micro - Correção em ${locationName}`,
-      "description": `Especialista em correção de micropigmentação de sobrancelhas, olhos e lábios em ${locationName}. Atendimento domiciliar exclusivo para mulheres 60+.`,
-      "image": "/hero.png",
-      "@id": `https://www.divasespacodabeleza.com.br/#/correcao-em-${locationSlug}`,
-      "url": `https://www.divasespacodabeleza.com.br/#/correcao-em-${locationSlug}`,
-      "telephone": "+55-41-99787-9392",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Av. Sete de Setembro, 4995",
-        "addressLocality": "Curitiba",
-        "addressRegion": "PR",
-        "postalCode": "80250-205",
-        "addressCountry": "BR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -25.4468,
-        "longitude": -49.2845
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "10:00",
-        "closes": "20:00"
-      },
-      "areaServed": {
-        "@type": "City",
-        "name": locationName
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.innerHTML = JSON.stringify(schemaData);
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
   }, [locationName, locationSlug]);
+
+  const breadcrumbs = [
+    { name: 'Início', url: SEO_CONFIG.SITE_URL },
+    { name: 'Correção em Curitiba', url: `${SEO_CONFIG.SITE_URL}/#/correcao` },
+    { name: locationName, url: `${SEO_CONFIG.SITE_URL}/#/correcao-em-${locationSlug}` }
+  ];
+
+  const metaDescription = `Correção de micropigmentação em ${locationName} com atendimento domiciliar. Dentro do raio de 45km do Batel, Curitiba. Sobrancelhas, olhos e lábios - procedimento 100% indolor.`;
+  const metaKeywords = `micropigmentação ${locationName}, correção em ${locationName}, atendimento domiciliar, 45km Curitiba, Divas da Micro`;
 
   const sections = [
     {
@@ -106,13 +65,35 @@ const LocationTemplate: React.FC = () => {
   ];
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="pt-24"
     >
+      <SEOHead
+        title={`Correção de Micropigmentação em ${locationName} | Divas da Micro`}
+        description={metaDescription}
+        keywords={metaKeywords}
+        image="/hero.png"
+        url={`${SEO_CONFIG.SITE_URL}/#/correcao-em-${locationSlug}`}
+        schemas={[
+          generateLocalBusinessSchema(locationName),
+          generateBreadcrumbSchema(breadcrumbs)
+        ]}
+      />
+
+      {/* Service Area Banner */}
+      <section className="bg-[#D4567D] text-white py-4 px-4">
+        <div className="container mx-auto flex items-center justify-center gap-3 text-center">
+          <AlertCircle size={20} />
+          <span className="font-bold text-sm md:text-base">
+            Atendimento Domiciliar em {locationName} até <strong>45km do Batel</strong>, Curitiba
+          </span>
+        </div>
+      </section>
+
       {/* Hero */}
       <section className="bg-gray-950 text-white py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -208,6 +189,19 @@ const LocationTemplate: React.FC = () => {
 
           {/* Sidebar */}
           <aside className="lg:col-span-4 space-y-8">
+            <div className="bg-[#D4567D]/10 border-2 border-[#D4567D] p-8 rounded-[2.5rem] shadow-lg">
+              <div className="flex items-center gap-2 mb-4">
+                <MapPin className="text-[#D4567D]" size={24} />
+                <h3 className="text-lg font-serif font-bold text-gray-900">Área de Atendimento</h3>
+              </div>
+              <p className="text-sm font-bold text-gray-800 mb-3">
+                Atendimento domiciliar até <span className="text-[#D4567D]">45km</span> do Batel, Curitiba
+              </p>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                {locationName} está dentro da nossa região de cobertura. Levamos todo o conforto de um estúdio profissional até sua residência.
+              </p>
+            </div>
+
             <div className="bg-gray-900 text-white p-10 rounded-[2.5rem] sticky top-28 shadow-2xl">
               <h3 className="text-2xl font-serif font-bold mb-8">Agende em {locationName}</h3>
               <div className="space-y-6 mb-10">
@@ -222,6 +216,10 @@ const LocationTemplate: React.FC = () => {
                 <div className="flex gap-4 items-center">
                   <Star className="text-[#D4567D]" size={20} />
                   <span className="text-sm">Especialista em Pele Madura</span>
+                </div>
+                <div className="flex gap-4 items-center">
+                  <MapPin className="text-[#D4567D]" size={20} />
+                  <span className="text-sm">Até 45km de distância</span>
                 </div>
               </div>
               <a href={getWhatsAppLink(`Sidebar - ${locationName}`)} className="block w-full bg-[#D4567D] text-white py-5 rounded-full text-center font-bold hover:bg-[#b84a6b] transition-all shadow-xl">

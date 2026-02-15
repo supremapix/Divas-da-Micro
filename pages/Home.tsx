@@ -1,5 +1,5 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CheckCircle, ShieldCheck, Heart, UserCheck, MapPin, ArrowRight, Zap, Info, ChevronDown, Search } from 'lucide-react';
 import { SERVICES, FAQS, CONTACT_INFO, getWhatsAppLink, PROCEDURES_TIPS, ALL_LOCATIONS } from '../constants';
@@ -8,15 +8,21 @@ import ReviewMarquee from '../components/ReviewMarquee';
 import InteractiveGallery from '../components/InteractiveGallery';
 import AnimatedServiceIcon from '../components/AnimatedServiceIcon';
 import LocationInfiniteMarquee from '../components/LocationInfiniteMarquee';
+import SEOHead from '../components/SEOHead';
+import { SEO_CONFIG, generateLocalBusinessSchema, generateBreadcrumbSchema, generateOrganizationSchema } from '../seoConstants';
 
 const Home: React.FC = () => {
   const [visibleTips, setVisibleTips] = useState(12);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const filteredLocations = useMemo(() => {
     if (searchTerm.length < 2) return [];
-    return ALL_LOCATIONS.filter(loc => 
+    return ALL_LOCATIONS.filter(loc =>
       loc.name.toLowerCase().includes(searchTerm.toLowerCase())
     ).slice(0, 8);
   }, [searchTerm]);
@@ -26,8 +32,25 @@ const Home: React.FC = () => {
     setSearchTerm('');
   };
 
+  const breadcrumbs = [
+    { name: 'Início', url: SEO_CONFIG.SITE_URL }
+  ];
+
   return (
     <div className="pt-20">
+      <SEOHead
+        title={SEO_CONFIG.PAGES.home.title}
+        description={SEO_CONFIG.PAGES.home.description}
+        keywords={SEO_CONFIG.PAGES.home.keywords}
+        image="/hero.png"
+        url={SEO_CONFIG.SITE_URL}
+        schemas={[
+          generateLocalBusinessSchema(),
+          generateBreadcrumbSchema(breadcrumbs),
+          generateOrganizationSchema()
+        ]}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center bg-white overflow-hidden">
         <div className="absolute inset-0 z-0">

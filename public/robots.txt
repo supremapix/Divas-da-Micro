@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Allow: /#/
+Disallow: /dist/
+
+# Specific rules for Googlebot
+User-agent: Googlebot
+Allow: /
+Allow: /#/
+
+# Specific rules for Bingbot
+User-agent: Bingbot
+Allow: /
+Allow: /#/
+
+# Sitemap location
+Sitemap: https://www.divasespacodabeleza.com.br/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
