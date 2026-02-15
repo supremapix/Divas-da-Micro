@@ -24,12 +24,12 @@
             background-color: #fff;
             margin: 0;
             overflow-x: hidden;
+            display: block !important;
+            opacity: 1 !important;
         }
         h1, h2, h3, h4, .font-serif {
             font-family: 'Playfair Display', serif;
         }
-        /* Garantir que qualquer resquício de loader seja escondido */
-        #initial-loader { display: none !important; opacity: 0 !important; pointer-events: none !important; }
         
         .heart-animated { display: inline-block; animation: heartbeat 1.5s infinite; color: var(--primary); }
         @keyframes heartbeat { 0%, 100% { transform: scale(1); } 10%, 30% { transform: scale(1.15); } 20%, 40% { transform: scale(0.95); } }
@@ -52,15 +52,6 @@
 </head>
 <body>
     <div id="root"></div>
-    
-    <!-- Script defensivo para garantir que o loader saia se ainda estiver no cache do navegador -->
-    <script>
-        window.addEventListener('load', function() {
-            var loader = document.getElementById('initial-loader');
-            if (loader) { loader.style.display = 'none'; }
-        });
-    </script>
-
     <script type="module" src="./index.tsx"></script>
 </body>
 </html>
