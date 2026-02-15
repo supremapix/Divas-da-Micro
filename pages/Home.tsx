@@ -32,7 +32,7 @@ const Home: React.FC = () => {
       <section className="relative min-h-[85vh] flex items-center bg-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/imagem-do-whatsapp-de-2024-10-20-s-15.00.26-3df1d2ba-1200x1600.jpeg"
+            src="/hero.png"
             alt="Correção de Micropigmentação em Curitiba"
             className="w-full h-full object-cover opacity-40"
           />
