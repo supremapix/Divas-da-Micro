@@ -28,7 +28,7 @@ const Care: React.FC = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="pt-24 pb-20 bg-white"
+      className="pt-24 md:pt-28 pb-20 bg-white"
     >
       <SEOHead
         title={SEO_CONFIG.PAGES.care.title}

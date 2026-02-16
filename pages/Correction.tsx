@@ -22,7 +22,7 @@ const Correction: React.FC = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="pt-24 bg-white"
+      className="pt-24 md:pt-28 bg-white"
     >
       <SEOHead
         title={SEO_CONFIG.PAGES.correction.title}

@@ -70,7 +70,7 @@ const LocationTemplate: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="pt-24"
+      className="pt-24 md:pt-28"
     >
       <SEOHead
         title={`Correção de Micropigmentação em ${locationName} | Divas da Micro`}

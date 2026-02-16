@@ -39,7 +39,7 @@ const Home: React.FC = () => {
   ];
 
   return (
-    <div className="pt-24 md:pt-28">
+    <div>
       <SEOHead
         title={SEO_CONFIG.PAGES.home.title}
         description={SEO_CONFIG.PAGES.home.description}
@@ -54,7 +54,7 @@ const Home: React.FC = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[65vh] md:min-h-[70vh] flex items-center bg-white overflow-hidden">
+      <section className="relative min-h-[65vh] md:min-h-[70vh] flex items-center bg-white overflow-hidden pt-24 md:pt-28">
         <div className="absolute inset-0 z-0">
           <img
             src="/hero.png"

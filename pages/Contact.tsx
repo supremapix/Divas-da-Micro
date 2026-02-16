@@ -111,7 +111,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <div className="pt-24 pb-20 bg-gray-50 min-h-screen">
+    <div className="pt-24 md:pt-28 pb-20 bg-gray-50 min-h-screen">
       <SEOHead
         title={SEO_CONFIG.PAGES.contact.title}
         description={SEO_CONFIG.PAGES.contact.description}
