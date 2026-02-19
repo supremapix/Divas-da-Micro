@@ -4,42 +4,24 @@ import { motion } from 'framer-motion';
 import { Zap, ShieldCheck, History, ArrowRight, MessageSquare, Info } from 'lucide-react';
 import { getWhatsAppLink, PROCEDURES_TIPS } from '../constants';
 import FacebookFeed from '../components/FacebookFeed';
-import SEOHead from '../components/SEOHead';
-import { SEO_CONFIG, generateLocalBusinessSchema, generateBreadcrumbSchema } from '../seoConstants';
 
 const Correction: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Especialista em Correção | Divas da Micro - Resgatando Autoestima";
   }, []);
 
-  const breadcrumbs = [
-    { name: 'Início', url: SEO_CONFIG.SITE_URL },
-    { name: 'Correção', url: `${SEO_CONFIG.SITE_URL}/#/correcao` }
-  ];
-
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+    <motion.div 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
       exit={{ opacity: 0 }}
-      className="pt-24 md:pt-28 bg-white"
+      className="pt-24 bg-white"
     >
-      <SEOHead
-        title={SEO_CONFIG.PAGES.correction.title}
-        description={SEO_CONFIG.PAGES.correction.description}
-        keywords={SEO_CONFIG.PAGES.correction.keywords}
-        image="/hero.png"
-        url={`${SEO_CONFIG.SITE_URL}/#/correcao`}
-        schemas={[
-          generateLocalBusinessSchema(),
-          generateBreadcrumbSchema(breadcrumbs)
-        ]}
-      />
-
       {/* Hero */}
       <section className="bg-gray-950 text-white py-32 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
-          <img src="/hero.png" alt="Correção Micropigmentação" className="w-full h-full object-cover" />
+          <img src="https://www.divasespacodabeleza.com.br/assets/images/microblading-falhado-corrija-em-curitiba-divas-da-micro-1920x1080.png" alt="Correção Micropigmentação" className="w-full h-full object-cover" />
         </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -84,7 +66,7 @@ const Correction: React.FC = () => {
             </div>
           </div>
           <div className="relative">
-            <img src="/imagem-do-whatsapp-de-2024-10-20-s-14.36.33-423b191e-416x891.jpg" alt="Antes e Depois Correção" className="rounded-[3rem] shadow-2xl w-full max-h-[600px] object-cover" />
+            <img src="https://www.divasespacodabeleza.com.br/assets/images/imagem-do-whatsapp-de-2024-10-20-s-14.36.33-423b191e-416x891.jpg" alt="Antes e Depois Correção" className="rounded-[3rem] shadow-2xl w-full max-h-[600px] object-cover" />
             <div className="absolute -bottom-10 -left-10 bg-white p-8 rounded-[2rem] shadow-xl border border-gray-100 hidden md:block">
               <div className="flex items-center gap-3 text-green-500 font-bold mb-2">
                 <ShieldCheck size={24} /> Resultado Certificado

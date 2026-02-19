@@ -1,4 +1,3 @@
-
 import React, { Suspense, lazy, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
@@ -6,8 +5,10 @@ import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
 import { AnimatePresence } from 'framer-motion';
 
-// Lazy load pages
-const Home = lazy(() => import('./pages/Home'));
+// Importação direta da Home para evitar delay de carregamento na entrada
+import Home from './pages/Home';
+
+// Lazy load apenas para páginas secundárias
 const Services = lazy(() => import('./pages/Services'));
 const Correction = lazy(() => import('./pages/Correction'));
 const Care = lazy(() => import('./pages/Care'));
@@ -15,7 +16,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
 
 const RouteLoading = () => (
-  <div className="flex flex-col items-center justify-center py-20">
+  <div className="flex flex-col items-center justify-center py-20 min-h-[400px]">
     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#D4567D]"></div>
     <span className="mt-4 text-[#D4567D] font-serif tracking-widest text-xs uppercase animate-pulse">Carregando...</span>
   </div>

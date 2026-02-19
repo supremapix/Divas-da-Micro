@@ -1,14 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Mail, Phone, MapPin, MessageSquare, Send, Calendar as CalendarIcon,
+// Added ShieldCheck and Heart to imports to fix missing icon errors
+import { 
+  Mail, Phone, MapPin, MessageSquare, Send, Calendar as CalendarIcon, 
   Clock, User, Navigation, CheckCircle, ChevronRight, ChevronLeft, Map,
   ShieldCheck, Heart
 } from 'lucide-react';
 import { CONTACT_INFO, COLORS } from '../constants';
-import SEOHead from '../components/SEOHead';
-import { SEO_CONFIG, generateLocalBusinessSchema, generateBreadcrumbSchema, generateContactPointSchema } from '../seoConstants';
 
 const BATEL_COORDS = { lat: -25.4474, lng: -49.2847 };
 
@@ -17,7 +16,7 @@ const Contact: React.FC = () => {
   const [distance, setDistance] = useState<number | null>(null);
   const [travelTime, setTravelTime] = useState<number | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
-
+  
   const [formData, setFormData] = useState({
     nome: '',
     whatsapp: '',
@@ -34,12 +33,8 @@ const Contact: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Agenda VIP | Divas da Micro - Atendimento Domiciliar";
   }, []);
-
-  const breadcrumbs = [
-    { name: 'Início', url: SEO_CONFIG.SITE_URL },
-    { name: 'Agendar', url: `${SEO_CONFIG.SITE_URL}/#/agenda` }
-  ];
 
   const calculateDistance = () => {
     if (!navigator.geolocation) {
@@ -111,20 +106,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <div className="pt-24 md:pt-28 pb-20 bg-gray-50 min-h-screen">
-      <SEOHead
-        title={SEO_CONFIG.PAGES.contact.title}
-        description={SEO_CONFIG.PAGES.contact.description}
-        keywords={SEO_CONFIG.PAGES.contact.keywords}
-        image="/hero.png"
-        url={`${SEO_CONFIG.SITE_URL}/#/agenda`}
-        schemas={[
-          generateLocalBusinessSchema(),
-          generateBreadcrumbSchema(breadcrumbs),
-          generateContactPointSchema()
-        ]}
-      />
-
+    <div className="pt-24 pb-20 bg-gray-50 min-h-screen">
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 text-center mb-12">
           <motion.span 

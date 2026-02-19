@@ -1,30 +1,22 @@
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { CheckCircle, ShieldCheck, Heart, UserCheck, MapPin, ArrowRight, Zap, Info, ChevronDown, Search, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { CheckCircle, ShieldCheck, Heart, UserCheck, MapPin, ArrowRight, Zap, Info, ChevronDown, Search } from 'lucide-react';
 import { SERVICES, FAQS, CONTACT_INFO, getWhatsAppLink, PROCEDURES_TIPS, ALL_LOCATIONS } from '../constants';
 import FacebookFeed from '../components/FacebookFeed';
 import ReviewMarquee from '../components/ReviewMarquee';
 import InteractiveGallery from '../components/InteractiveGallery';
 import AnimatedServiceIcon from '../components/AnimatedServiceIcon';
 import LocationInfiniteMarquee from '../components/LocationInfiniteMarquee';
-import SEOHead from '../components/SEOHead';
-import { SEO_CONFIG, generateLocalBusinessSchema, generateBreadcrumbSchema, generateOrganizationSchema } from '../seoConstants';
 
 const Home: React.FC = () => {
   const [visibleTips, setVisibleTips] = useState(12);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedTip, setSelectedTip] = useState<{index: number; tip: string} | null>(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const filteredLocations = useMemo(() => {
     if (searchTerm.length < 2) return [];
-    return ALL_LOCATIONS.filter(loc =>
+    return ALL_LOCATIONS.filter(loc => 
       loc.name.toLowerCase().includes(searchTerm.toLowerCase())
     ).slice(0, 8);
   }, [searchTerm]);
@@ -34,31 +26,14 @@ const Home: React.FC = () => {
     setSearchTerm('');
   };
 
-  const breadcrumbs = [
-    { name: 'Início', url: SEO_CONFIG.SITE_URL }
-  ];
-
   return (
-    <div>
-      <SEOHead
-        title={SEO_CONFIG.PAGES.home.title}
-        description={SEO_CONFIG.PAGES.home.description}
-        keywords={SEO_CONFIG.PAGES.home.keywords}
-        image="/hero.png"
-        url={SEO_CONFIG.SITE_URL}
-        schemas={[
-          generateLocalBusinessSchema(),
-          generateBreadcrumbSchema(breadcrumbs),
-          generateOrganizationSchema()
-        ]}
-      />
-
+    <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative min-h-[65vh] md:min-h-[70vh] flex items-center bg-white overflow-hidden pt-24 md:pt-28">
+      <section className="relative min-h-[85vh] flex items-center bg-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
-            src="/hero.png"
-            alt="Correção de Micropigmentação em Curitiba"
+          <img 
+            src="https://www.divasespacodabeleza.com.br/assets/images/microblading-falhado-corrija-em-curitiba-divas-da-micro-1920x1080.png" 
+            alt="Correção de Micropigmentação em Curitiba" 
             className="w-full h-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
@@ -161,163 +136,39 @@ const Home: React.FC = () => {
       <InteractiveGallery />
 
       {/* Tips Section (55 Dicas) */}
-      <section className="py-24 bg-white border-t border-gray-100 overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="container mx-auto px-4 md:px-8"
-        >
+      <section className="py-24 bg-white border-t border-gray-100">
+        <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
-            <motion.span
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="text-[#C5A059] font-bold uppercase tracking-widest text-xs mb-2 block"
-            >
-              Guia de Especialista
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-3xl md:text-5xl font-serif font-bold mb-6"
-            >
-              Dicas Divas e Procedimentos
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-gray-500 max-w-2xl mx-auto"
-            >
-              Tudo o que você precisa saber para garantir um resultado impecável e duradouro.
-            </motion.p>
+            <span className="text-[#C5A059] font-bold uppercase tracking-widest text-xs mb-2 block">Guia de Especialista</span>
+            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">Dicas Divas e Procedimentos</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">Tudo o que você precisa saber para garantir um resultado impecável e duradouro.</p>
           </div>
-
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {PROCEDURES_TIPS.slice(0, visibleTips).map((tip, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05 }}
-                onClick={() => setSelectedTip({ index: idx, tip })}
-                className="p-6 bg-gray-50 rounded-2xl border border-gray-100 flex gap-4 items-start hover:bg-white hover:shadow-lg transition-all group cursor-pointer"
-              >
-                <div className="bg-[#D4567D]/10 text-[#D4567D] p-2 rounded-lg group-hover:bg-[#D4567D] group-hover:text-white transition-colors shrink-0">
+              <div key={idx} className="p-6 bg-gray-50 rounded-2xl border border-gray-100 flex gap-4 items-start hover:bg-white hover:shadow-md transition-all group">
+                <div className="bg-[#D4567D]/10 text-[#D4567D] p-2 rounded-lg group-hover:bg-[#D4567D] group-hover:text-white transition-colors">
                   <div className="w-5 h-5 flex items-center justify-center">
                     <Info size={16} />
                   </div>
                 </div>
-                <p className="text-sm text-gray-700 leading-relaxed font-medium line-clamp-3">{tip}</p>
-              </motion.div>
+                <p className="text-sm text-gray-700 leading-relaxed font-medium">{tip}</p>
+              </div>
             ))}
           </div>
 
           {visibleTips < PROCEDURES_TIPS.length && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="mt-12 text-center"
-            >
-              <button
+            <div className="mt-12 text-center">
+              <button 
                 onClick={() => setVisibleTips(prev => Math.min(prev + 12, PROCEDURES_TIPS.length))}
                 className="inline-flex items-center gap-2 px-8 py-3 bg-gray-950 text-white rounded-full font-bold hover:bg-gray-800 transition-all shadow-lg"
               >
                 Ver Mais Dicas <ChevronDown size={20} />
               </button>
-            </motion.div>
-          )}
-        </motion.div>
-      </section>
-
-      {/* Tips Modal */}
-      {selectedTip && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedTip(null)}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0, y: 40 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-white rounded-[2.5rem] shadow-2xl max-w-2xl w-full overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="p-8 md:p-12 bg-gradient-to-br from-[#D4567D]/5 to-transparent">
-              <div className="flex items-start justify-between mb-6">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.1 }}
-                  className="w-12 h-12 bg-[#D4567D] rounded-full flex items-center justify-center text-white shrink-0"
-                >
-                  <Info size={24} />
-                </motion.div>
-                <button
-                  onClick={() => setSelectedTip(null)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
-                >
-                  <X size={28} />
-                </button>
-              </div>
-
-              <motion.h3
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-2xl md:text-3xl font-serif font-bold mb-4 text-gray-900"
-              >
-                Dica #{selectedTip.index + 1}
-              </motion.h3>
-
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="text-lg text-gray-700 leading-relaxed mb-8"
-              >
-                {selectedTip.tip}
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="flex items-center justify-between gap-4"
-              >
-                <button
-                  onClick={() => {
-                    const newIndex = selectedTip.index - 1 >= 0 ? selectedTip.index - 1 : PROCEDURES_TIPS.length - 1;
-                    setSelectedTip({ index: newIndex, tip: PROCEDURES_TIPS[newIndex] });
-                  }}
-                  className="flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-full font-bold transition-all"
-                >
-                  <ChevronLeft size={20} /> Anterior
-                </button>
-
-                <span className="text-sm font-bold text-gray-500">
-                  {selectedTip.index + 1} / {PROCEDURES_TIPS.length}
-                </span>
-
-                <button
-                  onClick={() => {
-                    const newIndex = (selectedTip.index + 1) % PROCEDURES_TIPS.length;
-                    setSelectedTip({ index: newIndex, tip: PROCEDURES_TIPS[newIndex] });
-                  }}
-                  className="flex items-center gap-2 px-6 py-3 bg-[#D4567D] text-white hover:bg-[#b84a6b] rounded-full font-bold transition-all"
-                >
-                  Próxima <ChevronRight size={20} />
-                </button>
-              </motion.div>
             </div>
-          </motion.div>
-        </motion.div>
-      )}
+          )}
+        </div>
+      </section>
 
       {/* Google Review Marquee */}
       <ReviewMarquee />

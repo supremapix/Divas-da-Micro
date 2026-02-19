@@ -7,25 +7,25 @@ const GALLERY_IMAGES = [
   {
     title: "Sobrancelhas Perfeitas",
     desc: "Correção de micropigmentação antiga com técnica russa. Design harmônico e cor neutralizada.",
-    url: "/imagem-do-whatsapp-de-2024-10-20-s-15.00.26-3df1d2ba-1200x1600.jpeg",
+    url: "https://www.divasespacodabeleza.com.br/assets/images/imagem-do-whatsapp-de-2024-10-20-s-14.36.30-f19729d5-747x1600.jpg",
     cat: "Sobrancelhas"
   },
   {
     title: "Lábios Revitalizados",
     desc: "Neutralização de tons escuros e devolução do volume visual saudável. 100% indolor.",
-    url: "/cuidados-ps-micropigmentao-de-labios-labial-curitiba-240x242.png",
+    url: "https://www.divasespacodabeleza.com.br/assets/images/micropigmentao-de-boca-em-curitiba-lbios-definidos-1-747x1600.jpeg",
     cat: "Lábios"
   },
   {
     title: "Delineado Rejuvenecedor",
     desc: "Correção de traços expandidos em pálpebras maduras. Olhar mais aberto e expressivo.",
-    url: "/correo-de-micropigmentao-de-sobrancelhas-em-curitiba-5-360x771.jpg",
+    url: "https://www.divasespacodabeleza.com.br/assets/images/correo-de-micropigmentao-de-sobrancelhas-em-curitiba-5-747x1600.jpg",
     cat: "Olhos"
   },
   {
     title: "Harmonização de Sobrancelhas",
     desc: "Trabalho detalhado para corrigir assimetrias de anos. Resultados naturais.",
-    url: "/imagem-do-whatsapp-de-2024-10-20-s-14.36.33-423b191e-416x891.jpg",
+    url: "https://www.divasespacodabeleza.com.br/assets/images/imagem-do-whatsapp-de-2024-10-20-s-14.36.33-423b191e-416x891.jpg",
     cat: "Sobrancelhas"
   }
 ];

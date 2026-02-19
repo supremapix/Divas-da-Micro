@@ -33,7 +33,7 @@ export const SERVICES: Service[] = [
     description: 'Recuperação de design e cor para sobrancelhas antigas.',
     details: 'Especialistas em reverter pigmentos cinzas ou vermelhos. Procedimento indolor com anestésico premium para um olhar rejuvenescido e natural.',
     icon: 'Sparkles',
-    image: '/imagem-do-whatsapp-de-2024-10-20-s-14.36.33-1118b7c8-416x891.jpg'
+    image: 'https://www.divasespacodabeleza.com.br/assets/images/imagem-do-whatsapp-de-2024-10-20-s-14.36.33-1118b7c8-416x891.jpg'
   },
   {
     id: 'olhos',
@@ -41,7 +41,7 @@ export const SERVICES: Service[] = [
     description: 'Ajuste de delineados que perderam a definição.',
     details: 'Técnica indolor exclusiva para peles maduras. Conforto total com anestésicos manipulados premium para corrigir traços expandidos.',
     icon: 'Eye',
-    image: '/correo-de-micropigmentao-de-sobrancelhas-em-curitiba-5-360x771.jpg'
+    image: 'https://www.divasespacodabeleza.com.br/assets/images/correo-de-micropigmentao-de-sobrancelhas-em-curitiba-5-360x771.jpg'
   },
   {
     id: 'labios',
@@ -49,7 +49,7 @@ export const SERVICES: Service[] = [
     description: 'Revitalização de cor e contorno para lábios desbotados.',
     details: 'Neutralização de tons e volume visual. 100% indolor com protocolos especiais Divas para lábios mais vivos e definidos.',
     icon: 'Heart',
-    image: '/cuidados-ps-micropigmentao-de-labios-labial-curitiba-240x242.png'
+    image: 'https://www.divasespacodabeleza.com.br/assets/images/cuidados-ps-micropigmentao-de-labios-labial-curitiba-240x242.png'
   }
 ];
 

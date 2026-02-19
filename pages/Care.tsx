@@ -3,18 +3,12 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Clock, ShieldAlert, CheckSquare, Info, AlertCircle, Heart } from 'lucide-react';
 import { PROCEDURES_TIPS, getWhatsAppLink } from '../constants';
-import SEOHead from '../components/SEOHead';
-import { SEO_CONFIG, generateLocalBusinessSchema, generateBreadcrumbSchema } from '../seoConstants';
 
 const Care: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Cuidados e Cicatrização | Divas da Micro - Seu Guia Completo";
   }, []);
-
-  const breadcrumbs = [
-    { name: 'Início', url: SEO_CONFIG.SITE_URL },
-    { name: 'Cuidados', url: `${SEO_CONFIG.SITE_URL}/#/cuidados` }
-  ];
 
   const timeline = [
     { day: 'Dia 1-2', title: 'Intensificação da Cor', desc: 'A cor ficará mais escura devido à oxidação do pigmento. É normal haver um leve inchaço.' },
@@ -24,24 +18,12 @@ const Care: React.FC = () => {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+    <motion.div 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
       exit={{ opacity: 0 }}
-      className="pt-24 md:pt-28 pb-20 bg-white"
+      className="pt-24 pb-20 bg-white"
     >
-      <SEOHead
-        title={SEO_CONFIG.PAGES.care.title}
-        description={SEO_CONFIG.PAGES.care.description}
-        keywords={SEO_CONFIG.PAGES.care.keywords}
-        image="/hero.png"
-        url={`${SEO_CONFIG.SITE_URL}/#/cuidados`}
-        schemas={[
-          generateLocalBusinessSchema(),
-          generateBreadcrumbSchema(breadcrumbs)
-        ]}
-      />
-
       {/* Header */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-8 text-center max-w-4xl">

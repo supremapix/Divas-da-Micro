@@ -23,15 +23,15 @@ const Header: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white shadow-sm z-40">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-24 md:h-28 py-2">
+        <div className="flex items-center justify-between h-20 md:h-24">
           <Link to="/" className="flex items-center gap-3 group">
-            <ButterflyLogo size={44} />
+            <ButterflyLogo size={40} />
             <div className="flex flex-col">
-              <span className="text-lg sm:text-xl md:text-2xl font-serif font-bold tracking-tight text-gray-900 group-hover:text-[#D4567D] transition-colors">
+              <span className="text-xl md:text-2xl font-serif font-bold tracking-tight text-gray-900 group-hover:text-[#D4567D] transition-colors">
                 Divas da Micro
                 <span className="text-xs align-top ml-1">®</span>
               </span>
-              <span className="text-xs sm:text-sm md:text-sm uppercase tracking-[0.2em] text-gray-500 font-medium">
+              <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gray-500">
                 Correção de Micropigmentação
               </span>
             </div>
@@ -52,7 +52,7 @@ const Header: React.FC = () => {
             ))}
             <Link
               to="/agenda"
-              className="bg-[#D4567D] text-white px-7 py-3 rounded-full text-base font-bold hover:bg-[#b84a6b] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="bg-[#D4567D] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-[#b84a6b] transition-all shadow-md"
             >
               Avaliação Gratuita
             </Link>
@@ -60,28 +60,27 @@ const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-3 text-gray-600 hover:text-[#D4567D] transition-colors"
+            className="lg:hidden p-2 text-gray-600"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Menu"
           >
-            {isOpen ? <X size={32} /> : <Menu size={32} />}
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Nav */}
       <div
-        className={`lg:hidden absolute top-24 left-0 right-0 bg-white border-b border-gray-200 shadow-lg transition-all duration-300 transform ${
+        className={`lg:hidden absolute top-20 left-0 right-0 bg-white border-b transition-all duration-300 transform ${
           isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
         }`}
       >
-        <nav className="flex flex-col p-6 gap-3">
+        <nav className="flex flex-col p-6 gap-4">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`text-lg md:text-xl font-semibold py-4 px-4 rounded-lg transition-colors ${
-                isActive(link.path) ? 'text-[#D4567D] bg-[#D4567D]/10' : 'text-gray-700 hover:bg-gray-100'
+              className={`text-lg font-medium ${
+                isActive(link.path) ? 'text-[#D4567D]' : 'text-gray-600'
               }`}
               onClick={() => setIsOpen(false)}
             >
@@ -90,10 +89,10 @@ const Header: React.FC = () => {
           ))}
           <Link
             to="/agenda"
-            className="bg-[#D4567D] text-white px-6 py-5 rounded-xl text-center text-lg font-bold mt-6 shadow-lg hover:bg-[#b84a6b] transition-all"
+            className="bg-[#D4567D] text-white px-6 py-3 rounded-xl text-center font-semibold mt-4"
             onClick={() => setIsOpen(false)}
           >
-            Agendar Avaliação Gratuita
+            Agendar Agora
           </Link>
         </nav>
       </div>
