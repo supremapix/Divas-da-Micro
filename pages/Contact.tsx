@@ -197,15 +197,16 @@ const Contact: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="pt-4">
+                  <div className="pt-4 flex flex-col items-center">
                     <button 
                       id="btn-passo-1-proximo"
                       onClick={handleNext}
                       disabled={!formData.nome || !formData.whatsapp}
                       className="w-full min-h-[52px] bg-[#D4567D] hover:bg-[#B84A6B] text-white py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 disabled:opacity-50 transition-all shadow-md active:scale-95"
                     >
-                      Continuar para o Endereço <ChevronRight size={22} />
+                      <span>Avançar</span> <ChevronRight size={22} />
                     </button>
+                    <span className="text-xs text-gray-500 mt-1.5 font-medium">Próximo: endereço de atendimento</span>
                   </div>
                 </motion.div>
               )}
@@ -291,13 +292,16 @@ const Contact: React.FC = () => {
                     >
                       <ChevronLeft size={20} /> Voltar
                     </button>
-                    <button 
-                      onClick={handleNext}
-                      disabled={!formData.rua || !formData.numero || !formData.bairro}
-                      className="flex-[2] min-h-[52px] bg-[#D4567D] hover:bg-[#B84A6B] text-white py-3.5 rounded-2xl font-bold text-base flex items-center justify-center gap-2 disabled:opacity-50 transition-all shadow-md"
-                    >
-                      Continuar para a Data <ChevronRight size={20} />
-                    </button>
+                    <div className="flex-[2] flex flex-col items-center">
+                      <button 
+                        onClick={handleNext}
+                        disabled={!formData.rua || !formData.numero || !formData.bairro}
+                        className="w-full min-h-[52px] bg-[#D4567D] hover:bg-[#B84A6B] text-white py-3.5 rounded-2xl font-bold text-base flex items-center justify-center gap-2 disabled:opacity-50 transition-all shadow-md"
+                      >
+                        <span>Avançar</span> <ChevronRight size={20} />
+                      </button>
+                      <span className="text-xs text-gray-500 mt-1.5 font-medium">Próximo: escolha de data</span>
+                    </div>
                   </div>
                 </motion.div>
               )}
@@ -368,13 +372,16 @@ const Contact: React.FC = () => {
                     >
                       <ChevronLeft size={20} /> Voltar
                     </button>
-                    <button 
-                      onClick={calculateDistance}
-                      disabled={!formData.data}
-                      className="flex-[2] min-h-[52px] bg-[#D4567D] hover:bg-[#B84A6B] text-white py-3.5 rounded-2xl font-bold text-base flex items-center justify-center gap-2 hover:bg-opacity-90 disabled:opacity-50 transition-all shadow-lg"
-                    >
-                      {isCalculating ? 'Calculando...' : 'Revisar e Confirmar'} <ChevronRight size={20} />
-                    </button>
+                    <div className="flex-[2] flex flex-col items-center">
+                      <button 
+                        onClick={calculateDistance}
+                        disabled={!formData.data}
+                        className="w-full min-h-[52px] bg-[#D4567D] hover:bg-[#B84A6B] text-white py-3.5 rounded-2xl font-bold text-base flex items-center justify-center gap-2 hover:bg-opacity-90 disabled:opacity-50 transition-all shadow-lg"
+                      >
+                        {isCalculating ? 'Calculando...' : <span>Confirmar</span>} <ChevronRight size={20} />
+                      </button>
+                      <span className="text-xs text-gray-500 mt-1.5 font-medium">Revisar dados e enviar</span>
+                    </div>
                   </div>
                 </motion.div>
               )}

@@ -5,32 +5,32 @@ import { getWhatsAppLink } from '../constants';
 
 const GALLERY_IMAGES = [
   {
+    title: "Harmonização e Simetria Facial",
+    desc: "Alinhamento e simetria delicada para valorizar a expressão natural em pele madura, com técnica 100% indolor.",
+    url: "https://img.supremasite.com.br/divas/armonizacao-simetria-facial.jpg",
+    alt: "Harmonização e simetria facial em mulher madura, Curitiba",
+    cat: "Harmonização 50+"
+  },
+  {
     title: "Correção de Sobrancelhas Cinzas",
-    desc: "Neutralização de pigmento antigo escurecido e novo desenho harmônico para mulher de 58 anos em Curitiba.",
-    url: "https://www.divasespacodabeleza.com.br/imagem-do-whatsapp-de-2024-10-20-s-15.00.26-3df1d2ba-1200x1600.jpeg",
-    alt: "correção de micropigmentação de sobrancelha em mulher acima de 50 anos, Curitiba",
+    desc: "Neutralização de pigmento antigo escurecido ou azulado e novo desenho harmônico e elegante.",
+    url: "https://img.supremasite.com.br/divas/correcao-de-sobrancelhas-cinza.jpg",
+    alt: "Correção de sobrancelhas cinzas em pele madura, Curitiba",
     cat: "Sobrancelhas 50+"
   },
   {
     title: "Revitalização Labial Madura",
-    desc: "Neutralização de tons arroxeados e definição do contorno labial com tom natural saudável.",
-    url: "https://www.divasespacodabeleza.com.br/cuidados-ps-micropigmentao-de-labios-labial-curitiba-240x242.png",
-    alt: "correção de micropigmentação labial em mulher 60 anos Curitiba",
+    desc: "Neutralização de tons arroxeados e definição natural do contorno labial para lábios saudáveis e rejuvenescidos.",
+    url: "https://img.supremasite.com.br/divas/revitalizacao-labial-madura.jpg",
+    alt: "Revitalização labial em mulher madura, Curitiba",
     cat: "Lábios 60+"
   },
   {
     title: "Suavização de Delineado de Olhos",
-    desc: "Correção de traços expandidos em pálpebras maduras, criando efeito lifting leve no olhar.",
-    url: "https://www.divasespacodabeleza.com.br/correo-de-micropigmentao-de-sobrancelhas-em-curitiba-5-360x771.jpg",
-    alt: "correção de micropigmentação de olhos em mulher madura Curitiba",
+    desc: "Correção de traços expandidos em pálpebras maduras, criando efeito lifting leve e olhar iluminado.",
+    url: "https://img.supremasite.com.br/divas/suavizacao-delineado-de-olhos.jpg",
+    alt: "Suavização de delineado de olhos em mulher madura, Curitiba",
     cat: "Olhos 55+"
-  },
-  {
-    title: "Harmonização e Simetria Facial",
-    desc: "Novo alinhamento de sobrancelhas com técnica suave e totalmente indolor em domicílio.",
-    url: "https://www.divasespacodabeleza.com.br/imagem-do-whatsapp-de-2024-10-20-s-14.36.33-423b191e-416x891.jpg",
-    alt: "reconstrução e correção de micropigmentação de sobrancelhas em pele madura Curitiba",
-    cat: "Sobrancelhas 65+"
   }
 ];
 
@@ -80,15 +80,18 @@ const InteractiveGallery: React.FC = () => {
                   </p>
                 </div>
 
-                <a 
-                  href={getWhatsAppLink(`Galeria - ${img.title}`)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="min-h-[48px] bg-[#25D366] hover:bg-[#20bd5a] text-white py-3 px-4 rounded-2xl text-base font-bold flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95 text-center"
-                >
-                  <MessageCircle size={20} />
-                  <span>Avaliação Grátis</span>
-                </a>
+                <div className="flex flex-col items-center">
+                  <a 
+                    href={getWhatsAppLink(`Galeria - ${img.title}`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full min-h-[48px] bg-[#25D366] hover:bg-[#20bd5a] text-white py-3 px-4 rounded-2xl text-base font-bold flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95 text-center"
+                  >
+                    <MessageCircle size={20} />
+                    <span>WhatsApp</span>
+                  </a>
+                  <span className="text-xs text-gray-500 mt-1.5 font-medium">Avaliação gratuita e sem compromisso</span>
+                </div>
               </div>
             </div>
           ))}
@@ -104,17 +107,17 @@ const InteractiveGallery: React.FC = () => {
             <p className="text-lg text-gray-800 max-w-2xl mx-auto leading-relaxed font-normal">
               Utilizamos apenas anestésicos manipulados de alta potência e técnicas suaves para garantir que seu atendimento seja 100% confortável, seguro e relaxante.
             </p>
-            <div className="pt-2">
+            <div className="pt-2 flex flex-col items-center">
               <a 
                 href={getWhatsAppLink('CTA Galeria')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="min-h-[52px] bg-[#D4567D] hover:bg-[#B84A6B] text-white px-8 py-4 rounded-2xl font-bold text-lg inline-flex items-center gap-3 shadow-xl transition-all active:scale-95"
+                className="min-h-[52px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-2xl font-bold text-lg inline-flex items-center gap-3 shadow-xl transition-all active:scale-95"
               >
                 <MessageCircle size={22} />
-                <span>Agendar Avaliação Domiciliar</span>
-                <ArrowRight size={20} />
+                <span>WhatsApp</span>
               </a>
+              <span className="text-xs text-gray-600 mt-1.5 font-medium">Agende seu atendimento domiciliar VIP</span>
             </div>
           </div>
         </div>

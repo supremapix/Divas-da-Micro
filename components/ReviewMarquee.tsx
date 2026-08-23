@@ -56,7 +56,7 @@ const ReviewMarquee: React.FC = () => {
             Especialistas em mulheres de 35 a 100 anos (com foco especial em 50+ e 60+). Atendimento 100% indolor, no conforto da sua residência ou em nosso estúdio.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col items-start">
             <a 
               href={getWhatsAppLink('Seção Avaliações')}
               target="_blank"
@@ -64,8 +64,9 @@ const ReviewMarquee: React.FC = () => {
               className="min-h-[50px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-3.5 rounded-2xl font-bold text-base transition-all flex items-center justify-center gap-2 shadow-md"
             >
               <MessageCircle size={20} />
-              Quero Minha Transformação
+              <span>WhatsApp</span>
             </a>
+            <span className="text-xs text-gray-500 mt-1.5 font-medium">Quero minha transformação</span>
           </div>
         </div>
 

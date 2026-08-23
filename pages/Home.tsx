@@ -236,14 +236,15 @@ const Home: React.FC = () => {
           </div>
 
           {visibleTips < PROCEDURES_TIPS.length && (
-            <div className="mt-10 text-center">
+            <div className="mt-10 text-center flex flex-col items-center">
               <button 
                 id="btn-ver-mais-dicas"
                 onClick={() => setVisibleTips(prev => Math.min(prev + 8, PROCEDURES_TIPS.length))}
                 className="min-h-[50px] inline-flex items-center gap-2 px-8 py-3.5 bg-gray-900 text-white rounded-2xl font-bold text-base hover:bg-gray-800 transition-all shadow-md active:scale-95"
               >
-                Ver Mais Dicas de Cuidados <ChevronDown size={20} />
+                <span>Ver</span> <ChevronDown size={20} />
               </button>
+              <span className="text-xs text-gray-500 mt-1.5 font-medium">Ver mais dicas de cuidados</span>
             </div>
           )}
         </div>
@@ -309,7 +310,7 @@ const Home: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col items-start">
                 <a
                   href={getWhatsAppLink('Atendimento Domiciliar')}
                   target="_blank"
@@ -317,8 +318,9 @@ const Home: React.FC = () => {
                   className="min-h-[50px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-6 py-3.5 rounded-2xl font-bold text-base flex items-center gap-2 shadow-md"
                 >
                   <MessageCircle size={22} />
-                  Agendar na Minha Residência
+                  <span>WhatsApp</span>
                 </a>
+                <span className="text-xs text-gray-500 mt-1.5 font-medium">Agendar atendimento domiciliar</span>
               </div>
             </div>
             

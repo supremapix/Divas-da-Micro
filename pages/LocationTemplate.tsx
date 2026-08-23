@@ -126,16 +126,17 @@ const LocationTemplate: React.FC = () => {
             <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl font-normal">
               Devolva a harmonia e a naturalidade ao seu olhar com especialistas em pele madura. Procedimento 100% indolor com opção de atendimento no seu lar em {locationName}.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col items-start">
               <a 
                 href={getWhatsAppLink(`Página Local - ${locationName}`)} 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="min-h-[50px] bg-[#D4567D] hover:bg-[#B84A6B] text-white px-8 md:px-10 py-4 rounded-2xl font-bold text-base md:text-lg transition-all inline-flex items-center gap-3 shadow-xl active:scale-95"
+                className="min-h-[50px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 md:px-10 py-4 rounded-2xl font-bold text-base md:text-lg transition-all inline-flex items-center gap-3 shadow-xl active:scale-95"
               >
                 <MessageCircle size={22} />
-                <span>Avaliação Grátis em {locationName}</span>
+                <span>WhatsApp</span>
               </a>
+              <span className="text-xs text-white/80 mt-1.5 font-medium">Avaliação gratuita em {locationName}</span>
             </div>
           </div>
         </div>
@@ -236,14 +237,17 @@ const LocationTemplate: React.FC = () => {
                   <span className="text-base text-gray-200">Especialistas em Pele Madura</span>
                 </div>
               </div>
-              <a 
-                href={getWhatsAppLink(`Sidebar - ${locationName}`)} 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="min-h-[48px] block w-full bg-[#D4567D] hover:bg-[#B84A6B] text-white py-4 rounded-2xl text-center font-bold transition-all shadow-lg active:scale-95 text-base"
-              >
-                Consultar Horários em {locationName}
-              </a>
+              <div className="flex flex-col items-center">
+                <a 
+                  href={getWhatsAppLink(`Sidebar - ${locationName}`)} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="min-h-[48px] block w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 rounded-2xl text-center font-bold transition-all shadow-lg active:scale-95 text-base"
+                >
+                  WhatsApp
+                </a>
+                <span className="text-xs text-white/80 mt-1.5 font-medium text-center">Consultar horários em {locationName}</span>
+              </div>
             </div>
 
             <div className="p-6 bg-white border border-gray-200 rounded-3xl shadow-sm">

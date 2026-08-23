@@ -130,6 +130,101 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Specialized Correction Section */}
+        <section className="mb-16">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Correção de Sobrancelhas, Lábios e Olhos em Curitiba
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Técnicas especializadas de neutralização adaptadas para a pele madura e suave.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Card 1: Sobrancelhas */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col">
+              <div className="relative h-72 w-full overflow-hidden bg-slate-100">
+                <img 
+                  src="https://img.supremasite.com.br/divas/harmonizacao-de-sobrancelhas.jpg" 
+                  alt="Correção de Sobrancelhas em Pele Madura"
+                  className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                  <span className="text-white font-bold text-xl drop-shadow-md">Correção de Sobrancelhas</span>
+                </div>
+              </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <p className="text-slate-600 text-base leading-relaxed mb-6">
+                  Neutralização de pigmentos antigos, correção de formato e design simétrico com acabamento extremamente natural para pele madura.
+                </p>
+                <a 
+                  href="https://wa.me/5543996715938?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20Correção%20de%20Sobrancelhas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-4 rounded-xl font-bold text-center transition-colors shadow-md"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+
+            {/* Card 2: Olhos */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col">
+              <div className="relative h-72 w-full overflow-hidden bg-slate-100">
+                <img 
+                  src="https://img.supremasite.com.br/divas/correcao-de-olhos.jpg" 
+                  alt="Correção de Olhos em Pele Madura"
+                  className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                  <span className="text-white font-bold text-xl drop-shadow-md">Correção de Olhos</span>
+                </div>
+              </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <p className="text-slate-600 text-base leading-relaxed mb-6">
+                  Suavização de delineados antigos e ajuste de traços com efeito lifting delicado, valorizando o olhar com total conforto.
+                </p>
+                <a 
+                  href="https://wa.me/5543996715938?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20Correção%20de%20Olhos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-4 rounded-xl font-bold text-center transition-colors shadow-md"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+
+            {/* Card 3: Lábios */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col">
+              <div className="relative h-72 w-full overflow-hidden bg-slate-100">
+                <img 
+                  src="https://img.supremasite.com.br/divas/corecao-labial.jpg" 
+                  alt="Correção Labial em Pele Madura"
+                  className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                  <span className="text-white font-bold text-xl drop-shadow-md">Correção Labial</span>
+                </div>
+              </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <p className="text-slate-600 text-base leading-relaxed mb-6">
+                  Neutralização de tons escuros ou arroxeados, devolução da cor saudável e contorno redefinido para lábios rejuvenescidos.
+                </p>
+                <a 
+                  href="https://wa.me/5543996715938?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20Correção%20Labial"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-4 rounded-xl font-bold text-center transition-colors shadow-md"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Company Info Section */}
         <section className="mb-12">
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Informações da Empresa</h2>
