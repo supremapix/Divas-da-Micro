@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MessageCircle, Phone } from 'lucide-react';
 import { CONTACT_INFO, getWhatsAppLink } from '../constants';
 
 const StickyMobileFooter: React.FC = () => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  useEffect(() => {
+    const handleLightbox = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      setLightboxOpen(customEvent.detail?.open || false);
+    };
+
+    window.addEventListener('lightboxToggle', handleLightbox as EventListener);
+    if (document.body.classList.contains('lightbox-active')) {
+      setLightboxOpen(true);
+    }
+
+    return () => {
+      window.removeEventListener('lightboxToggle', handleLightbox as EventListener);
+    };
+  }, []);
+
+  if (lightboxOpen) return null;
+
   return (
     <div 
       id="sticky-mobile-bar" 

@@ -12,7 +12,22 @@ import LocationInfiniteMarquee from '../components/LocationInfiniteMarquee';
 const Home: React.FC = () => {
   const [visibleTips, setVisibleTips] = useState(8);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedImageService, setSelectedImageService] = useState<typeof SERVICES[0] | null>(null);
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (selectedImageService) {
+      document.body.classList.add('lightbox-active');
+      window.dispatchEvent(new CustomEvent('lightboxToggle', { detail: { open: true } }));
+    } else {
+      document.body.classList.remove('lightbox-active');
+      window.dispatchEvent(new CustomEvent('lightboxToggle', { detail: { open: false } }));
+    }
+    return () => {
+      document.body.classList.remove('lightbox-active');
+      window.dispatchEvent(new CustomEvent('lightboxToggle', { detail: { open: false } }));
+    };
+  }, [selectedImageService]);
 
   const filteredLocations = useMemo(() => {
     if (searchTerm.length < 2) return [];
@@ -172,34 +187,53 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {SERVICES.map((service) => (
-              <div key={service.id} className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all border border-gray-200 flex flex-col items-center text-center">
-                <div className="mb-6">
-                  <AnimatedServiceIcon type={service.icon} />
+              <div key={service.id} className="bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-200 flex flex-col overflow-hidden text-center">
+                <div 
+                  onClick={() => setSelectedImageService(service)}
+                  className="relative h-72 w-full overflow-hidden bg-gray-100 cursor-pointer group"
+                  title="Clique para ampliar e ver detalhes"
+                >
+                  <img 
+                    src={service.image} 
+                    alt={`${service.title} - Divas da Micro em Curitiba`}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent flex flex-col justify-between p-6">
+                    <span className="self-end bg-black/50 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm opacity-90 group-hover:opacity-100 transition-opacity">
+                      🔍 Clique para Ampliar
+                    </span>
+                    <span className="text-white font-serif font-bold text-xl drop-shadow-md text-left">{service.title}</span>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-base sm:text-lg text-gray-700 mb-6 leading-relaxed font-normal">{service.description}</p>
-                <div className="mt-auto w-full pt-4 flex flex-col gap-4">
-                  <div className="flex flex-col items-center">
-                    <Link 
-                      to="/correcao" 
-                      className="w-full min-h-[48px] bg-gray-100 hover:bg-[#D4567D] hover:text-white text-gray-900 px-6 py-3 rounded-2xl font-bold text-base transition-all flex items-center justify-center gap-2"
-                    >
-                      <span>Detalhes</span> <ArrowRight size={18} />
-                    </Link>
-                    <span className="text-xs text-gray-500 mt-1">Saiba mais sobre o serviço</span>
+
+                <div className="p-8 flex-1 flex flex-col items-center justify-between">
+                  <div>
+                    <p className="text-base sm:text-lg text-gray-700 mb-6 leading-relaxed font-normal">{service.description}</p>
                   </div>
 
-                  <div className="flex flex-col items-center">
-                    <a
-                      href={getWhatsAppLink(`Serviço Home - ${service.title}`)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full min-h-[48px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-3 rounded-2xl font-bold text-base transition-all flex items-center justify-center gap-2"
-                    >
-                      <MessageCircle size={20} />
-                      <span>WhatsApp</span>
-                    </a>
-                    <span className="text-xs text-gray-500 mt-1">Agende este atendimento</span>
+                  <div className="mt-auto w-full pt-4 flex flex-col gap-4">
+                    <div className="flex flex-col items-center">
+                      <Link 
+                        to="/correcao" 
+                        className="w-full min-h-[48px] bg-gray-100 hover:bg-[#D4567D] hover:text-white text-gray-900 px-6 py-3 rounded-2xl font-bold text-base transition-all flex items-center justify-center gap-2"
+                      >
+                        <span>Detalhes</span> <ArrowRight size={18} />
+                      </Link>
+                      <span className="text-xs text-gray-500 mt-1">Saiba mais sobre o serviço</span>
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                      <a
+                        href={getWhatsAppLink(`Serviço Home - ${service.title}`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full min-h-[48px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-3 rounded-2xl font-bold text-base transition-all flex items-center justify-center gap-2"
+                      >
+                        <MessageCircle size={20} />
+                        <span>WhatsApp</span>
+                      </a>
+                      <span className="text-xs text-gray-500 mt-1">Agende este atendimento</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -356,6 +390,61 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal for Service Card Images */}
+      {selectedImageService && (
+        <div className="fixed inset-0 z-50 bg-black/85 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl relative max-h-[92vh] flex flex-col">
+            <div className="relative h-72 sm:h-80 w-full bg-gray-900">
+              <img 
+                src={selectedImageService.image} 
+                alt={`${selectedImageService.title} - Especialistas em Pele Madura em Curitiba - Divas da Micro`}
+                className="w-full h-full object-cover"
+              />
+              <button 
+                onClick={() => setSelectedImageService(null)}
+                className="absolute top-4 right-4 bg-black/70 hover:bg-black text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg transition-all shadow-md z-10"
+                aria-label="Fechar"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-6 sm:p-8 space-y-4 overflow-y-auto">
+              <div>
+                <h3 className="text-gray-900 font-serif font-bold text-2xl sm:text-3xl mb-1">{selectedImageService.title}</h3>
+                <span className="text-[#D4567D] text-xs font-semibold uppercase tracking-wider block mb-3">SEO • Especializado para Pele Madura • Curitiba</span>
+                
+                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Descrição Técnica & SEO</h4>
+                <p className="text-gray-900 text-base sm:text-lg leading-relaxed font-semibold">
+                  {selectedImageService.details}
+                </p>
+                <p className="text-gray-700 text-sm sm:text-base leading-relaxed mt-3 font-normal">
+                  {selectedImageService.description} Atendimento 100% indolor com anestésicos manipulados de alta potência e protocolo exclusivo desenvolvido para mulheres maduras em Curitiba e região metropolitana (com opção de atendimento domiciliar VIP).
+                </p>
+              </div>
+
+              <div className="pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-3 items-center justify-between">
+                <button
+                  onClick={() => setSelectedImageService(null)}
+                  className="w-full sm:w-1/2 min-h-[50px] px-6 py-3 rounded-2xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-base transition-all flex items-center justify-center gap-2 shadow-sm"
+                >
+                  Fechar
+                </button>
+                <a
+                  href={getWhatsAppLink(`Lightbox SEO - ${selectedImageService.title}`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-1/2 min-h-[50px] px-6 py-3 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-base transition-all flex items-center justify-center gap-2 shadow-lg"
+                >
+                  <MessageCircle size={20} />
+                  <span>Contato</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

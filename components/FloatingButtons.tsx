@@ -5,14 +5,31 @@ import { CONTACT_INFO, getWhatsAppLink } from '../constants';
 
 const FloatingButtons: React.FC = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
     };
+    const handleLightbox = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      setLightboxOpen(customEvent.detail?.open || false);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('lightboxToggle', handleLightbox as EventListener);
+
+    if (document.body.classList.contains('lightbox-active')) {
+      setLightboxOpen(true);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('lightboxToggle', handleLightbox as EventListener);
+    };
   }, []);
+
+  if (lightboxOpen) return null;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
