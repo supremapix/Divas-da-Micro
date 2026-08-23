@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
+import StickyMobileFooter from './components/StickyMobileFooter';
 import { AnimatePresence } from 'framer-motion';
 
 // Importação direta da Home para evitar delay de carregamento na entrada
@@ -11,6 +12,7 @@ import Home from './pages/Home';
 // Lazy load apenas para páginas secundárias
 const Services = lazy(() => import('./pages/Services'));
 const Correction = lazy(() => import('./pages/Correction'));
+const MatureCorrection = lazy(() => import('./pages/MatureCorrection'));
 const Care = lazy(() => import('./pages/Care'));
 const Contact = lazy(() => import('./pages/Contact'));
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
@@ -18,7 +20,7 @@ const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
 const RouteLoading = () => (
   <div className="flex flex-col items-center justify-center py-20 min-h-[400px]">
     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#D4567D]"></div>
-    <span className="mt-4 text-[#D4567D] font-serif tracking-widest text-xs uppercase animate-pulse">Carregando...</span>
+    <span className="mt-4 text-[#D4567D] font-serif tracking-widest text-sm uppercase animate-pulse">Carregando Divas da Micro...</span>
   </div>
 );
 
@@ -35,6 +37,9 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/servicos" element={<Services />} />
         <Route path="/correcao" element={<Correction />} />
+        <Route path="/mulheres-maduras" element={<MatureCorrection />} />
+        <Route path="/correcao-50-60-anos" element={<MatureCorrection />} />
+        <Route path="/correcao-para-mulheres-maduras" element={<MatureCorrection />} />
         <Route path="/cuidados" element={<Care />} />
         <Route path="/agenda" element={<Contact />} />
         <Route path="/contato" element={<Contact />} />
@@ -48,7 +53,7 @@ const AnimatedRoutes = () => {
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen pb-16 md:pb-0">
         <Header />
         <main className="flex-grow">
           <Suspense fallback={<RouteLoading />}>
@@ -57,6 +62,7 @@ function App() {
         </main>
         <Footer />
         <FloatingButtons />
+        <StickyMobileFooter />
       </div>
     </Router>
   );

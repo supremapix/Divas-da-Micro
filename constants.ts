@@ -3,6 +3,8 @@ import { Service, FAQItem, LocationData } from './types';
 
 export const COLORS = {
   primary: '#D4567D',
+  primaryDark: '#B84A6B',
+  primaryLight: '#FDF2F8',
   secondary: '#C5A059',
   black: '#111827',
   white: '#FFFFFF',
@@ -11,8 +13,10 @@ export const COLORS = {
 };
 
 export const CONTACT_INFO = {
+  domain: "https://divasdamicro.app.br",
   address: "Av. Sete de Setembro, 4995 - Batel, Curitiba/PR, 80250-205",
   whatsapp: "5541997879392",
+  phoneCall: "tel:+5541997879392",
   whatsappDisplay: "(41) 99787-9392",
   email: "sac@divasespacodabeleza.com.br",
   hours: "Segunda a Sexta, 10h às 20h",

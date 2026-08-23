@@ -1,20 +1,20 @@
 
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Clock, ShieldAlert, CheckSquare, Info, AlertCircle, Heart } from 'lucide-react';
+import { Clock, ShieldAlert, CheckSquare, Info, AlertCircle, Heart, MessageCircle } from 'lucide-react';
 import { PROCEDURES_TIPS, getWhatsAppLink } from '../constants';
 
 const Care: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Cuidados e Cicatrização | Divas da Micro - Seu Guia Completo";
+    document.title = "Cuidados e Cicatrização da Micropigmentação em Curitiba | Divas da Micro";
   }, []);
 
   const timeline = [
-    { day: 'Dia 1-2', title: 'Intensificação da Cor', desc: 'A cor ficará mais escura devido à oxidação do pigmento. É normal haver um leve inchaço.' },
-    { day: 'Dia 3-5', title: 'Início da Descamação', desc: 'Pequenas crostas começarão a se soltar. NUNCA remova-as manualmente.' },
-    { day: 'Dia 7-10', title: 'Clareamento Temporário', desc: 'A cor pode parecer que sumiu. Tenha paciência, o pigmento está se fixando nas camadas internas.' },
-    { day: 'Dia 30', title: 'Resultado Final', desc: 'A cor estabiliza e está pronta para o retoque de acabamento e perfeição.' }
+    { day: 'Dia 1-2', title: 'Intensificação Inicial', desc: 'A cor fica temporariamente mais escura pela oxidação do pigmento. É normal haver leve sensibilidade.' },
+    { day: 'Dia 3-5', title: 'Descamação Fina', desc: 'Pequenas casquinhas finas se soltam sozinhas. Nunca puxe ou esfregue a região.' },
+    { day: 'Dia 7-10', title: 'Clareamento Suave', desc: 'A cor parece clarear bastante. Fique tranquila: o pigmento está se estabilizando na camada dérmica.' },
+    { day: 'Dia 30', title: 'Resultado e Retoque', desc: 'A cor e o formato se fixam completamente, revelando o tom definitivo e harmonioso.' }
   ];
 
   return (
@@ -25,57 +25,68 @@ const Care: React.FC = () => {
       className="pt-24 pb-20 bg-white"
     >
       {/* Header */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-[#FDF2F8] border-b border-pink-100">
         <div className="container mx-auto px-4 md:px-8 text-center max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-gray-900">Cuidados com a Sua <span className="text-[#D4567D]">Beleza</span></h1>
-          <p className="text-xl text-gray-600 leading-relaxed font-light">
-            Seguir as orientações de pós-procedimento é fundamental para garantir 50% do sucesso da sua micropigmentação ou correção.
+          <span className="text-[#D4567D] font-bold uppercase tracking-wider text-xs md:text-sm mb-3 block">
+            Guia Completo para Pele Madura
+          </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-4 text-gray-900 leading-tight">
+            Cuidados e Cicatrização da <span className="text-[#D4567D]">Micropigmentação</span>
+          </h1>
+          <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-normal">
+            Seguir as orientações adequadas antes e depois da sessão garante a durabilidade e o aspecto suave e natural do seu procedimento.
           </p>
         </div>
       </section>
 
       {/* Main Care Section */}
-      <section className="py-24 container mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <section className="py-16 md:py-24 container mx-auto px-4 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Pre Care */}
-          <div className="space-y-12">
-            <div className="flex items-center gap-4 text-gray-900 border-b border-gray-100 pb-6">
-              <ShieldAlert className="text-[#D4567D]" size={36} />
-              <h2 className="text-3xl font-serif font-bold">Cuidados Pré-Procedimento</h2>
+          <div className="space-y-8">
+            <div className="flex items-center gap-4 text-gray-900 border-b border-gray-200 pb-4">
+              <div className="p-3 bg-[#FDF2F8] text-[#D4567D] rounded-2xl">
+                <ShieldAlert size={32} />
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold">Cuidados Pré-Procedimento</h2>
             </div>
-            <div className="grid grid-cols-1 gap-4">
+
+            <div className="space-y-3">
               {[
-                'Evite bebidas alcoólicas 24h antes da sessão.',
-                'Suspenda o uso de ácidos na região 15 dias antes.',
-                'Hidrate bem a pele, especialmente nos lábios.',
-                'Não tome sol intenso na semana anterior.',
-                'Alimente-se bem antes do atendimento domiciliar.'
+                'Evite bebidas alcoólicas nas 24h que antecedem o atendimento.',
+                'Suspenda o uso de ácidos fortes na região por 10 dias.',
+                'Mantenha a pele bem hidratada com seu creme habitual.',
+                'Evite exposição solar intensa na semana anterior.',
+                'Alimente-se confortavelmente antes da sua sessão.'
               ].map((item, i) => (
-                <div key={i} className="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 items-center">
-                  <CheckSquare size={20} className="text-[#D4567D] shrink-0" />
-                  <span className="font-medium text-gray-800">{item}</span>
+                <div key={i} className="flex gap-3.5 p-4 bg-gray-50 rounded-2xl border border-gray-200 items-start">
+                  <CheckSquare size={22} className="text-[#D4567D] shrink-0 mt-0.5" />
+                  <span className="font-medium text-gray-800 text-base">{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Post Care */}
-          <div className="space-y-12">
-            <div className="flex items-center gap-4 text-gray-900 border-b border-gray-100 pb-6">
-              <AlertCircle className="text-[#D4567D]" size={36} />
-              <h2 className="text-3xl font-serif font-bold">O Que Evitar no Pós</h2>
+          <div className="space-y-8">
+            <div className="flex items-center gap-4 text-gray-900 border-b border-gray-200 pb-4">
+              <div className="p-3 bg-red-50 text-red-600 rounded-2xl">
+                <AlertCircle size={32} />
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold">O Que Evitar no Pós</h2>
             </div>
-            <div className="grid grid-cols-1 gap-4">
+
+            <div className="space-y-3">
               {[
-                'NÃO coce ou arranque as peles que se soltarem.',
-                'NÃO use maquiagem na região por 10 dias.',
-                'Evite banhos de sol, piscina e mar por 15 dias.',
-                'Evite atividades que causem suor excessivo.',
-                'Não lave com água muito quente nas primeiras 48h.'
+                'NÃO remova nem coce as casquinhas que se formarem.',
+                'NÃO aplique maquiagem direta sobre a área tratada por 7 dias.',
+                'Evite piscina, sauna, mar e sol forte nas primeiras duas semanas.',
+                'Higienize com soro fisiológico ou água filtrada suavemente.',
+                'Aplique apenas a pomada cicatrizante recomendada pela especialista.'
               ].map((item, i) => (
-                <div key={i} className="flex gap-4 p-5 bg-red-50/50 rounded-2xl border border-red-100 items-center">
-                  <Heart size={20} className="text-[#D4567D] shrink-0" />
-                  <span className="font-medium text-gray-800">{item}</span>
+                <div key={i} className="flex gap-3.5 p-4 bg-red-50/40 rounded-2xl border border-red-200 items-start">
+                  <Heart size={22} className="text-red-500 shrink-0 mt-0.5" />
+                  <span className="font-medium text-gray-800 text-base">{item}</span>
                 </div>
               ))}
             </div>
@@ -84,24 +95,25 @@ const Care: React.FC = () => {
       </section>
 
       {/* Healing Timeline */}
-      <section className="py-24 bg-gray-900 text-white rounded-[3rem] mx-4 md:mx-8">
-        <div className="container mx-auto px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Linha do Tempo da Cicatrização</h2>
-            <p className="text-gray-400">Entenda o que acontece dia após dia.</p>
+      <section className="py-16 md:py-20 bg-gray-900 text-white rounded-3xl mx-4 md:mx-8">
+        <div className="container mx-auto px-6 md:px-8 max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-4xl font-serif font-bold mb-3">Linha do Tempo da Cicatrização</h2>
+            <p className="text-gray-300 text-lg">Entenda o que acontece em cada fase do seu processo.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {timeline.map((item, i) => (
-              <div key={i} className="relative p-8 bg-white/5 border border-white/10 rounded-3xl">
-                <div className="absolute -top-4 -right-4 bg-[#D4567D] text-white w-12 h-12 rounded-full flex items-center justify-center font-bold shadow-lg">
+              <div key={i} className="relative p-6 bg-gray-800/80 border border-gray-700 rounded-2xl">
+                <div className="absolute -top-3 -right-3 bg-[#D4567D] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-md">
                   {i + 1}
                 </div>
-                <div className="flex items-center gap-3 mb-4 text-[#D4567D]">
-                  <Clock size={20} />
-                  <span className="font-bold text-sm uppercase tracking-widest">{item.day}</span>
+                <div className="flex items-center gap-2 mb-3 text-[#D4567D]">
+                  <Clock size={18} />
+                  <span className="font-bold text-xs uppercase tracking-wider">{item.day}</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+                <h3 className="text-lg font-bold mb-2 text-white">{item.title}</h3>
+                <p className="text-sm text-gray-300 leading-relaxed font-normal">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -109,20 +121,31 @@ const Care: React.FC = () => {
       </section>
 
       {/* Tips Summary */}
-      <section className="py-24 container mx-auto px-4 md:px-8">
-        <h2 className="text-3xl font-serif font-bold text-center mb-16">Dicas Rápidas de Segurança</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="py-16 md:py-24 container mx-auto px-4 md:px-8 max-w-6xl">
+        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-center mb-10 text-gray-900">
+          Dúvidas Frequentes de Cicatrização
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {PROCEDURES_TIPS.slice(0, 9).map((tip, idx) => (
-            <div key={idx} className="p-6 bg-white rounded-3xl border border-gray-100 shadow-sm flex gap-4">
-              <Info size={20} className="text-[#D4567D] shrink-0" />
-              <p className="text-sm text-gray-700 font-medium leading-relaxed">{tip}</p>
+            <div key={idx} className="p-5 bg-white rounded-2xl border border-gray-200 shadow-sm flex gap-3.5 items-start">
+              <Info size={22} className="text-[#D4567D] shrink-0 mt-0.5" />
+              <p className="text-base text-gray-800 font-medium leading-relaxed">{tip}</p>
             </div>
           ))}
         </div>
-        <div className="mt-16 text-center">
-          <a href={getWhatsAppLink('Dúvida Cuidados')} className="bg-[#D4567D] text-white px-10 py-5 rounded-full font-bold shadow-xl hover:bg-[#b84a6b] transition-all inline-flex items-center gap-3">
-             Ficou com alguma dúvida? Fale Conosco
+
+        <div className="mt-12 text-center flex flex-col items-center">
+          <a 
+            href={getWhatsAppLink('Dúvida Cuidados')} 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="min-h-[50px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg transition-all inline-flex items-center gap-3 active:scale-95"
+          >
+            <MessageCircle size={22} />
+            <span>WhatsApp</span>
           </a>
+          <span className="text-xs text-gray-500 mt-2 font-medium">Tire dúvidas sobre cuidados pelo WhatsApp</span>
         </div>
       </section>
     </motion.div>
