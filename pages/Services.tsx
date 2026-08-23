@@ -20,6 +20,14 @@ const Services: React.FC = () => {
     >
       {/* Hero Section */}
       <section className="relative py-16 md:py-24 bg-[#FDF2F8] overflow-hidden border-b border-pink-100">
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <img 
+            src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
+            alt="Luxury Spa Banner" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FDF2F8]/90 via-[#FDF2F8]/80 to-[#FDF2F8]"></div>
+        </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10 text-center max-w-4xl">
           <motion.div
             initial={{ y: 20, opacity: 0 }}

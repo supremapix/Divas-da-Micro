@@ -20,6 +20,14 @@ const MatureCorrection: React.FC = () => {
     >
       {/* Hero Section */}
       <section className="relative py-16 md:py-24 bg-gradient-to-b from-[#FDF2F8]/50 via-white to-white overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <img 
+            src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
+            alt="Luxury Spa Banner" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white"></div>
+        </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <span className="inline-block px-5 py-2 rounded-full bg-[#D4567D]/15 text-[#B84A6B] text-base md:text-sm font-bold tracking-wide uppercase mb-6 border border-[#D4567D]/30">

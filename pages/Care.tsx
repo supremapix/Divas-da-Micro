@@ -25,8 +25,16 @@ const Care: React.FC = () => {
       className="pt-24 pb-20 bg-white"
     >
       {/* Header */}
-      <section className="py-16 md:py-24 bg-[#FDF2F8] border-b border-pink-100">
-        <div className="container mx-auto px-4 md:px-8 text-center max-w-4xl">
+      <section className="py-16 md:py-24 bg-[#FDF2F8] border-b border-pink-100 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <img 
+            src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
+            alt="Luxury Spa Banner" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FDF2F8]/90 via-[#FDF2F8]/80 to-[#FDF2F8]"></div>
+        </div>
+        <div className="container mx-auto px-4 md:px-8 text-center max-w-4xl relative z-10">
           <span className="text-[#D4567D] font-bold uppercase tracking-wider text-xs md:text-sm mb-3 block">
             Guia Completo para Pele Madura
           </span>

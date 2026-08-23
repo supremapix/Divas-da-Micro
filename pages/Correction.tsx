@@ -22,8 +22,8 @@ const Correction: React.FC = () => {
       <section className="bg-gray-950 text-white py-20 md:py-28 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-25">
           <img 
-            src="https://www.divasespacodabeleza.com.br/assets/images/microblading-falhado-corrija-em-curitiba-divas-da-micro-1920x1080.png" 
-            alt="correção de micropigmentação de sobrancelha falhada e cinza em Curitiba" 
+            src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
+            alt="Luxury Spa Banner - Correção de Micropigmentação" 
             className="w-full h-full object-cover" 
           />
         </div>

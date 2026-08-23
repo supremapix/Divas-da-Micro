@@ -103,8 +103,16 @@ const Contact: React.FC = () => {
 
   return (
     <div className="pt-24 pb-20 bg-white min-h-screen">
-      <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4 md:px-8 text-center mb-10 max-w-3xl">
+      <section className="py-12 md:py-20 relative overflow-hidden bg-gradient-to-b from-[#FDF2F8]/30 via-white to-white">
+        <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
+          <img 
+            src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
+            alt="Luxury Spa Banner" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white"></div>
+        </div>
+        <div className="container mx-auto px-4 md:px-8 text-center mb-10 max-w-3xl relative z-10">
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#FDF2F8] text-[#B84A6B] font-bold uppercase tracking-wider text-xs md:text-sm mb-4 border border-[#D4567D]/30">
             Especialistas em Mulheres 60+
           </span>

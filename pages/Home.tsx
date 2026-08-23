@@ -44,68 +44,32 @@ const Home: React.FC = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center bg-white overflow-hidden py-12 md:py-20">
+      <section className="relative min-h-[90vh] flex items-center bg-gray-950 overflow-hidden py-20 md:py-32">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://www.divasespacodabeleza.com.br/assets/images/microblading-falhado-corrija-em-curitiba-divas-da-micro-1920x1080.png" 
-            alt="correção de micropigmentação de sobrancelha em mulher acima de 50 anos, Curitiba" 
-            className="w-full h-full object-cover opacity-35"
+            src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
+            alt="Luxury Spa Banner - Divas da Micro em Curitiba" 
+            className="w-full h-full object-cover opacity-85 md:opacity-90 scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/75 to-gray-950/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/30 to-gray-950/50"></div>
         </div>
 
         <div className="container mx-auto px-4 md:px-8 relative z-10">
-          <div className="max-w-3xl">
-            {/* Tag Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FDF2F8] text-[#B84A6B] text-sm md:text-base font-bold mb-6 border border-[#D4567D]/30">
-              <Sparkles size={18} className="text-[#D4567D]" />
-              <span>Especialistas em Mulheres 60+</span>
-            </div>
-
+          <div className="max-w-3xl space-y-6">
             {/* Single Unique H1 with main keyword */}
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-gray-900 leading-tight mb-6">
-              Micropigmentação de Sobrancelhas <span className="text-[#D4567D]">em Curitiba</span>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight drop-shadow-lg">
+              Micropigmentação de Sobrancelhas <span className="text-pink-300 underline decoration-pink-500/50 underline-offset-8">em Curitiba</span>
             </h1>
 
-            <div className="space-y-4 mb-8">
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-800 font-normal leading-relaxed">
-                Correção de maquiagem definitiva antiga, sobrancelhas cinzas ou avermelhadas, olhos e lábios com <strong>atendimento domiciliar VIP</strong>.
+            <div className="space-y-4 max-w-2xl">
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-100 font-medium leading-relaxed drop-shadow-md">
+                Correção de maquiagem definitiva antiga, sobrancelhas cinzas ou avermelhadas, olhos e lábios com <strong className="text-white font-bold bg-black/40 px-2 py-0.5 rounded">atendimento domiciliar VIP</strong> e seguro.
               </p>
               
-              <div className="flex items-center gap-3 bg-[#FDF2F8]/60 p-4 rounded-2xl border border-[#D4567D]/30 w-full sm:w-fit shadow-sm">
-                <Zap className="text-[#D4567D] shrink-0" size={24} />
-                <p className="text-base sm:text-lg font-bold text-gray-900">
-                  Procedimento 100% Indolor (Anestésico Premium Manipulado)
-                </p>
-              </div>
-            </div>
-
-            {/* Call to Actions - Min 48px touch target with 12px+ spacing */}
-            <div className="flex flex-col sm:flex-row gap-6 max-w-xl">
-              <div className="flex flex-col items-center w-full sm:w-auto">
-                <a 
-                  id="hero-btn-whatsapp"
-                  href={getWhatsAppLink('Hero Home')}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto min-h-[52px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-2xl text-lg font-bold shadow-xl transition-all flex items-center justify-center gap-3 text-center active:scale-95"
-                >
-                  <MessageCircle size={24} />
-                  <span>WhatsApp</span>
-                </a>
-                <span className="text-xs text-gray-600 mt-1.5 font-medium">Avaliação gratuita por foto</span>
-              </div>
-
-              <div className="flex flex-col items-center w-full sm:w-auto">
-                <Link 
-                  id="hero-btn-agenda"
-                  to="/agenda" 
-                  className="w-full sm:w-auto min-h-[52px] bg-[#D4567D] hover:bg-[#B84A6B] text-white px-8 py-4 rounded-2xl text-lg font-bold shadow-lg transition-all flex items-center justify-center gap-2 text-center active:scale-95"
-                >
-                  <span>Agenda</span>
-                  <ArrowRight size={20} />
-                </Link>
-                <span className="text-xs text-gray-600 mt-1.5 font-medium">Escolha dia e horário</span>
+              <div className="flex items-center gap-2 pt-2 text-gray-300/90 font-light text-sm md:text-base">
+                <Zap className="text-pink-400/80 shrink-0" size={18} />
+                <span>Procedimento 100% Indolor (Anestésico Premium Manipulado)</span>
               </div>
             </div>
           </div>

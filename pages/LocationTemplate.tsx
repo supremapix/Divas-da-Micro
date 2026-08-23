@@ -109,11 +109,11 @@ const LocationTemplate: React.FC = () => {
       <section className="bg-gray-950 text-white py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://www.divasespacodabeleza.com.br/assets/images/microblading-falhado-corrija-em-curitiba-divas-da-micro-1920x1080.png" 
-            alt={`correção profissional de micropigmentação de sobrancelhas em ${locationName}`} 
-            className="w-full h-full object-cover opacity-25" 
+            src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
+            alt={`Luxury Spa Banner - Correção de Micropigmentação em ${locationName}`} 
+            className="w-full h-full object-cover opacity-30" 
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/85 to-black/65"></div>
         </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-4xl">

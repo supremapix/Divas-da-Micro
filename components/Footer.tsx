@@ -7,84 +7,95 @@ import ButterflyLogo from './ButterflyLogo';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-16 pb-8">
-      <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="relative bg-gray-950 text-gray-200 pt-16 pb-12 overflow-hidden border-t border-pink-500/20">
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+        <img 
+          src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
+          alt="Luxury Spa Background" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/90 to-gray-950"></div>
+      </div>
+      <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
         {/* Col 1 - About */}
-        <div>
-          <div className="flex items-center gap-3 mb-6">
-            <ButterflyLogo size={32} />
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <ButterflyLogo size={36} />
             <span className="text-2xl font-serif font-bold text-white">Divas da Micro</span>
           </div>
-          <p className="text-sm leading-relaxed mb-6">
-            Especialistas em devolver a autoestima de mulheres 60+ através da correção de micropigmentação antiga. Atendimento exclusivo e humanizado no conforto do seu lar.
+          <p className="text-base text-gray-300 leading-relaxed">
+            Especialistas em devolver a autoestima de mulheres 60+ através da correção de micropigmentação antiga. Atendimento exclusivo, 100% indolor e humanizado no conforto do seu lar.
           </p>
-          <div className="flex gap-4">
-            {/* User requested social icons to point to WhatsApp with exact message */}
-            <a href={getWhatsAppLink('Instagram Footer')} className="hover:text-[#D4567D] transition-colors" aria-label="WhatsApp Instagram"><Instagram size={24} /></a>
-            <a href={getWhatsAppLink('Facebook Footer')} className="hover:text-[#D4567D] transition-colors" aria-label="WhatsApp Facebook"><Facebook size={24} /></a>
-            <a href={getWhatsAppLink('WhatsApp Footer')} className="hover:text-[#D4567D] transition-colors" aria-label="WhatsApp Contact"><MessageCircle size={24} /></a>
+          <div className="pt-2">
+            <a 
+              href={getWhatsAppLink('Footer WhatsApp Direct')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-5 py-3 rounded-xl font-bold text-base shadow-lg transition-all"
+            >
+              <MessageCircle size={20} />
+              <span>WhatsApp Direto (60+)</span>
+            </a>
           </div>
         </div>
 
         {/* Col 2 - Services */}
         <div>
-          <h4 className="text-white font-serif text-xl mb-6">Nossos Serviços</h4>
-          <ul className="space-y-3 text-sm">
-            <li><Link to="/correcao" className="hover:text-[#D4567D]">Correção de Sobrancelhas</Link></li>
-            <li><Link to="/correcao" className="hover:text-[#D4567D]">Correção de Olhos</Link></li>
-            <li><Link to="/correcao" className="hover:text-[#D4567D]">Correção Labial</Link></li>
-            <li><Link to="/servicos" className="hover:text-[#D4567D]">Micropigmentação Natural</Link></li>
-            <li><Link to="/agenda" className="hover:text-[#D4567D]">Atendimento Domiciliar</Link></li>
+          <h4 className="text-white font-serif text-xl mb-6 border-b border-pink-500/30 pb-2 inline-block">Nossos Serviços</h4>
+          <ul className="space-y-3 text-base">
+            <li><Link to="/correcao" className="hover:text-pink-400 transition-colors block py-1">Correção de Sobrancelhas</Link></li>
+            <li><Link to="/correcao" className="hover:text-pink-400 transition-colors block py-1">Correção de Olhos</Link></li>
+            <li><Link to="/correcao" className="hover:text-pink-400 transition-colors block py-1">Correção Labial</Link></li>
+            <li><Link to="/mulheres-maduras" className="hover:text-pink-400 transition-colors block py-1 font-bold text-pink-300">Especial 60+ (Indolor)</Link></li>
+            <li><Link to="/agenda" className="hover:text-pink-400 transition-colors block py-1">Atendimento Domiciliar VIP</Link></li>
           </ul>
         </div>
 
         {/* Col 3 - Locations */}
         <div>
-          <h4 className="text-white font-serif text-xl mb-6">Onde Atendemos</h4>
-          <ul className="space-y-2 text-xs">
+          <h4 className="text-white font-serif text-xl mb-6 border-b border-pink-500/30 pb-2 inline-block">Onde Atendemos</h4>
+          <ul className="space-y-2 text-sm">
             {ALL_LOCATIONS.filter(l => !l.isCity).slice(0, 5).map(loc => (
               <li key={loc.slug}>
-                <Link to={`/correcao-em-${loc.slug}`} className="hover:text-[#D4567D]">
+                <Link to={`/correcao-em-${loc.slug}`} className="hover:text-pink-400 transition-colors py-1 block">
                   {loc.name}
                 </Link>
               </li>
             ))}
             {ALL_LOCATIONS.filter(l => l.isCity).slice(0, 3).map(loc => (
               <li key={loc.slug}>
-                <Link to={`/correcao-em-${loc.slug}`} className="hover:text-[#D4567D]">
+                <Link to={`/correcao-em-${loc.slug}`} className="hover:text-pink-400 transition-colors py-1 block">
                   {loc.name}
                 </Link>
               </li>
             ))}
-            <li className="pt-2"><Link to="/contato" className="text-[#D4567D] hover:underline">Ver todas as regiões</Link></li>
+            <li className="pt-2"><Link to="/contato" className="text-pink-400 font-bold hover:underline">Ver todas as regiões atendidas →</Link></li>
           </ul>
         </div>
 
         {/* Col 4 - Contact */}
         <div>
-          <h4 className="text-white font-serif text-xl mb-6">Contato</h4>
-          <ul className="space-y-4 text-sm">
-            <li className="flex gap-3">
-              <MapPin className="text-[#D4567D] shrink-0" size={20} />
-              <span>{CONTACT_INFO.address}</span>
+          <h4 className="text-white font-serif text-xl mb-6 border-b border-pink-500/30 pb-2 inline-block">Contato & Atendimento</h4>
+          <ul className="space-y-4 text-base">
+            <li className="flex items-start gap-3">
+              <MapPin className="text-pink-400 shrink-0 mt-1" size={22} />
+              <span className="text-gray-200">{CONTACT_INFO.address}</span>
             </li>
-            <li className="flex gap-3">
-              <Phone className="text-[#D4567D] shrink-0" size={20} />
-              <span>{CONTACT_INFO.whatsappDisplay}</span>
+            <li className="flex items-center gap-3">
+              <Phone className="text-pink-400 shrink-0" size={22} />
+              <a href={CONTACT_INFO.phoneCall} className="text-gray-200 hover:text-white font-bold">{CONTACT_INFO.whatsappDisplay}</a>
             </li>
-            <li className="flex gap-3">
-              <Mail className="text-[#D4567D] shrink-0" size={20} />
-              <span className="break-all">{CONTACT_INFO.email}</span>
+            <li className="flex items-center gap-3">
+              <Mail className="text-pink-400 shrink-0" size={22} />
+              <span className="text-gray-200 break-all">{CONTACT_INFO.email}</span>
             </li>
           </ul>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-8 mt-16 pt-8 border-t border-gray-800 text-center">
-        <p className="text-sm">
-          © 2025 Divas da Micro ® | Desenvolvido com 
-          <span className="heart-animated mx-1">❤️</span> por 
-          <a href="https://supremasite.com.br" target="_blank" rel="noopener" className="hover:text-white ml-1">Suprema Sites Express</a>
+      <div className="container mx-auto px-4 md:px-8 mt-16 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
+        <p>
+          © 2025 Divas da Micro ® | Especializadas em Mulheres 60+ e Correção de Micropigmentação em Curitiba e Região.
         </p>
       </div>
     </footer>

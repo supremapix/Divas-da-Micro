@@ -95,19 +95,24 @@ const Header: React.FC = () => {
 
       {/* Mobile Nav Dropdown */}
       <div
-        className={`xl:hidden absolute top-20 left-0 right-0 bg-white border-b border-gray-200 shadow-xl transition-all duration-300 transform ${
+        className={`xl:hidden absolute top-20 left-0 right-0 bg-white border-b border-gray-200 shadow-2xl transition-all duration-300 transform ${
           isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
         }`}
       >
         <nav className="flex flex-col p-6 gap-3 max-w-lg mx-auto" aria-label="Menu Mobile">
+          <div className="bg-[#FDF2F8] p-4 rounded-2xl border border-pink-200 text-center mb-2">
+            <span className="text-sm font-bold text-[#D4567D] uppercase tracking-wider block">Atendimento Especializado</span>
+            <span className="text-lg font-serif font-bold text-gray-900">Mulheres 60+ • Sem Dor</span>
+          </div>
+
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`min-h-[52px] px-5 py-3 rounded-2xl text-lg font-bold flex items-center transition-all ${
+              className={`min-h-[56px] px-5 py-3.5 rounded-2xl text-xl font-bold flex items-center transition-all ${
                 isActive(link.path) 
-                  ? 'bg-[#FDF2F8] text-[#D4567D]' 
-                  : 'text-gray-900 hover:bg-gray-50'
+                  ? 'bg-[#D4567D] text-white shadow-md' 
+                  : 'text-gray-900 hover:bg-gray-100 bg-gray-50'
               }`}
               onClick={() => setIsOpen(false)}
             >
@@ -115,29 +120,30 @@ const Header: React.FC = () => {
             </Link>
           ))}
 
-          <div className="pt-4 border-t border-gray-100 flex flex-col gap-4">
+          <div className="pt-4 border-t border-gray-200 flex flex-col gap-4">
             <div className="flex flex-col items-center">
-              <Link
-                to="/agenda"
-                className="w-full min-h-[52px] bg-[#D4567D] hover:bg-[#B84A6B] text-white px-6 py-3.5 rounded-2xl text-center font-bold text-lg flex items-center justify-center gap-2 shadow-md"
+              <a
+                href={getWhatsAppLink('Menu Mobile WhatsApp')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full min-h-[56px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-6 py-4 rounded-2xl text-center font-bold text-lg flex items-center justify-center gap-3 shadow-lg"
                 onClick={() => setIsOpen(false)}
               >
-                <Calendar size={22} />
-                <span>Agendar</span>
-              </Link>
-              <span className="text-xs text-gray-500 mt-1">Avaliação gratuita e personalizada</span>
+                <MessageCircle size={24} />
+                <span>WhatsApp (Falar com Especialista)</span>
+              </a>
+              <span className="text-xs text-gray-600 mt-1 font-medium">Tire suas dúvidas ou envie foto</span>
             </div>
 
             <div className="flex flex-col items-center">
-              <a
-                href={CONTACT_INFO.phoneCall}
-                className="w-full min-h-[52px] bg-gray-100 hover:bg-gray-200 text-gray-900 px-6 py-3.5 rounded-2xl text-center font-bold text-lg flex items-center justify-center gap-2 border border-gray-300"
+              <Link
+                to="/agenda"
+                className="w-full min-h-[56px] bg-[#D4567D] hover:bg-[#B84A6B] text-white px-6 py-4 rounded-2xl text-center font-bold text-lg flex items-center justify-center gap-3 shadow-md"
                 onClick={() => setIsOpen(false)}
               >
-                <Phone size={20} className="text-[#D4567D]" />
-                <span>Ligar</span>
-              </a>
-              <span className="text-xs text-gray-500 mt-1">Atendimento telefônico: {CONTACT_INFO.whatsappDisplay}</span>
+                <Calendar size={24} />
+                <span>Agendar Atendimento Domiciliar</span>
+              </Link>
             </div>
           </div>
         </nav>
