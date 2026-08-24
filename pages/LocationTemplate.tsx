@@ -206,9 +206,10 @@ const LocationTemplate: React.FC = () => {
                 <div className="space-y-1">
                   <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-gray-100 border border-gray-200">
                     <img 
-                      src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600" 
+                      src="https://img.supremasite.com.br/divas/antes.png" 
                       alt={`micropigmentação antiga antes da correção em ${locationName}`} 
-                      className="w-full h-full object-cover grayscale" 
+                      className="w-full h-full object-cover" 
+                      loading="lazy"
                     />
                     <div className="absolute top-2 left-2 bg-black/75 text-white px-2 py-0.5 rounded-md text-[10px] font-bold">Antes (Antiga)</div>
                   </div>
@@ -218,9 +219,10 @@ const LocationTemplate: React.FC = () => {
                 <div className="space-y-1">
                   <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-gray-100 border border-pink-200">
                     <img 
-                      src="https://www.divasespacodabeleza.com.br/assets/images/imagem-do-whatsapp-de-2024-10-20-s-14.36.30-f19729d5-747x1600.jpg" 
+                      src="https://img.supremasite.com.br/divas/depois.png" 
                       alt={`resultado de correção de micropigmentação natural em ${locationName}`} 
                       className="w-full h-full object-cover" 
+                      loading="lazy"
                     />
                     <div className="absolute top-2 left-2 bg-[#D4567D] text-white px-2 py-0.5 rounded-md text-[10px] font-bold">Depois (Divas)</div>
                   </div>
