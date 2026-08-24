@@ -3,7 +3,6 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
-import StickyMobileFooter from './components/StickyMobileFooter';
 import { AnimatePresence } from 'framer-motion';
 
 // Importação direta da Home para evitar delay de carregamento na entrada
@@ -53,7 +52,7 @@ const AnimatedRoutes = () => {
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen pb-16 md:pb-0">
+      <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
           <Suspense fallback={<RouteLoading />}>
@@ -62,7 +61,6 @@ function App() {
         </main>
         <Footer />
         <FloatingButtons />
-        <StickyMobileFooter />
       </div>
     </Router>
   );

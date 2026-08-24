@@ -160,6 +160,20 @@
         .heart-animated { display: inline-block; animation: heartbeat 1.5s infinite; color: var(--primary); }
         @keyframes heartbeat { 0%, 100% { transform: scale(1); } 10%, 30% { transform: scale(1.15); } 20%, 40% { transform: scale(0.95); } }
 
+        /* Letreiro Marquee com rolagem contínua e suave */
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-33.333%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marqueeScroll 28s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
         /* Esconder o flash branco antes do react montar */
         #root:empty {
             background: #fff;

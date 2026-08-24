@@ -56,7 +56,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* Center: Search Box (Facebook Pill Style) */}
-          <div className="hidden md:flex flex-1 max-w-md mx-2 relative">
+          <div className="hidden md:flex flex-1 max-w-md mx-4 lg:mx-8 relative">
             <div className="relative w-full">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
               <input
@@ -92,19 +92,19 @@ const Header: React.FC = () => {
             )}
           </div>
 
-          {/* Right: Quick Action Round Icons + Agendar Highlight Button */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5">
+          {/* Right: Quick Action Round Icons (Equilibrados sem botão de agendamento) */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* WhatsApp Circular Icon Button */}
             <a
               id="header-whatsapp-icon"
               href={getWhatsAppLink('Header FB Topbar')}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-[#E7F8ED] hover:bg-[#25D366] text-[#25D366] hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 group"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#E7F8ED] hover:bg-[#25D366] text-[#25D366] hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 group border border-emerald-200/60"
               title="Falar no WhatsApp"
               aria-label="Falar no WhatsApp"
             >
-              <MessageCircle size={20} className="group-hover:scale-110 transition-transform" />
+              <MessageCircle size={19} className="group-hover:scale-110 transition-transform" />
             </a>
 
             {/* Instagram Circular Icon Button */}
@@ -113,43 +113,33 @@ const Header: React.FC = () => {
               href={getWhatsAppLink('Instagram Header')}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex w-10 h-10 rounded-full bg-[#FDF2F8] hover:bg-[#D4567D] text-[#D4567D] hover:text-white items-center justify-center transition-all shadow-sm active:scale-95 group"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FDF2F8] hover:bg-[#D4567D] text-[#D4567D] hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 group border border-pink-200/60"
               title="Siga nosso Instagram"
               aria-label="Instagram"
             >
-              <Instagram size={20} className="group-hover:scale-110 transition-transform" />
+              <Instagram size={19} className="group-hover:scale-110 transition-transform" />
             </a>
 
             {/* Telefone Direto */}
             <a
               id="header-phone-icon"
               href={CONTACT_INFO.phoneCall}
-              className="hidden sm:flex w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-800 text-gray-700 hover:text-white items-center justify-center transition-all shadow-sm active:scale-95"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gray-100 hover:bg-gray-800 text-gray-700 hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 border border-gray-200/60"
               title={`Ligar para ${CONTACT_INFO.whatsappDisplay}`}
               aria-label="Ligar"
             >
-              <Phone size={18} />
+              <Phone size={17} />
             </a>
-
-            {/* Highlight Button "Agendar Horário" in Solid Pink */}
-            <Link
-              id="header-agendar-btn"
-              to="/agenda"
-              className="min-h-[42px] px-4 sm:px-5 py-2 rounded-full bg-[#D4567D] hover:bg-[#B84A6B] text-white font-bold text-sm sm:text-base flex items-center gap-2 shadow-md shadow-pink-500/20 hover:shadow-lg transition-all active:scale-95"
-            >
-              <Calendar size={18} className="shrink-0" />
-              <span className="font-semibold whitespace-nowrap">Agendar Horário</span>
-            </Link>
 
             {/* Mobile Menu Hamburger */}
             <button
               id="btn-menu-mobile"
-              className="md:hidden w-10 h-10 flex items-center justify-center text-gray-800 hover:text-[#D4567D] rounded-full hover:bg-[#FDF2F8] transition-colors ml-1"
+              className="md:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-gray-800 hover:text-[#D4567D] rounded-full bg-gray-50 hover:bg-[#FDF2F8] border border-gray-200/60 transition-colors"
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Fechar Menu" : "Abrir Menu"}
               aria-expanded={isOpen}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>

@@ -36,39 +36,39 @@ const FloatingButtons: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-20 md:bottom-8 right-4 md:right-8 flex flex-col gap-3 z-40">
-      {/* Scroll Top Button */}
+    <div className="fixed bottom-20 sm:bottom-6 right-3 sm:right-6 flex flex-col gap-2 z-30 pointer-events-auto">
+      {/* Scroll Top Button - Compacto e fora da área dos CTAs */}
       {showScrollTop && (
         <button
           id="btn-scroll-top"
           onClick={scrollToTop}
-          className="w-12 h-12 min-w-[48px] min-h-[48px] bg-gray-900 text-white rounded-full shadow-lg hover:bg-gray-800 flex items-center justify-center transition-all transform hover:scale-105 active:scale-95 border border-white/20"
+          className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-900/85 hover:bg-gray-900 text-white rounded-full shadow-md flex items-center justify-center transition-all transform hover:scale-105 active:scale-95 border border-white/20 backdrop-blur-sm"
           aria-label="Voltar ao topo da página"
         >
-          <ChevronUp size={24} />
+          <ChevronUp size={16} className="sm:w-5 sm:h-5" />
         </button>
       )}
 
-      {/* Desktop Quick Actions (hidden on small mobile to give space to sticky bar, shown on md+) */}
-      <div className="hidden md:flex flex-col gap-3">
+      {/* Desktop Quick Actions */}
+      <div className="hidden md:flex flex-col gap-2">
         {/* Email */}
         <a
           id="btn-float-email"
           href={`mailto:${CONTACT_INFO.email}`}
-          className="w-12 h-12 min-w-[48px] min-h-[48px] bg-[#D4567D] text-white rounded-full shadow-lg hover:bg-[#B84A6B] flex items-center justify-center transition-all transform hover:scale-105 active:scale-95"
+          className="w-10 h-10 bg-[#D4567D] text-white rounded-full shadow-md hover:bg-[#B84A6B] flex items-center justify-center transition-all transform hover:scale-105 active:scale-95"
           aria-label="Enviar Email para Divas da Micro"
         >
-          <Mail size={22} />
+          <Mail size={18} />
         </a>
 
         {/* Phone */}
         <a
           id="btn-float-phone"
           href={CONTACT_INFO.phoneCall}
-          className="w-12 h-12 min-w-[48px] min-h-[48px] bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 flex items-center justify-center transition-all transform hover:scale-105 active:scale-95"
+          className="w-10 h-10 bg-gray-900 text-white rounded-full shadow-md hover:bg-gray-800 flex items-center justify-center transition-all transform hover:scale-105 active:scale-95"
           aria-label="Ligar para Divas da Micro"
         >
-          <Phone size={22} />
+          <Phone size={18} />
         </a>
 
         {/* WhatsApp */}
@@ -77,10 +77,10 @@ const FloatingButtons: React.FC = () => {
           href={getWhatsAppLink('Botão Flutuante Desktop')}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-14 h-14 min-w-[56px] min-h-[56px] bg-[#25D366] text-white rounded-full shadow-2xl hover:bg-[#20bd5a] flex items-center justify-center transition-all transform hover:scale-105 active:scale-95 animate-pulse"
+          className="w-11 h-11 bg-[#25D366] text-white rounded-full shadow-lg hover:bg-[#20bd5a] flex items-center justify-center transition-all transform hover:scale-105 active:scale-95 animate-pulse"
           aria-label="Conversar pelo WhatsApp"
         >
-          <MessageCircle size={32} />
+          <MessageCircle size={22} />
         </a>
       </div>
     </div>
