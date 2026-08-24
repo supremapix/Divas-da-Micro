@@ -59,14 +59,14 @@ const Services: React.FC = () => {
               className={`flex flex-col lg:flex-row items-center gap-10 lg:gap-16 ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
             >
               <div className="w-full lg:w-1/2">
-                <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-200 aspect-[4/3] bg-gray-100">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-pink-100 min-h-[380px] sm:min-h-[460px] md:min-h-[520px] bg-gray-950 group">
                   <img 
                     src={service.image} 
                     alt={`procedimento de ${service.title.toLowerCase()} em Curitiba para mulheres maduras`} 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                     loading="lazy" 
                   />
-                  <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-xl">
+                  <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md text-white text-xs font-semibold px-4 py-2 rounded-xl border border-white/20">
                     Curitiba e Região Metropolitana
                   </div>
                 </div>

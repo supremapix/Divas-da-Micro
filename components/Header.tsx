@@ -1,156 +1,243 @@
 
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, MessageCircle, Phone, Calendar } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, MessageCircle, Phone, Calendar, Search, Instagram, Facebook, Sparkles } from 'lucide-react';
 import ButterflyLogo from './ButterflyLogo';
-import { CONTACT_INFO, getWhatsAppLink } from '../constants';
+import { CONTACT_INFO, getWhatsAppLink, ALL_LOCATIONS } from '../constants';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
-    { name: 'Início', path: '/' },
+    { name: 'Feed Principal', path: '/' },
     { name: 'Sobrancelhas & Serviços', path: '/servicos' },
     { name: 'Mulheres 60+', path: '/mulheres-maduras' },
     { name: 'Cuidados', path: '/cuidados' },
     { name: 'Contato & Agenda', path: '/agenda' },
   ];
 
+  const filteredSearch = searchQuery.trim().length >= 2 
+    ? ALL_LOCATIONS.filter(l => l.name.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 6)
+    : [];
+
+  const handleSearchSelect = (slug: string) => {
+    navigate(`/correcao-em-${slug}`);
+    setSearchQuery('');
+    setShowSearchDropdown(false);
+  };
+
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm z-40 border-b border-gray-100">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-20 md:h-24">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group py-2" aria-label="Divas da Micro Início">
-            <ButterflyLogo size={42} />
-            <div className="flex flex-col">
-              <span className="text-xl md:text-2xl font-serif font-bold tracking-tight text-gray-900 group-hover:text-[#D4567D] transition-colors">
-                Divas da Micro
-                <span className="text-xs align-top ml-0.5">®</span>
-              </span>
-              <span className="text-xs md:text-xs font-semibold uppercase tracking-wider text-[#D4567D]">
-                Especialistas 60+
-              </span>
+    <header className="fixed top-0 left-0 right-0 bg-white/98 backdrop-blur-md z-40 border-b border-pink-100 shadow-[0_2px_10px_rgba(212,86,125,0.07)]">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
+        <div className="flex items-center justify-between h-16 md:h-18 gap-2 sm:gap-4">
+          
+          {/* Left: Facebook Style Logo & Brand */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <Link to="/" className="flex items-center gap-2.5 group" aria-label="Divas da Micro Início">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-[#FDF2F8] to-[#FCE7F3] border-2 border-[#D4567D]/30 flex items-center justify-center p-1.5 shadow-sm group-hover:scale-105 transition-transform">
+                <ButterflyLogo size={28} />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-lg sm:text-xl font-serif font-bold tracking-tight text-gray-900 leading-none group-hover:text-[#D4567D] transition-colors">
+                  Divas da Micro
+                  <span className="text-xs text-[#D4567D] align-top ml-0.5">®</span>
+                </span>
+                <span className="text-[11px] font-bold tracking-wider uppercase text-[#D4567D]">
+                  Especialistas 60+
+                </span>
+              </div>
+            </Link>
+          </div>
+
+          {/* Center: Search Box (Facebook Pill Style) */}
+          <div className="hidden md:flex flex-1 max-w-md mx-2 relative">
+            <div className="relative w-full">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+              <input
+                type="text"
+                placeholder="Buscar procedimento, bairro ou dúvida..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowSearchDropdown(true);
+                }}
+                onFocus={() => setShowSearchDropdown(true)}
+                className="w-full bg-[#FAF5F8] hover:bg-[#F7EDF3] focus:bg-white text-gray-900 placeholder-gray-500 pl-10 pr-4 py-2 rounded-full border border-pink-200/60 focus:border-[#D4567D] focus:ring-2 focus:ring-[#FDF2F8] outline-none text-sm transition-all"
+              />
             </div>
-          </Link>
 
-          {/* Desktop Nav - 4-5 max items */}
-          <nav className="hidden xl:flex items-center gap-6" aria-label="Navegação Principal">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-base font-semibold transition-all py-2 px-3 rounded-xl min-h-[48px] flex items-center hover:text-[#D4567D] hover:bg-[#FDF2F8] ${
-                  isActive(link.path) 
-                    ? 'text-[#D4567D] font-bold border-b-2 border-[#D4567D]' 
-                    : 'text-gray-800'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
+            {/* Quick Search Dropdown */}
+            {showSearchDropdown && filteredSearch.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-pink-100 p-2 z-50">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-gray-400 px-3 py-1.5">
+                  Regiões Atendidas em Curitiba e RMC
+                </div>
+                {filteredSearch.map(loc => (
+                  <button
+                    key={loc.slug}
+                    onClick={() => handleSearchSelect(loc.slug)}
+                    className="w-full text-left px-3 py-2 rounded-xl hover:bg-[#FDF2F8] text-gray-800 hover:text-[#D4567D] text-sm font-medium transition-colors flex items-center justify-between"
+                  >
+                    <span>{loc.name}</span>
+                    <span className="text-xs text-pink-400">Ver atendimento →</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
 
-          {/* Header Action Buttons - Always visible */}
-          <div className="flex items-center gap-3">
-            {/* WhatsApp Direct Quick Action */}
+          {/* Right: Quick Action Round Icons + Agendar Highlight Button */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5">
+            {/* WhatsApp Circular Icon Button */}
             <a
-              id="header-whatsapp-btn"
-              href={getWhatsAppLink('Header')}
+              id="header-whatsapp-icon"
+              href={getWhatsAppLink('Header FB Topbar')}
               target="_blank"
               rel="noopener noreferrer"
-              className="min-h-[48px] px-3.5 sm:px-4 py-2.5 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm sm:text-base flex items-center gap-2 shadow-sm transition-all active:scale-95"
+              className="w-10 h-10 rounded-full bg-[#E7F8ED] hover:bg-[#25D366] text-[#25D366] hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 group"
+              title="Falar no WhatsApp"
               aria-label="Falar no WhatsApp"
             >
-              <MessageCircle size={20} className="shrink-0" />
-              <span className="hidden sm:inline">WhatsApp</span>
+              <MessageCircle size={20} className="group-hover:scale-110 transition-transform" />
             </a>
 
-            {/* Agendar Button */}
+            {/* Instagram Circular Icon Button */}
+            <a
+              id="header-instagram-icon"
+              href={getWhatsAppLink('Instagram Header')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex w-10 h-10 rounded-full bg-[#FDF2F8] hover:bg-[#D4567D] text-[#D4567D] hover:text-white items-center justify-center transition-all shadow-sm active:scale-95 group"
+              title="Siga nosso Instagram"
+              aria-label="Instagram"
+            >
+              <Instagram size={20} className="group-hover:scale-110 transition-transform" />
+            </a>
+
+            {/* Telefone Direto */}
+            <a
+              id="header-phone-icon"
+              href={CONTACT_INFO.phoneCall}
+              className="hidden sm:flex w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-800 text-gray-700 hover:text-white items-center justify-center transition-all shadow-sm active:scale-95"
+              title={`Ligar para ${CONTACT_INFO.whatsappDisplay}`}
+              aria-label="Ligar"
+            >
+              <Phone size={18} />
+            </a>
+
+            {/* Highlight Button "Agendar Horário" in Solid Pink */}
             <Link
               id="header-agendar-btn"
               to="/agenda"
-              className="hidden lg:flex min-h-[48px] px-5 py-2.5 rounded-2xl bg-[#D4567D] hover:bg-[#B84A6B] text-white font-bold text-base items-center gap-2 shadow-md transition-all active:scale-95"
+              className="min-h-[42px] px-4 sm:px-5 py-2 rounded-full bg-[#D4567D] hover:bg-[#B84A6B] text-white font-bold text-sm sm:text-base flex items-center gap-2 shadow-md shadow-pink-500/20 hover:shadow-lg transition-all active:scale-95"
             >
-              <Calendar size={18} />
-              <span>Agendar</span>
+              <Calendar size={18} className="shrink-0" />
+              <span className="font-semibold whitespace-nowrap">Agendar Horário</span>
             </Link>
 
-            {/* Mobile Menu Toggle Button */}
+            {/* Mobile Menu Hamburger */}
             <button
               id="btn-menu-mobile"
-              className="xl:hidden w-12 h-12 min-w-[48px] min-h-[48px] flex items-center justify-center p-2 text-gray-800 hover:text-[#D4567D] rounded-xl hover:bg-gray-100 transition-colors"
+              className="md:hidden w-10 h-10 flex items-center justify-center text-gray-800 hover:text-[#D4567D] rounded-full hover:bg-[#FDF2F8] transition-colors ml-1"
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Fechar Menu" : "Abrir Menu"}
               aria-expanded={isOpen}
             >
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Nav Dropdown */}
-      <div
-        className={`xl:hidden absolute top-20 left-0 right-0 bg-white border-b border-gray-200 shadow-2xl transition-all duration-300 transform ${
-          isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
-        }`}
-      >
-        <nav className="flex flex-col p-6 gap-3 max-w-lg mx-auto" aria-label="Menu Mobile">
-          <div className="bg-[#FDF2F8] p-4 rounded-2xl border border-pink-200 text-center mb-2">
-            <span className="text-sm font-bold text-[#D4567D] uppercase tracking-wider block">Atendimento Especializado</span>
-            <span className="text-lg font-serif font-bold text-gray-900">Mulheres 60+ • Sem Dor</span>
-          </div>
+      {/* Mobile Drawer / Navigation */}
+      {isOpen && (
+        <div className="md:hidden bg-white border-b border-pink-100 shadow-2xl animate-in slide-in-from-top duration-200">
+          <nav className="flex flex-col p-4 gap-2.5 max-w-md mx-auto" aria-label="Menu Mobile">
+            
+            {/* Special Badge in Menu */}
+            <div className="bg-gradient-to-r from-[#FDF2F8] to-[#FCE7F3] p-3 rounded-2xl border border-pink-200 text-center flex items-center justify-center gap-2">
+              <Sparkles size={18} className="text-[#D4567D]" />
+              <span className="text-sm font-bold text-gray-900">Especialistas em Mulheres 60+ • Procedimento Indolor</span>
+            </div>
 
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`min-h-[56px] px-5 py-3.5 rounded-2xl text-xl font-bold flex items-center transition-all ${
-                isActive(link.path) 
-                  ? 'bg-[#D4567D] text-white shadow-md' 
-                  : 'text-gray-900 hover:bg-gray-100 bg-gray-50'
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
+            {/* Mobile Search */}
+            <div className="relative mt-1 mb-2">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+              <input
+                type="text"
+                placeholder="Buscar bairro ou serviço..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-gray-50 pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm outline-none focus:border-[#D4567D]"
+              />
+              {filteredSearch.length > 0 && (
+                <div className="mt-2 bg-white rounded-xl shadow-lg border border-pink-100 p-2">
+                  {filteredSearch.map(loc => (
+                    <button
+                      key={loc.slug}
+                      onClick={() => {
+                        handleSearchSelect(loc.slug);
+                        setIsOpen(false);
+                      }}
+                      className="w-full text-left px-3 py-2 text-sm font-semibold text-gray-800 hover:text-[#D4567D]"
+                    >
+                      {loc.name} →
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
-          <div className="pt-4 border-t border-gray-200 flex flex-col gap-4">
-            <div className="flex flex-col items-center">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`min-h-[48px] px-4 py-3 rounded-xl text-base font-bold flex items-center justify-between transition-all ${
+                  isActive(link.path) 
+                    ? 'bg-[#D4567D] text-white shadow-sm' 
+                    : 'text-gray-800 hover:bg-[#FDF2F8] bg-gray-50'
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                <span>{link.name}</span>
+                <span className="text-xs opacity-70">›</span>
+              </Link>
+            ))}
+
+            <div className="pt-3 border-t border-gray-100 flex flex-col gap-2.5">
               <a
                 href={getWhatsAppLink('Menu Mobile WhatsApp')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full min-h-[56px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-6 py-4 rounded-2xl text-center font-bold text-lg flex items-center justify-center gap-3 shadow-lg"
+                className="w-full min-h-[50px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-3 rounded-xl text-center font-bold text-base flex items-center justify-center gap-2 shadow-sm"
                 onClick={() => setIsOpen(false)}
               >
-                <MessageCircle size={24} />
-                <span>WhatsApp (Falar com Especialista)</span>
+                <MessageCircle size={22} />
+                <span>WhatsApp (Avaliação por Foto)</span>
               </a>
-              <span className="text-xs text-gray-600 mt-1 font-medium">Tire suas dúvidas ou envie foto</span>
-            </div>
 
-            <div className="flex flex-col items-center">
               <Link
                 to="/agenda"
-                className="w-full min-h-[56px] bg-[#D4567D] hover:bg-[#B84A6B] text-white px-6 py-4 rounded-2xl text-center font-bold text-lg flex items-center justify-center gap-3 shadow-md"
+                className="w-full min-h-[50px] bg-[#D4567D] hover:bg-[#B84A6B] text-white px-4 py-3 rounded-xl text-center font-bold text-base flex items-center justify-center gap-2 shadow-sm"
                 onClick={() => setIsOpen(false)}
               >
-                <Calendar size={24} />
+                <Calendar size={20} />
                 <span>Agendar Atendimento Domiciliar</span>
               </Link>
             </div>
-          </div>
-        </nav>
-      </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
 
 export default Header;
+
 

@@ -51,46 +51,52 @@ const InteractiveGallery: React.FC = () => {
           </p>
         </div>
 
-        {/* Gallery Cards - Visible on mobile and desktop without hover traps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Gallery Cards - Imagens no Tamanho Máximo com Destaque para Detalhes */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {GALLERY_IMAGES.map((img, i) => (
             <div 
               key={i} 
-              className="rounded-3xl bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all overflow-hidden flex flex-col justify-between"
+              className="rounded-3xl bg-white border border-pink-100 shadow-md hover:shadow-2xl transition-all overflow-hidden flex flex-col justify-between group"
             >
-              <div className="relative h-64 sm:h-72 overflow-hidden bg-gray-100">
+              <div className="relative h-80 sm:h-96 md:h-[440px] overflow-hidden bg-gray-950">
                 <img 
                   src={img.url} 
                   alt={img.alt} 
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 select-none" 
                   loading="lazy"
                 />
-                <span className="absolute top-3 left-3 bg-[#D4567D] text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-xl shadow-md">
+                <span className="absolute top-4 left-4 bg-[#D4567D] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-xl shadow-lg border border-white/20">
                   {img.cat}
                 </span>
+
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-5">
+                  <span className="text-white font-serif font-bold text-lg sm:text-xl drop-shadow">
+                    {img.title}
+                  </span>
+                </div>
               </div>
 
-              <div className="p-5 flex flex-col flex-grow justify-between gap-4">
+              <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between gap-5 bg-white">
                 <div>
-                  <h3 className="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-gray-900 mb-2">
                     {img.title}
                   </h3>
-                  <p className="text-base text-gray-700 leading-relaxed font-normal">
+                  <p className="text-base sm:text-lg text-gray-700 leading-relaxed font-normal">
                     {img.desc}
                   </p>
                 </div>
 
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center pt-2">
                   <a 
                     href={getWhatsAppLink(`Galeria - ${img.title}`)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full min-h-[48px] bg-[#25D366] hover:bg-[#20bd5a] text-white py-3 px-4 rounded-2xl text-base font-bold flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95 text-center"
+                    className="w-full min-h-[50px] bg-[#25D366] hover:bg-[#20bd5a] text-white py-3.5 px-6 rounded-2xl text-base font-bold flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 text-center"
                   >
-                    <MessageCircle size={20} />
-                    <span>WhatsApp</span>
+                    <MessageCircle size={22} />
+                    <span>Consultar este Procedimento no WhatsApp</span>
                   </a>
-                  <span className="text-xs text-gray-500 mt-1.5 font-medium">Avaliação gratuita e sem compromisso</span>
+                  <span className="text-xs text-gray-500 mt-2 font-medium">Avaliação gratuita por foto e sem compromisso</span>
                 </div>
               </div>
             </div>
