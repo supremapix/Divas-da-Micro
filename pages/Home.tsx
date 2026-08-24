@@ -850,41 +850,41 @@ const Home: React.FC = () => {
               </div>
 
               {/* Grid de Posts de Depoimentos */}
-              <div className="space-y-3.5">
+              <div className="space-y-3">
                 {GOOGLE_REVIEWS.map((review) => (
-                  <article key={review.id} className="bg-white rounded-2xl p-4 sm:p-5 lg:p-6 shadow-sm border border-pink-100/80 space-y-3">
+                  <article key={review.id} className="bg-white rounded-2xl p-3.5 sm:p-4 lg:p-5 shadow-sm border border-pink-100/80 space-y-2.5">
                     {/* Header do Post de Depoimento */}
                     <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                      <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
                         {/* Avatar Circular da Cliente */}
-                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-pink-100 to-pink-200 border border-pink-300 flex items-center justify-center font-serif font-bold text-[#D4567D] text-sm sm:text-base shrink-0">
+                        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-pink-100 to-pink-200 border border-pink-300 flex items-center justify-center font-serif font-bold text-[#D4567D] text-xs sm:text-sm shrink-0">
                           {review.name.charAt(0)}
                         </div>
                         <div className="min-w-0">
-                          <span className="font-bold text-gray-900 text-sm sm:text-base block truncate">{review.name}</span>
-                          <span className="text-[11px] sm:text-xs text-gray-500 font-medium truncate block">Cliente Verificada • {review.date}</span>
+                          <span className="font-bold text-gray-900 text-xs sm:text-sm block truncate">{review.name}</span>
+                          <span className="text-[10px] sm:text-xs text-gray-500 font-medium truncate block">Cliente Verificada • {review.date}</span>
                         </div>
                       </div>
 
                       {/* Estrelas */}
-                      <div className="flex text-yellow-500 shrink-0">
+                      <div className="flex text-yellow-500 shrink-0 gap-0.5">
                         {[...Array(review.stars)].map((_, i) => (
-                          <Star key={i} size={14} className="fill-yellow-400 text-yellow-400" />
+                          <Star key={i} size={13} className="fill-yellow-400 text-yellow-400" />
                         ))}
                       </div>
                     </div>
 
                     {/* Texto do Depoimento */}
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-normal italic pl-2.5 border-l-2 border-[#D4567D]/30">
+                    <p className="text-xs sm:text-sm text-gray-700 leading-[1.45] font-normal italic pl-2.5 border-l-2 border-[#D4567D]/30">
                       "{review.text}"
                     </p>
 
                     {/* Resposta Oficial da Página */}
-                    <div className="bg-[#FAF5F8] rounded-xl p-3 sm:p-3.5 border border-pink-100 flex items-start gap-2.5 text-xs sm:text-sm text-gray-700">
-                      <ButterflyLogo size={18} className="shrink-0 mt-0.5" />
+                    <div className="bg-[#FAF5F8] rounded-xl p-2.5 sm:p-3 border border-pink-100 flex items-start gap-2 text-xs text-gray-700">
+                      <ButterflyLogo size={16} className="shrink-0 mt-0.5" />
                       <div>
-                        <span className="font-bold text-gray-900 block text-xs">Divas da Micro respondeu:</span>
-                        <span className="text-gray-600 text-xs sm:text-sm leading-relaxed">Gratidão imensa pelo carinho e pela confiança em nosso trabalho, {review.name}! ❤️</span>
+                        <span className="font-bold text-gray-900 block text-[11px] sm:text-xs">Divas da Micro respondeu:</span>
+                        <span className="text-gray-600 text-[11px] sm:text-xs leading-snug">Gratidão imensa pelo carinho e pela confiança em nosso trabalho, {review.name}! ❤️</span>
                       </div>
                     </div>
                   </article>

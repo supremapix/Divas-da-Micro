@@ -1,40 +1,36 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Heart, MessageCircle } from 'lucide-react';
-import { CONTACT_INFO, ALL_LOCATIONS, getWhatsAppLink } from '../constants';
+import { Phone, MapPin, Clock, Heart, MessageCircle, Instagram, Sparkles, ShieldCheck } from 'lucide-react';
+import { CONTACT_INFO, getWhatsAppLink } from '../constants';
 import ButterflyLogo from './ButterflyLogo';
 
 export function SupremaCredit() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pt-4 border-t border-pink-500/10 flex justify-center items-center">
-      <div className="bg-gray-900/80 border border-pink-500/20 rounded-full px-5 sm:px-6 py-2 sm:py-2.5 shadow-lg flex items-center justify-center transition-all duration-300 hover:border-pink-500/40 hover:shadow-[0_0_20px_rgba(212,86,125,0.2)]">
-        <p className="text-gray-300 hover:text-white transition-colors duration-200 text-xs sm:text-sm font-semibold flex flex-wrap items-center justify-center gap-2 text-center">
-          <span className="opacity-90">Desenvolvido com</span> 
+    <div className="w-full pt-3 pb-1 flex justify-center items-center">
+      <div className="bg-white border border-pink-100 rounded-full px-4 py-1.5 shadow-2xs flex items-center justify-center transition-all duration-200 hover:border-pink-300">
+        <p className="text-gray-500 hover:text-gray-700 transition-colors duration-200 text-[11px] sm:text-xs font-medium flex flex-wrap items-center justify-center gap-1.5 text-center">
+          <span>Desenvolvido com</span> 
           
-          {/* Coração pulsante com efeito de sombra */}
           <Heart 
-            size={14} 
-            className="text-[#D4567D] fill-[#D4567D] animate-[pulse_1.5s_infinite] shrink-0 filter drop-shadow-[0_0_4px_rgba(212,86,125,0.8)]" 
+            size={12} 
+            className="text-[#D4567D] fill-[#D4567D] animate-[pulse_1.5s_infinite] shrink-0" 
           /> 
           
-          <span className="opacity-90">por</span>
+          <span>por</span>
           
-          {/* Link para o site da Suprema */}
           <a 
             id="developer-suprema-link"
             href="https://supremasite.com.br" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-yellow-400 hover:text-yellow-300 transition-all font-bold inline-flex items-center gap-1.5 cursor-pointer border-b border-dashed border-yellow-400/50 hover:border-yellow-300"
+            className="text-gray-800 hover:text-[#D4567D] transition-all font-semibold inline-flex items-center gap-1 cursor-pointer"
           >
             <span>Suprema Sites Express</span>
-            
-            {/* Logotipo oficial com efeito de iluminação */}
             <img 
               src="https://img.supremamidia.com/suprema-img.png" 
               alt="Suprema" 
-              className="h-[18px] w-auto inline select-none shrink-0 filter drop-shadow-[0_0_2px_rgba(250,204,21,0.5)] transition-transform duration-300 hover:scale-110" 
+              className="h-[14px] w-auto inline select-none shrink-0" 
               referrerPolicy="no-referrer"
             />
           </a>
@@ -46,101 +42,184 @@ export function SupremaCredit() {
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative bg-gray-950 text-gray-200 pt-16 pb-12 overflow-hidden border-t border-pink-500/20">
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <img 
-          src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
-          alt="Luxury Spa Background" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/90 to-gray-950"></div>
-      </div>
-      <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
-        {/* Col 1 - About */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <ButterflyLogo size={36} />
-            <span className="text-2xl font-serif font-bold text-white">Divas da Micro</span>
+    <footer className="bg-[#FAF8F9] text-gray-700 pt-8 sm:pt-10 pb-6 border-t border-pink-100 text-xs sm:text-sm">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        
+        {/* 4 Colunas Principais Estilo Facebook */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pb-8">
+          
+          {/* Coluna 1: Marca & Apresentação */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2.5">
+              <ButterflyLogo size={28} />
+              <div>
+                <span className="text-base sm:text-lg font-serif font-bold text-gray-900 block leading-tight">Divas da Micro</span>
+                <span className="text-[11px] text-[#D4567D] font-semibold flex items-center gap-1">
+                  <Sparkles size={11} /> Especialistas 60+
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs text-gray-600 leading-[1.45]">
+              Especialistas em correção, clareamento e harmonização de micropigmentação em pele madura. Atendimento com biossegurança e protocolo 100% indolor.
+            </p>
+
+            <div className="pt-1">
+              <a 
+                href={getWhatsAppLink('Footer WhatsApp CTA')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20bd5a] text-white px-3.5 py-1.5 rounded-lg font-bold text-xs shadow-2xs transition-all active:scale-98"
+              >
+                <MessageCircle size={15} />
+                <span>WhatsApp Direto</span>
+              </a>
+            </div>
           </div>
-          <p className="text-base text-gray-300 leading-relaxed">
-            Especialistas em devolver a autoestima de mulheres 60+ através da correção de micropigmentação antiga. Atendimento exclusivo, 100% indolor e humanizado no conforto do seu lar.
-          </p>
-          <div className="pt-2">
-            <a 
-              href={getWhatsAppLink('Footer WhatsApp Direct')}
+
+          {/* Coluna 2: Serviços */}
+          <div className="space-y-2">
+            <h4 className="font-bold text-gray-900 text-xs sm:text-sm uppercase tracking-wider text-[#B84A6B] pb-1 border-b border-pink-100/80">
+              Serviços
+            </h4>
+            <ul className="space-y-1.5 text-xs text-gray-600">
+              <li>
+                <Link to="/servicos" className="hover:text-[#D4567D] transition-colors block py-0.5">
+                  Harmonização de Sobrancelhas
+                </Link>
+              </li>
+              <li>
+                <Link to="/servicos" className="hover:text-[#D4567D] transition-colors block py-0.5">
+                  Correção de Olhos & Delineado
+                </Link>
+              </li>
+              <li>
+                <Link to="/servicos" className="hover:text-[#D4567D] transition-colors block py-0.5">
+                  Revitalização e Correção Labial
+                </Link>
+              </li>
+              <li>
+                <Link to="/correcao" className="hover:text-[#D4567D] transition-colors block py-0.5 font-medium text-gray-800">
+                  Correção de Micropigmentação Antiga
+                </Link>
+              </li>
+              <li>
+                <Link to="/mulheres-maduras" className="hover:text-[#D4567D] transition-colors block py-0.5 font-semibold text-[#D4567D]">
+                  Pele Madura 60+ (Protocolo Indolor)
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Coluna 3: Institucional */}
+          <div className="space-y-2">
+            <h4 className="font-bold text-gray-900 text-xs sm:text-sm uppercase tracking-wider text-[#B84A6B] pb-1 border-b border-pink-100/80">
+              Institucional
+            </h4>
+            <ul className="space-y-1.5 text-xs text-gray-600">
+              <li>
+                <Link to="/depoimentos" className="hover:text-[#D4567D] transition-colors block py-0.5">
+                  Depoimentos de Clientes (Google 4.9★)
+                </Link>
+              </li>
+              <li>
+                <Link to="/guia" className="hover:text-[#D4567D] transition-colors block py-0.5">
+                  Guia & Dicas de Cuidados
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="hover:text-[#D4567D] transition-colors block py-0.5">
+                  Dúvidas Frequentes (FAQ)
+                </Link>
+              </li>
+              <li>
+                <Link to="/agenda" className="hover:text-[#D4567D] transition-colors block py-0.5">
+                  Atendimento Domiciliar Batel & RMC
+                </Link>
+              </li>
+              <li>
+                <Link to="/contato" className="hover:text-[#D4567D] transition-colors block py-0.5 font-medium text-gray-800">
+                  Contato & Localização
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Coluna 4: Atendimento & Contato */}
+          <div className="space-y-2">
+            <h4 className="font-bold text-gray-900 text-xs sm:text-sm uppercase tracking-wider text-[#B84A6B] pb-1 border-b border-pink-100/80">
+              Atendimento
+            </h4>
+            <ul className="space-y-2 text-xs text-gray-600">
+              <li className="flex items-start gap-2 leading-snug">
+                <MapPin className="text-[#D4567D] shrink-0 mt-0.5" size={14} />
+                <span>{CONTACT_INFO.address}</span>
+              </li>
+              <li className="flex items-start gap-2 leading-snug">
+                <Clock className="text-[#D4567D] shrink-0 mt-0.5" size={14} />
+                <span>{CONTACT_INFO.hours}</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <ShieldCheck className="text-[#D4567D] shrink-0" size={14} />
+                <span>Raio de {CONTACT_INFO.serviceRadius} do Batel</span>
+              </li>
+              <li className="flex items-center gap-2 pt-0.5">
+                <Phone className="text-[#D4567D] shrink-0" size={14} />
+                <a href={CONTACT_INFO.phoneCall} className="text-gray-800 hover:text-[#D4567D] font-semibold">
+                  {CONTACT_INFO.whatsappDisplay}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        {/* Linha Divisória de Rodapé Final Estilo Facebook */}
+        <div className="border-t border-gray-200/80 pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-gray-500">
+          <div className="flex items-center gap-1 text-center sm:text-left">
+            <span>Divas da Micro © 2026</span>
+            <span>·</span>
+            <span>Todos os direitos reservados</span>
+            <span>·</span>
+            <span className="hidden md:inline">Curitiba e RMC</span>
+          </div>
+
+          {/* Ícones Sociais Discretos */}
+          <div className="flex items-center gap-2.5">
+            <a
+              href={getWhatsAppLink('Footer Social WhatsApp')}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-5 py-3 rounded-xl font-bold text-base shadow-lg transition-all"
+              className="w-7 h-7 rounded-full bg-white border border-gray-200 text-[#25D366] hover:border-[#25D366] flex items-center justify-center transition-colors"
+              title="WhatsApp"
+              aria-label="WhatsApp"
             >
-              <MessageCircle size={20} />
-              <span>WhatsApp Direto (60+)</span>
+              <MessageCircle size={14} />
+            </a>
+            <a
+              href={getWhatsAppLink('Footer Social Instagram')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-7 h-7 rounded-full bg-white border border-gray-200 text-[#D4567D] hover:border-[#D4567D] flex items-center justify-center transition-colors"
+              title="Instagram"
+              aria-label="Instagram"
+            >
+              <Instagram size={14} />
+            </a>
+            <a
+              href={CONTACT_INFO.phoneCall}
+              className="w-7 h-7 rounded-full bg-white border border-gray-200 text-gray-600 hover:text-gray-900 flex items-center justify-center transition-colors"
+              title="Telefone"
+              aria-label="Telefone"
+            >
+              <Phone size={13} />
             </a>
           </div>
         </div>
 
-        {/* Col 2 - Services */}
-        <div>
-          <h4 className="text-white font-serif text-xl mb-6 border-b border-pink-500/30 pb-2 inline-block">Nossos Serviços</h4>
-          <ul className="space-y-3 text-base">
-            <li><Link to="/correcao" className="hover:text-pink-400 transition-colors block py-1">Correção de Sobrancelhas</Link></li>
-            <li><Link to="/correcao" className="hover:text-pink-400 transition-colors block py-1">Correção de Olhos</Link></li>
-            <li><Link to="/correcao" className="hover:text-pink-400 transition-colors block py-1">Correção Labial</Link></li>
-            <li><Link to="/mulheres-maduras" className="hover:text-pink-400 transition-colors block py-1 font-bold text-pink-300">Especial 60+ (Indolor)</Link></li>
-            <li><Link to="/agenda" className="hover:text-pink-400 transition-colors block py-1">Atendimento Domiciliar VIP</Link></li>
-          </ul>
-        </div>
-
-        {/* Col 3 - Locations */}
-        <div>
-          <h4 className="text-white font-serif text-xl mb-6 border-b border-pink-500/30 pb-2 inline-block">Onde Atendemos</h4>
-          <ul className="space-y-2 text-sm">
-            {ALL_LOCATIONS.filter(l => !l.isCity).slice(0, 5).map(loc => (
-              <li key={loc.slug}>
-                <Link to={`/correcao-em-${loc.slug}`} className="hover:text-pink-400 transition-colors py-1 block">
-                  {loc.name}
-                </Link>
-              </li>
-            ))}
-            {ALL_LOCATIONS.filter(l => l.isCity).slice(0, 3).map(loc => (
-              <li key={loc.slug}>
-                <Link to={`/correcao-em-${loc.slug}`} className="hover:text-pink-400 transition-colors py-1 block">
-                  {loc.name}
-                </Link>
-              </li>
-            ))}
-            <li className="pt-2"><Link to="/contato" className="text-pink-400 font-bold hover:underline">Ver todas as regiões atendidas →</Link></li>
-          </ul>
-        </div>
-
-        {/* Col 4 - Contact */}
-        <div>
-          <h4 className="text-white font-serif text-xl mb-6 border-b border-pink-500/30 pb-2 inline-block">Contato & Atendimento</h4>
-          <ul className="space-y-4 text-base">
-            <li className="flex items-start gap-3">
-              <MapPin className="text-pink-400 shrink-0 mt-1" size={22} />
-              <span className="text-gray-200">{CONTACT_INFO.address}</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <Phone className="text-pink-400 shrink-0" size={22} />
-              <a href={CONTACT_INFO.phoneCall} className="text-gray-200 hover:text-white font-bold">{CONTACT_INFO.whatsappDisplay}</a>
-            </li>
-            <li className="flex items-center gap-3">
-              <Mail className="text-pink-400 shrink-0" size={22} />
-              <span className="text-gray-200 break-all">{CONTACT_INFO.email}</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-4 md:px-8 mt-16 pt-8 border-t border-gray-800 text-center text-sm text-gray-400 relative z-10">
-        <p>
-          © 2025 Divas da Micro ® | Especializadas em Mulheres 60+ e Correção de Micropigmentação em Curitiba e Região.
-        </p>
-      </div>
-
-      {/* Crédito Suprema Sites integrado com a paleta do site */}
-      <div className="relative z-10">
+        {/* Crédito Suprema Sites Integrado */}
         <SupremaCredit />
+
       </div>
     </footer>
   );

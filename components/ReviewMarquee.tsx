@@ -25,88 +25,92 @@ const ReviewMarquee: React.FC = () => {
   };
 
   return (
-    <section className="bg-[#F9FAFB] py-16 md:py-24 overflow-hidden relative border-t border-gray-100">
-      <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="relative flex items-center justify-center">
-              <div className="bg-[#D4567D] p-2 rounded-full shadow-md text-white">
-                <BadgeCheck size={24} />
-              </div>
+    <section className="bg-[#F9FAFB] py-6 sm:py-10 md:py-16 overflow-hidden relative border-t border-gray-100 rounded-2xl sm:rounded-3xl">
+      <div className="w-full px-2.5 sm:px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+        <div className="space-y-3 sm:space-y-3.5">
+          {/* Selo Compacto e Alinhado */}
+          <div className="inline-flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-pink-100 shadow-xs">
+            <div className="bg-[#D4567D] p-1 rounded-full text-white shrink-0 flex items-center justify-center">
+              <BadgeCheck size={14} />
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-[#B84A6B] uppercase tracking-wider text-xs">Google Reviews</span>
-              <span className="font-bold text-gray-800 uppercase tracking-widest text-xs">AVALIAÇÕES REAIS VERIFICADAS</span>
+            <div className="flex items-center gap-1.5">
+              <span className="font-bold text-[#B84A6B] uppercase tracking-wider text-[10px]">Google Reviews</span>
+              <span className="text-gray-300 text-[10px]">|</span>
+              <span className="font-bold text-gray-800 uppercase tracking-wider text-[10px]">Avaliações Verificadas</span>
             </div>
           </div>
           
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
+          {/* Título Compacto */}
+          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-gray-900 leading-snug tracking-tight">
             Nossas Divas Amam os Resultados
           </h2>
           
-          <div className="flex items-center gap-3 mb-6 flex-wrap">
-            <div className="flex text-amber-400">
-              {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" size={22} />)}
+          {/* Estrelas + Nota + Quantidade em Linha Única Compacta */}
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-700">
+            <div className="flex text-amber-400 gap-0.5">
+              {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" size={15} />)}
             </div>
-            <span className="font-bold text-xl text-gray-900">4.9 / 5.0</span>
-            <span className="text-gray-700 font-medium text-base">baseado em 155+ avaliações no Google</span>
+            <span className="font-bold text-gray-900 text-sm">4.9 / 5.0</span>
+            <span className="text-gray-500 text-xs">· baseado em 155+ avaliações no Google</span>
           </div>
           
-          <p className="text-lg text-gray-800 leading-relaxed mb-8 font-normal">
+          {/* Parágrafo com Line-Height Compacto e Alinhado */}
+          <p className="text-xs sm:text-sm text-gray-700 leading-[1.45] font-normal">
             Especialistas em mulheres de 35 a 100 anos (com foco especial em 50+ e 60+). Atendimento 100% indolor, no conforto da sua residência ou em nosso estúdio.
           </p>
           
-          <div className="flex flex-col items-start">
+          {/* Botão WhatsApp & Apoio com Espaçamento Ajustado */}
+          <div className="pt-1 flex flex-col items-start gap-1">
             <a 
               href={getWhatsAppLink('Seção Avaliações')}
               target="_blank"
               rel="noopener noreferrer"
-              className="min-h-[50px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-3.5 rounded-2xl font-bold text-base transition-all flex items-center justify-center gap-2 shadow-md"
+              className="min-h-[40px] h-10 px-5 sm:px-6 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-xs active:scale-98"
             >
-              <MessageCircle size={20} />
-              <span>WhatsApp</span>
+              <MessageCircle size={17} />
+              <span>Falar no WhatsApp</span>
             </a>
-            <span className="text-xs text-gray-500 mt-1.5 font-medium">Quero minha transformação</span>
+            <span className="text-[11px] text-gray-500 font-medium ml-1">Quero minha transformação</span>
           </div>
         </div>
 
         {/* Reviews Cards List */}
-        <div className="relative max-h-[600px] overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 shadow-xl">
-          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
+        <div className="relative max-h-[500px] overflow-hidden rounded-2xl border border-gray-200 bg-white p-3.5 sm:p-5 shadow-md">
+          <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
           
-          <div className="flex flex-col gap-5 py-6">
+          <div className="flex flex-col gap-3 py-2">
             {GOOGLE_REVIEWS.slice(0, 4).map((review, idx) => (
               <div 
                 key={idx} 
                 onClick={() => openModal(review, idx)}
-                className="bg-gray-50 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[#D4567D] transition-all cursor-pointer group"
+                className="bg-gray-50 border border-gray-200/80 rounded-xl p-3 sm:p-4 shadow-xs hover:shadow-sm hover:border-[#D4567D] transition-all cursor-pointer group"
                 role="button"
                 tabIndex={0}
                 aria-label={`Ver avaliação de ${review.name}`}
               >
-                <div className="flex justify-between items-start mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 min-w-[48px] min-h-[48px] bg-[#FDF2F8] rounded-full flex items-center justify-center font-bold text-[#D4567D] border border-[#D4567D]/30 text-lg">
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 min-w-[32px] min-h-[32px] bg-[#FDF2F8] rounded-full flex items-center justify-center font-bold text-[#D4567D] border border-[#D4567D]/30 text-xs">
                       {review.name[0]}
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900 text-base">{review.name}</h4>
-                      <p className="text-xs text-gray-600 font-medium">{review.date}</p>
+                      <h4 className="font-bold text-gray-900 text-xs sm:text-sm">{review.name}</h4>
+                      <p className="text-[10px] text-gray-500 font-medium">{review.date}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 bg-green-50 text-green-700 px-2.5 py-1 rounded-lg font-bold text-xs border border-green-200">
-                    <BadgeCheck size={14} /> Verificada
+                  <div className="flex items-center gap-1 bg-green-50 text-green-700 px-2 py-0.5 rounded-md font-bold text-[10px] border border-green-200">
+                    <BadgeCheck size={12} /> Verificada
                   </div>
                 </div>
                 
-                <div className="flex text-amber-400 mb-3">
-                  {[...Array(review.stars)].map((_, i) => <Star key={i} fill="currentColor" size={18} />)}
+                <div className="flex text-amber-400 mb-1.5 gap-0.5">
+                  {[...Array(review.stars)].map((_, i) => <Star key={i} fill="currentColor" size={13} />)}
                 </div>
                 
-                <p className="text-gray-800 text-base italic leading-relaxed">"{review.text}"</p>
-                <span className="text-[#D4567D] text-sm font-bold mt-4 flex items-center gap-1 group-hover:gap-2 transition-all">
-                  Ler avaliação completa <ChevronRight size={16} />
+                <p className="text-gray-700 text-xs sm:text-sm italic leading-[1.45]">"{review.text}"</p>
+                <span className="text-[#D4567D] text-[11px] font-bold mt-2 flex items-center gap-1 group-hover:gap-1.5 transition-all">
+                  Ler completa <ChevronRight size={13} />
                 </span>
               </div>
             ))}

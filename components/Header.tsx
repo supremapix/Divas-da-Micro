@@ -92,49 +92,26 @@ const Header: React.FC = () => {
             )}
           </div>
 
-          {/* Right: Quick Action Round Icons (Equilibrados sem botão de agendamento) */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* WhatsApp Circular Icon Button */}
+          {/* Right: WhatsApp Button & Mobile Menu Toggle */}
+          <div className="flex items-center gap-2 shrink-0">
+            {/* WhatsApp Button */}
             <a
               id="header-whatsapp-icon"
-              href={getWhatsAppLink('Header FB Topbar')}
+              href={getWhatsAppLink('Header Topbar')}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#E7F8ED] hover:bg-[#25D366] text-[#25D366] hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 group border border-emerald-200/60"
+              className="h-9 sm:h-10 px-3 sm:px-4 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-all shadow-sm active:scale-95 group"
               title="Falar no WhatsApp"
               aria-label="Falar no WhatsApp"
             >
-              <MessageCircle size={19} className="group-hover:scale-110 transition-transform" />
-            </a>
-
-            {/* Instagram Circular Icon Button */}
-            <a
-              id="header-instagram-icon"
-              href={getWhatsAppLink('Instagram Header')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FDF2F8] hover:bg-[#D4567D] text-[#D4567D] hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 group border border-pink-200/60"
-              title="Siga nosso Instagram"
-              aria-label="Instagram"
-            >
-              <Instagram size={19} className="group-hover:scale-110 transition-transform" />
-            </a>
-
-            {/* Telefone Direto */}
-            <a
-              id="header-phone-icon"
-              href={CONTACT_INFO.phoneCall}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gray-100 hover:bg-gray-800 text-gray-700 hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 border border-gray-200/60"
-              title={`Ligar para ${CONTACT_INFO.whatsappDisplay}`}
-              aria-label="Ligar"
-            >
-              <Phone size={17} />
+              <MessageCircle size={18} className="group-hover:scale-110 transition-transform" />
+              <span className="font-semibold whitespace-nowrap">WhatsApp</span>
             </a>
 
             {/* Mobile Menu Hamburger */}
             <button
               id="btn-menu-mobile"
-              className="md:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-gray-800 hover:text-[#D4567D] rounded-full bg-gray-50 hover:bg-[#FDF2F8] border border-gray-200/60 transition-colors"
+              className="md:hidden w-9 h-9 flex items-center justify-center text-gray-800 hover:text-[#D4567D] rounded-full bg-gray-50 hover:bg-[#FDF2F8] border border-gray-200/60 transition-colors"
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Fechar Menu" : "Abrir Menu"}
               aria-expanded={isOpen}
