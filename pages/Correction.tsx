@@ -98,7 +98,7 @@ const Correction: React.FC = () => {
             <div className="space-y-2.5">
               <div className="relative rounded-2xl overflow-hidden shadow-xs border border-gray-200 bg-gray-100 max-h-[380px] flex items-center justify-center">
                 <img 
-                  src="https://www.divasespacodabeleza.com.br/assets/images/imagem-do-whatsapp-de-2024-10-20-s-14.36.33-423b191e-416x891.jpg" 
+                  src="https://img.supremasite.com.br/divas/correcao-sobrancelas.jpg" 
                   alt="antes e depois de correção de micropigmentação de sobrancelha em Curitiba" 
                   className="w-full h-full object-cover object-center max-h-[380px]" 
                   loading="lazy" 
