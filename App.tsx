@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
@@ -23,13 +23,20 @@ const RouteLoading = () => (
   </div>
 );
 
-// Componente de fallback dinâmico para URLs de bairros e cidades (/correcao-em-*)
+// Componente de fallback dinâmico para URLs de bairros e cidades (/bairro/*, /cidade/*, /correcao-em-*)
 const DynamicFallback = () => {
   const location = useLocation();
   const path = location.pathname.toLowerCase();
 
   // Verifica se é uma rota de bairro ou cidade
-  if (path.startsWith('/correcao-em-') || path.startsWith('/correcao-em/')) {
+  if (
+    path.startsWith('/bairro/') || 
+    path.startsWith('/bairro-') ||
+    path.startsWith('/cidade/') || 
+    path.startsWith('/cidade-') ||
+    path.startsWith('/correcao-em-') || 
+    path.startsWith('/correcao-em/')
+  ) {
     return <LocationTemplate />;
   }
 
@@ -55,6 +62,8 @@ const AnimatedRoutes = () => {
         <Route path="/cuidados" element={<Care />} />
         <Route path="/agenda" element={<Contact />} />
         <Route path="/contato" element={<Contact />} />
+        <Route path="/bairro/:locationSlug" element={<LocationTemplate />} />
+        <Route path="/cidade/:locationSlug" element={<LocationTemplate />} />
         <Route path="/correcao-em/:locationSlug" element={<LocationTemplate />} />
         <Route path="*" element={<DynamicFallback />} />
       </Routes>

@@ -24,8 +24,9 @@ const Header: React.FC = () => {
     ? ALL_LOCATIONS.filter(l => l.name.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 6)
     : [];
 
-  const handleSearchSelect = (slug: string) => {
-    navigate(`/correcao-em-${slug}`);
+  const handleSearchSelect = (loc: { slug: string; isCity?: boolean }) => {
+    const targetPath = loc.isCity ? `/cidade/${loc.slug}` : `/bairro/${loc.slug}`;
+    navigate(targetPath);
     setSearchQuery('');
     setShowSearchDropdown(false);
   };
@@ -81,7 +82,7 @@ const Header: React.FC = () => {
                 {filteredSearch.map(loc => (
                   <button
                     key={loc.slug}
-                    onClick={() => handleSearchSelect(loc.slug)}
+                    onClick={() => handleSearchSelect(loc)}
                     className="w-full text-left px-3 py-2 rounded-xl hover:bg-[#FDF2F8] text-gray-800 hover:text-[#D4567D] text-sm font-medium transition-colors flex items-center justify-between"
                   >
                     <span>{loc.name}</span>

@@ -33,6 +33,20 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   React.useEffect(() => {
+    document.title = "Divas da Micro | Micropigmentação para Mulheres 60+ em Curitiba";
+    
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', "Especialista em correção de micropigmentação de sobrancelhas, olhos e lábios para mulheres 60+ em Curitiba e Região Metropolitana. Atendimento domiciliar e procedimento 100% indolor.");
+    }
+    
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute('href', "https://www.divasespacodabeleza.com.br/");
+    }
+  }, []);
+
+  React.useEffect(() => {
     if (selectedServiceIndex !== null) {
       document.body.classList.add('lightbox-active');
       window.dispatchEvent(new CustomEvent('lightboxToggle', { detail: { open: true } }));
@@ -72,8 +86,9 @@ const Home: React.FC = () => {
     ).slice(0, 8);
   }, [searchTerm]);
 
-  const handleLocationSelect = (slug: string) => {
-    navigate(`/correcao-em-${slug}`);
+  const handleLocationSelect = (loc: { slug: string; isCity?: boolean }) => {
+    const targetPath = loc.isCity ? `/cidade/${loc.slug}` : `/bairro/${loc.slug}`;
+    navigate(targetPath);
     setSearchTerm('');
   };
 
@@ -369,7 +384,7 @@ const Home: React.FC = () => {
                     {filteredLocations.map(loc => (
                       <button
                         key={loc.slug}
-                        onClick={() => handleLocationSelect(loc.slug)}
+                        onClick={() => handleLocationSelect(loc)}
                         className="w-full text-left px-3.5 py-2 text-xs sm:text-sm font-semibold text-gray-800 hover:bg-[#FDF2F8] hover:text-[#D4567D] border-b border-gray-50 flex items-center justify-between"
                       >
                         <span>{loc.name}</span>

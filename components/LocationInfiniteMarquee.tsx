@@ -19,15 +19,18 @@ const LocationInfiniteMarquee: React.FC = () => {
       <div className="absolute inset-x-0 bottom-0 h-[400px] flex flex-col gap-4 py-10 marquee-vertical-container">
         {/* Usando os dados centralizados de ALL_LOCATIONS para garantir consistência dos links */}
         <div className="flex flex-col gap-4 animate-location-scroll">
-          {[...ALL_LOCATIONS, ...ALL_LOCATIONS].map((loc, idx) => (
-            <Link 
-              key={`${loc.slug}-${idx}`}
-              to={`/correcao-em-${loc.slug}`}
-              className="text-center py-2 px-6 text-gray-400 hover:text-[#D4567D] transition-colors text-sm font-bold tracking-wide uppercase hover:scale-110 active:scale-95 transform duration-200"
-            >
-              {loc.name}
-            </Link>
-          ))}
+          {[...ALL_LOCATIONS, ...ALL_LOCATIONS].map((loc, idx) => {
+            const targetPath = loc.isCity ? `/cidade/${loc.slug}` : `/bairro/${loc.slug}`;
+            return (
+              <Link 
+                key={`${loc.slug}-${idx}`}
+                to={targetPath}
+                className="text-center py-2 px-6 text-gray-400 hover:text-[#D4567D] transition-colors text-sm font-bold tracking-wide uppercase hover:scale-110 active:scale-95 transform duration-200"
+              >
+                {loc.name}
+              </Link>
+            );
+          })}
         </div>
       </div>
 

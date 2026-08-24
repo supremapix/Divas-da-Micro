@@ -13,7 +13,7 @@ export const COLORS = {
 };
 
 export const CONTACT_INFO = {
-  domain: "https://divasdamicro.app.br",
+  domain: "https://www.divasespacodabeleza.com.br",
   address: "Av. Sete de Setembro, 4995 - Batel, Curitiba/PR, 80250-205",
   whatsapp: "5541997879392",
   phoneCall: "tel:+5541997879392",
