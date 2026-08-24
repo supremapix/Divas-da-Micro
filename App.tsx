@@ -23,6 +23,19 @@ const RouteLoading = () => (
   </div>
 );
 
+// Componente de fallback dinâmico para URLs de bairros e cidades (/correcao-em-*)
+const DynamicFallback = () => {
+  const location = useLocation();
+  const path = location.pathname.toLowerCase();
+
+  // Verifica se é uma rota de bairro ou cidade
+  if (path.startsWith('/correcao-em-') || path.startsWith('/correcao-em/')) {
+    return <LocationTemplate />;
+  }
+
+  return <Home />;
+};
+
 const AnimatedRoutes = () => {
   const location = useLocation();
   
@@ -42,8 +55,8 @@ const AnimatedRoutes = () => {
         <Route path="/cuidados" element={<Care />} />
         <Route path="/agenda" element={<Contact />} />
         <Route path="/contato" element={<Contact />} />
-        <Route path="/correcao-em-:locationSlug" element={<LocationTemplate />} />
-        <Route path="*" element={<Home />} />
+        <Route path="/correcao-em/:locationSlug" element={<LocationTemplate />} />
+        <Route path="*" element={<DynamicFallback />} />
       </Routes>
     </AnimatePresence>
   );

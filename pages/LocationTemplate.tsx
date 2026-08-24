@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import { Shield, User, Home as HomeIcon, Star, Clock, MapPin, Heart, Info, MessageCircle, Sparkles } from 'lucide-react';
 import { ALL_LOCATIONS, getWhatsAppLink, PROCEDURES_TIPS } from '../constants';
 import FacebookFeed from '../components/FacebookFeed';
@@ -7,11 +7,26 @@ import ReviewMarquee from '../components/ReviewMarquee';
 import { motion } from 'framer-motion';
 
 const LocationTemplate: React.FC = () => {
-  const { locationSlug } = useParams<{ locationSlug: string }>();
+  const { locationSlug: paramSlug } = useParams<{ locationSlug?: string }>();
+  const routerLocation = useLocation();
   
-  // Correspondência exata do slug
-  const location = ALL_LOCATIONS.find(l => l.slug === locationSlug) || { name: 'Curitiba', isCity: true };
+  // Extrai o slug do parâmetro de rota ou diretamente do pathname (ex: /correcao-em-batel)
+  const pathname = routerLocation.pathname.toLowerCase();
+  let extractedSlug = (paramSlug || '').trim();
+
+  if (!extractedSlug) {
+    if (pathname.startsWith('/correcao-em-')) {
+      extractedSlug = pathname.replace(/^\/correcao-em-/, '').replace(/\/$/, '').trim();
+    } else if (pathname.startsWith('/correcao-em/')) {
+      extractedSlug = pathname.replace(/^\/correcao-em\//, '').replace(/\/$/, '').trim();
+    }
+  }
+
+  // Correspondência exata do slug (normalizado)
+  const location = ALL_LOCATIONS.find(l => l.slug.toLowerCase() === extractedSlug.toLowerCase()) 
+    || { name: extractedSlug ? extractedSlug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : 'Curitiba', isCity: true, slug: extractedSlug || 'curitiba' };
   const locationName = location.name;
+  const currentSlug = location.slug || extractedSlug || 'curitiba';
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,8 +39,8 @@ const LocationTemplate: React.FC = () => {
       "name": `Divas da Micro - Correção de Micropigmentação em ${locationName}`,
       "description": `Especialista em correção e neutralização de micropigmentação de sobrancelhas, olhos e lábios em ${locationName}. Atendimento domiciliar exclusivo e estúdio para mulheres 60+.`,
       "image": "https://divasdamicro.app.br/assets/images/microblading-falhado-corrija-em-curitiba-divas-da-micro-1920x1080.png",
-      "@id": `https://divasdamicro.app.br/#/correcao-em-${locationSlug}`,
-      "url": `https://divasdamicro.app.br/#/correcao-em-${locationSlug}`,
+      "@id": `https://divasdamicro.app.br/#/correcao-em-${currentSlug}`,
+      "url": `https://divasdamicro.app.br/#/correcao-em-${currentSlug}`,
       "telephone": "+55-41-99787-9392",
       "address": {
         "@type": "PostalAddress",
@@ -66,7 +81,7 @@ const LocationTemplate: React.FC = () => {
     return () => {
       document.head.removeChild(script);
     };
-  }, [locationName, locationSlug]);
+  }, [locationName, currentSlug]);
 
   const sections = [
     {
