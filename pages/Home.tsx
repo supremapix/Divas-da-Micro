@@ -12,6 +12,7 @@ import { SERVICES, FAQS, CONTACT_INFO, getWhatsAppLink, PROCEDURES_TIPS, ALL_LOC
 import ReviewMarquee from '../components/ReviewMarquee';
 import InteractiveGallery from '../components/InteractiveGallery';
 import LocationInfiniteMarquee from '../components/LocationInfiniteMarquee';
+import FacebookFeed from '../components/FacebookFeed';
 
 const Home: React.FC = () => {
   const [visibleTips, setVisibleTips] = useState(8);
@@ -212,6 +213,7 @@ const Home: React.FC = () => {
                 { id: 'post-olhos', label: 'Olhos' },
                 { id: 'post-labios', label: 'Lábios' },
                 { id: 'post-60mais', label: 'Pele Madura 60+' },
+                { id: 'post-facebook', label: 'Feed do Facebook' },
                 { id: 'post-depoimentos', label: 'Depoimentos' },
                 { id: 'post-cuidados', label: 'Guia & Dicas' },
                 { id: 'post-duvidas', label: 'Dúvidas (FAQ)' },
@@ -831,7 +833,12 @@ const Home: React.FC = () => {
             </article>
 
             {/* ------------------------------------------------------------------- */}
-            {/* POST 5: DEPOIMENTOS NO FORMATO DE POSTS DE CLIENTES (REVIEWS FEED)   */}
+            {/* POST 5: FEED OFICIAL DO FACEBOOK (PAGE PLUGIN EMBED RESPONSIVO)     */}
+            {/* ------------------------------------------------------------------- */}
+            <FacebookFeed id="post-facebook" />
+
+            {/* ------------------------------------------------------------------- */}
+            {/* POST 6: DEPOIMENTOS NO FORMATO DE POSTS DE CLIENTES (REVIEWS FEED)   */}
             {/* ------------------------------------------------------------------- */}
             <section id="post-depoimentos" className="space-y-3.5">
               <div className="flex items-center justify-between px-1 pt-2">

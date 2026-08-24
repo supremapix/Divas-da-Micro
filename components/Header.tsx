@@ -33,7 +33,7 @@ const Header: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/98 backdrop-blur-md z-40 border-b border-pink-100 shadow-[0_2px_10px_rgba(212,86,125,0.07)]">
+    <header className="fixed top-0 left-0 right-0 bg-white z-50 border-b border-pink-100 shadow-[0_2px_10px_rgba(212,86,125,0.07)]">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-18 gap-2 sm:gap-4">
           

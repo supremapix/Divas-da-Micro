@@ -1,8 +1,7 @@
-
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { CheckCircle, Shield, User, Home as HomeIcon, Star, MessageSquare, Zap, Clock, MapPin, Heart, Info, MessageCircle } from 'lucide-react';
-import { CONTACT_INFO, ALL_LOCATIONS, getWhatsAppLink, PROCEDURES_TIPS } from '../constants';
+import { Shield, User, Home as HomeIcon, Star, Clock, MapPin, Heart, Info, MessageCircle, Sparkles } from 'lucide-react';
+import { ALL_LOCATIONS, getWhatsAppLink, PROCEDURES_TIPS } from '../constants';
 import FacebookFeed from '../components/FacebookFeed';
 import ReviewMarquee from '../components/ReviewMarquee';
 import { motion } from 'framer-motion';
@@ -10,12 +9,11 @@ import { motion } from 'framer-motion';
 const LocationTemplate: React.FC = () => {
   const { locationSlug } = useParams<{ locationSlug: string }>();
   
-  // Garantindo correspondência exata do slug para evitar erros de renderização
+  // Correspondência exata do slug
   const location = ALL_LOCATIONS.find(l => l.slug === locationSlug) || { name: 'Curitiba', isCity: true };
   const locationName = location.name;
 
   useEffect(() => {
-    // Garantir que a página sempre comece no topo ao navegar
     window.scrollTo(0, 0);
     document.title = `Correção de Micropigmentação em ${locationName} | Divas da Micro`;
 
@@ -99,44 +97,40 @@ const LocationTemplate: React.FC = () => {
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
-      className="pt-24 bg-white"
+      className="pt-16 sm:pt-20 bg-[#FAF8F9]"
     >
-      {/* Hero */}
-      <section className="bg-gray-950 text-white py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
-            alt={`Luxury Spa Banner - Correção de Micropigmentação em ${locationName}`} 
-            className="w-full h-full object-cover opacity-30" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/85 to-black/65"></div>
-        </div>
-        <div className="container mx-auto px-4 md:px-8 relative z-10">
-          <div className="max-w-4xl">
-            <span className="text-[#D4567D] font-bold tracking-wider uppercase text-xs md:text-sm mb-3 flex items-center gap-2">
-              <MapPin size={18} /> Atendimento em {locationName} • Estúdio e Domiciliar
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
-              Correção de Micropigmentação <br /> <span className="text-[#D4567D]">em {locationName}</span>
+      {/* Hero / Header Compacto */}
+      <section className="relative py-8 sm:py-12 md:py-16 bg-white border-b border-pink-100">
+        <div className="w-full max-w-5xl mx-auto px-3.5 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto space-y-2.5 sm:space-y-3.5">
+            <div className="inline-flex items-center gap-1.5 bg-[#FDF2F8] border border-pink-200 text-[#B84A6B] px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider">
+              <MapPin size={13} className="text-[#D4567D]" />
+              <span>Atendimento em {locationName} • Estúdio & Domiciliar</span>
+            </div>
+
+            <h1 className="text-xl sm:text-3xl md:text-5xl font-serif font-bold text-gray-900 leading-tight tracking-tight">
+              Correção de Micropigmentação <br className="hidden sm:inline" />
+              <span className="text-[#D4567D]">em {locationName}</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl font-normal">
-              Devolva a harmonia e a naturalidade ao seu olhar com especialistas em pele madura. Procedimento 100% indolor com opção de atendimento no seu lar em {locationName}.
+
+            <p className="text-xs sm:text-sm md:text-base text-gray-700 max-w-2xl mx-auto leading-[1.45] font-normal">
+              Devolva a harmonia e a naturalidade ao seu olhar com especialistas em pele madura. Procedimento 100% indolor com opção de atendimento no conforto do seu lar em {locationName}.
             </p>
-            <div className="flex flex-col items-start">
+
+            <div className="pt-2 flex flex-col items-center gap-1">
               <a 
                 href={getWhatsAppLink(`Página Local - ${locationName}`)} 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="min-h-[50px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 md:px-10 py-4 rounded-2xl font-bold text-base md:text-lg transition-all inline-flex items-center gap-3 shadow-xl active:scale-95"
+                className="min-h-[40px] h-10 px-6 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-bold text-xs sm:text-sm shadow-xs transition-all inline-flex items-center gap-2 active:scale-98"
               >
-                <MessageCircle size={22} />
-                <span>WhatsApp</span>
+                <MessageCircle size={17} />
+                <span>Avaliação Gratuita no WhatsApp</span>
               </a>
-              <span className="text-xs text-white/80 mt-1.5 font-medium">Avaliação gratuita em {locationName}</span>
+              <span className="text-[11px] text-gray-500 font-medium">Agende seu horário com a especialista</span>
             </div>
           </div>
         </div>
@@ -146,73 +140,90 @@ const LocationTemplate: React.FC = () => {
       <FacebookFeed />
 
       {/* Content Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          <div className="lg:col-span-8 space-y-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-               <div className="p-6 bg-[#FDF2F8] rounded-2xl border border-pink-100 flex flex-col gap-3">
-                 <Zap className="text-[#D4567D]" size={32} />
-                 <h2 className="font-bold text-xl text-gray-900">Neutralização de Cores</h2>
-                 <p className="text-base text-gray-700 font-normal">Corrigimos sobrancelhas acinzentadas, azuladas ou avermelhadas com neutralizadores específicos em {locationName}.</p>
-               </div>
-               <div className="p-6 bg-[#FDF2F8] rounded-2xl border border-pink-100 flex flex-col gap-3">
-                 <Shield className="text-[#D4567D]" size={32} />
-                 <h2 className="font-bold text-xl text-gray-900">Biossegurança Rigorosa</h2>
-                 <p className="text-base text-gray-700 font-normal">Materiais 100% descartáveis e ambiente asséptico no atendimento em estúdio ou domiciliar em {locationName}.</p>
-               </div>
+      <section className="py-6 sm:py-10 max-w-5xl mx-auto px-2.5 sm:px-4 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="lg:col-span-8 space-y-5">
+            {/* Quick Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="p-3.5 bg-white rounded-xl border border-pink-100 shadow-2xs space-y-1">
+                <div className="flex items-center gap-2 text-[#D4567D]">
+                  <Sparkles size={17} />
+                  <h2 className="font-bold text-xs sm:text-sm text-gray-900">Neutralização de Cores</h2>
+                </div>
+                <p className="text-xs text-gray-600 font-normal leading-[1.4]">
+                  Corrigimos tons acinzentados, azulados ou avermelhados sem laser agressivo em {locationName}.
+                </p>
+              </div>
+
+              <div className="p-3.5 bg-white rounded-xl border border-pink-100 shadow-2xs space-y-1">
+                <div className="flex items-center gap-2 text-[#D4567D]">
+                  <Shield size={17} />
+                  <h2 className="font-bold text-xs sm:text-sm text-gray-900">Biossegurança VIP</h2>
+                </div>
+                <p className="text-xs text-gray-600 font-normal leading-[1.4]">
+                  Materiais 100% descartáveis e esterilizados no estúdio ou na sua casa em {locationName}.
+                </p>
+              </div>
             </div>
 
+            {/* Articles */}
             {sections.map((s, idx) => (
-              <article key={idx} className="space-y-3">
-                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 border-l-4 border-[#D4567D] pl-4">
+              <article key={idx} className="bg-white p-4 rounded-xl border border-pink-100/80 shadow-2xs space-y-1.5">
+                <h2 className="text-xs sm:text-sm md:text-base font-serif font-bold text-gray-900 border-l-3 border-[#D4567D] pl-2.5">
                   {s.title}
                 </h2>
-                <p className="text-gray-700 leading-relaxed text-base md:text-lg font-normal">
+                <p className="text-xs sm:text-sm text-gray-700 leading-[1.45] font-normal">
                   {s.content}
                 </p>
               </article>
             ))}
 
-            <div className="bg-[#FDF2F8] p-6 md:p-10 rounded-3xl border border-pink-200">
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold mb-6 text-center text-gray-900">
-                Transformações e Correções em {locationName}
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-3">
-                  <div className="relative rounded-2xl overflow-hidden shadow-md aspect-[4/3] bg-gray-200">
+            {/* Before / After Showcase */}
+            <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-pink-100 shadow-xs space-y-3">
+              <div className="text-center space-y-0.5">
+                <h2 className="text-sm sm:text-base font-serif font-bold text-gray-900">
+                  Transformações e Correções em {locationName}
+                </h2>
+                <p className="text-xs text-gray-500">Veja a recuperação do desenho e naturalidade</p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-gray-100 border border-gray-200">
                     <img 
                       src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600" 
-                      alt={`micropigmentação antiga e desbotada antes da correção em ${locationName}`} 
+                      alt={`micropigmentação antiga antes da correção em ${locationName}`} 
                       className="w-full h-full object-cover grayscale" 
                     />
-                    <div className="absolute top-3 left-3 bg-black/70 text-white px-3 py-1 rounded-xl text-xs font-bold">Antes (Antiga)</div>
+                    <div className="absolute top-2 left-2 bg-black/75 text-white px-2 py-0.5 rounded-md text-[10px] font-bold">Antes (Antiga)</div>
                   </div>
-                  <p className="text-center text-sm font-semibold text-gray-600">Pigmento cinza e falhado</p>
+                  <p className="text-center text-[11px] font-semibold text-gray-600">Pigmento cinza e falhado</p>
                 </div>
-                <div className="space-y-3">
-                  <div className="relative rounded-2xl overflow-hidden shadow-md aspect-[4/3] bg-gray-200">
+
+                <div className="space-y-1">
+                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-gray-100 border border-pink-200">
                     <img 
                       src="https://www.divasespacodabeleza.com.br/assets/images/imagem-do-whatsapp-de-2024-10-20-s-14.36.30-f19729d5-747x1600.jpg" 
                       alt={`resultado de correção de micropigmentação natural em ${locationName}`} 
                       className="w-full h-full object-cover" 
                     />
-                    <div className="absolute top-3 left-3 bg-[#D4567D] text-white px-3 py-1 rounded-xl text-xs font-bold">Depois (Divas)</div>
+                    <div className="absolute top-2 left-2 bg-[#D4567D] text-white px-2 py-0.5 rounded-md text-[10px] font-bold">Depois (Divas)</div>
                   </div>
-                  <p className="text-center text-sm font-bold text-[#D4567D]">Correção Suave e Harmônica</p>
+                  <p className="text-center text-[11px] font-bold text-[#D4567D]">Correção Suave e Harmônica</p>
                 </div>
               </div>
             </div>
 
-            {/* Procedures Tips Section */}
-            <div className="pt-8">
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold mb-6 text-center text-gray-900">
+            {/* Procedures Tips */}
+            <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-pink-100 shadow-xs space-y-3">
+              <h2 className="text-xs sm:text-sm md:text-base font-serif font-bold text-gray-900 text-center">
                 Dicas de Especialista para {locationName}
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {PROCEDURES_TIPS.slice(0, 10).map((tip, idx) => (
-                  <div key={idx} className="p-4 bg-gray-50 rounded-2xl border border-gray-200 flex gap-3 items-start">
-                    <Info size={20} className="text-[#D4567D] shrink-0 mt-0.5" />
-                    <p className="text-sm text-gray-700 leading-relaxed font-medium">{tip}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {PROCEDURES_TIPS.slice(0, 6).map((tip, idx) => (
+                  <div key={idx} className="p-2.5 bg-[#FAF8F9] rounded-xl border border-pink-100/60 flex gap-2 items-start">
+                    <Info size={15} className="text-[#D4567D] shrink-0 mt-0.5" />
+                    <p className="text-xs text-gray-700 leading-[1.4] font-medium">{tip}</p>
                   </div>
                 ))}
               </div>
@@ -220,44 +231,46 @@ const LocationTemplate: React.FC = () => {
           </div>
 
           {/* Sidebar */}
-          <aside className="lg:col-span-4 space-y-8">
-            <div className="bg-gray-900 text-white p-8 rounded-3xl sticky top-28 shadow-xl">
-              <h3 className="text-2xl font-serif font-bold mb-6">Atendimento em {locationName}</h3>
-              <div className="space-y-4 mb-8">
-                <div className="flex gap-3 items-center">
-                  <Clock className="text-[#D4567D]" size={20} />
-                  <span className="text-base text-gray-200">Seg - Sex: 10h às 20h</span>
+          <aside className="lg:col-span-4 space-y-4">
+            <div className="bg-gray-900 text-white p-4 sm:p-6 rounded-2xl shadow-sm space-y-3 sticky top-24">
+              <h3 className="text-sm sm:text-base font-serif font-bold">Atendimento em {locationName}</h3>
+              <div className="space-y-2 text-xs sm:text-sm">
+                <div className="flex gap-2 items-center text-gray-300">
+                  <Clock className="text-[#D4567D] shrink-0" size={16} />
+                  <span>Seg - Sex: 10h às 20h</span>
                 </div>
-                <div className="flex gap-3 items-center">
-                  <HomeIcon className="text-[#D4567D]" size={20} />
-                  <span className="text-base text-gray-200">Atendimento Domiciliar VIP</span>
+                <div className="flex gap-2 items-center text-gray-300">
+                  <HomeIcon className="text-[#D4567D] shrink-0" size={16} />
+                  <span>Atendimento Domiciliar VIP</span>
                 </div>
-                <div className="flex gap-3 items-center">
-                  <Star className="text-[#D4567D]" size={20} />
-                  <span className="text-base text-gray-200">Especialistas em Pele Madura</span>
+                <div className="flex gap-2 items-center text-gray-300">
+                  <Star className="text-[#D4567D] shrink-0" size={16} />
+                  <span>Especialistas em Pele Madura 60+</span>
                 </div>
               </div>
-              <div className="flex flex-col items-center">
+
+              <div className="pt-1 flex flex-col items-center gap-1">
                 <a 
                   href={getWhatsAppLink(`Sidebar - ${locationName}`)} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="min-h-[48px] block w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 rounded-2xl text-center font-bold transition-all shadow-lg active:scale-95 text-base"
+                  className="w-full min-h-[40px] h-10 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl text-center font-bold transition-all shadow-xs inline-flex items-center justify-center gap-2 active:scale-98 text-xs sm:text-sm"
                 >
-                  WhatsApp
+                  <MessageCircle size={16} />
+                  <span>WhatsApp</span>
                 </a>
-                <span className="text-xs text-white/80 mt-1.5 font-medium text-center">Consultar horários em {locationName}</span>
+                <span className="text-[11px] text-gray-400 font-medium">Atendimento rápido</span>
               </div>
             </div>
 
-            <div className="p-6 bg-white border border-gray-200 rounded-3xl shadow-sm">
-              <h4 className="font-bold mb-4 text-gray-500 uppercase text-xs tracking-wider">Outros Bairros e Regiões</h4>
-              <div className="flex flex-wrap gap-2">
-                {ALL_LOCATIONS.filter(l => !l.isCity).slice(0, 16).map(l => (
+            <div className="p-4 bg-white border border-pink-100 rounded-2xl shadow-2xs space-y-2">
+              <h4 className="font-bold text-gray-600 uppercase text-[11px] tracking-wider">Outros Bairros & Regiões</h4>
+              <div className="flex flex-wrap gap-1.5">
+                {ALL_LOCATIONS.filter(l => !l.isCity).slice(0, 14).map(l => (
                   <Link 
                     key={l.slug} 
                     to={`/correcao-em-${l.slug}`} 
-                    className="text-xs px-3 py-1.5 bg-gray-100 hover:bg-[#FDF2F8] hover:text-[#D4567D] rounded-xl text-gray-700 font-medium transition-colors"
+                    className="text-[11px] px-2.5 py-1 bg-gray-50 hover:bg-[#FDF2F8] hover:text-[#D4567D] rounded-lg text-gray-700 font-medium border border-gray-200/60 transition-colors"
                   >
                     {l.name}
                   </Link>
@@ -272,31 +285,23 @@ const LocationTemplate: React.FC = () => {
       <ReviewMarquee />
 
       {/* Trust Badges */}
-      <section className="bg-gray-50 py-16 border-t border-gray-100">
-        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="flex flex-col items-center gap-3 text-center">
-            <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-md text-[#D4567D]">
-              <Heart size={28} />
-            </div>
-            <span className="font-bold text-xs uppercase tracking-wider text-gray-700">Cuidado Humanizado</span>
+      <section className="bg-white py-6 border-t border-pink-100">
+        <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+          <div className="flex items-center justify-center gap-2 p-2.5 bg-[#FAF8F9] rounded-xl border border-pink-100/60">
+            <Heart size={18} className="text-[#D4567D] shrink-0" />
+            <span className="font-bold text-xs text-gray-800">Cuidado Humanizado</span>
           </div>
-          <div className="flex flex-col items-center gap-3 text-center">
-            <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-md text-[#D4567D]">
-              <Shield size={28} />
-            </div>
-            <span className="font-bold text-xs uppercase tracking-wider text-gray-700">Biossegurança VIP</span>
+          <div className="flex items-center justify-center gap-2 p-2.5 bg-[#FAF8F9] rounded-xl border border-pink-100/60">
+            <Shield size={18} className="text-[#D4567D] shrink-0" />
+            <span className="font-bold text-xs text-gray-800">Biossegurança VIP</span>
           </div>
-          <div className="flex flex-col items-center gap-3 text-center">
-            <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-md text-[#D4567D]">
-              <User size={28} />
-            </div>
-            <span className="font-bold text-xs uppercase tracking-wider text-gray-700">Mulheres 60+</span>
+          <div className="flex items-center justify-center gap-2 p-2.5 bg-[#FAF8F9] rounded-xl border border-pink-100/60">
+            <User size={18} className="text-[#D4567D] shrink-0" />
+            <span className="font-bold text-xs text-gray-800">Mulheres 60+</span>
           </div>
-          <div className="flex flex-col items-center gap-3 text-center">
-            <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-md text-[#D4567D]">
-              <HomeIcon size={28} />
-            </div>
-            <span className="font-bold text-xs uppercase tracking-wider text-gray-700">Conforto no Lar</span>
+          <div className="flex items-center justify-center gap-2 p-2.5 bg-[#FAF8F9] rounded-xl border border-pink-100/60">
+            <HomeIcon size={18} className="text-[#D4567D] shrink-0" />
+            <span className="font-bold text-xs text-gray-800">Conforto no Lar</span>
           </div>
         </div>
       </section>
