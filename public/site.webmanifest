@@ -1,0 +1,24 @@
+{
+  "name": "Divas da Micro - Correção de Micropigmentação 60+",
+  "short_name": "Divas da Micro",
+  "description": "Especialista em correção e neutralização de micropigmentação de sobrancelhas, olhos e lábios para mulheres 60+ em Curitiba.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#D4567D",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "start_url": "/",
+  "orientation": "portrait"
+}
