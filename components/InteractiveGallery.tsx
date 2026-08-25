@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Sparkles, MessageCircle, ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
 import { getWhatsAppLink } from '../constants';
 import ButterflyLogo from './ButterflyLogo';
+import ImageWithFallback from './ImageWithFallback';
 
 export interface GalleryItem {
   title: string;
@@ -16,28 +17,28 @@ export const GALLERY_IMAGES: GalleryItem[] = [
   {
     title: "Harmonização e Simetria Facial",
     desc: "Alinhamento e simetria delicada para valorizar a expressão natural em pele madura, com técnica 100% indolor.",
-    url: "https://img.supremasite.com.br/divas/armonizacao-simetria-facial.jpg",
+    url: "/images/armonizacao-simetria-facial.jpg",
     alt: "Harmonização e simetria facial em mulher madura, Curitiba",
     cat: "Harmonização 50+"
   },
   {
     title: "Correção de Sobrancelhas Cinzas",
     desc: "Neutralização de pigmento antigo escurecido ou azulado e novo desenho harmônico e elegante.",
-    url: "https://img.supremasite.com.br/divas/correcao-de-sobrancelhas-cinza.jpg",
+    url: "/images/correcao-de-sobrancelhas-cinza.jpg",
     alt: "Correção de sobrancelhas cinzas em pele madura, Curitiba",
     cat: "Sobrancelhas 50+"
   },
   {
     title: "Revitalização Labial Madura",
     desc: "Neutralização de tons arroxeados e definição natural do contorno labial para lábios saudáveis e rejuvenescidos.",
-    url: "https://img.supremasite.com.br/divas/revitalizacao-labial-madura.jpg",
+    url: "/images/revitalizacao-labial-madura.jpg",
     alt: "Revitalização labial em mulher madura, Curitiba",
     cat: "Lábios 60+"
   },
   {
     title: "Suavização de Delineado de Olhos",
     desc: "Correção de traços expandidos em pálpebras maduras, criando efeito lifting leve e olhar iluminado.",
-    url: "https://img.supremasite.com.br/divas/suavizacao-delineado-de-olhos.jpg",
+    url: "/images/suavizacao-delineado-de-olhos.jpg",
     alt: "Suavização de delineado de olhos em mulher madura, Curitiba",
     cat: "Olhos 55+"
   }
@@ -135,9 +136,11 @@ const InteractiveGallery: React.FC = () => {
               className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[4/3] overflow-hidden bg-gray-950 cursor-pointer flex items-center justify-center"
               title="Toque para abrir em tela cheia com zoom"
             >
-              <img 
+              <ImageWithFallback 
                 src={img.url} 
                 alt={img.alt} 
+                fallbackTitle={img.title}
+                fallbackCategory={img.cat}
                 className="w-full h-full object-contain sm:object-cover transition-transform duration-500 group-hover:scale-105 select-none" 
                 loading="lazy"
               />
@@ -268,9 +271,11 @@ const InteractiveGallery: React.FC = () => {
                 }`}
                 onClick={() => setIsZoomed(!isZoomed)}
               >
-                <img 
+                <ImageWithFallback 
                   src={currentItem.url} 
                   alt={currentItem.alt}
+                  fallbackTitle={currentItem.title}
+                  fallbackCategory={currentItem.cat}
                   className="max-w-full max-h-full object-contain select-none"
                 />
               </div>

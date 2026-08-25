@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Sparkles, Eye, Heart, CheckCircle2, MessageCircle, ShieldCheck, Zap, ArrowRight } from 'lucide-react';
 import { SERVICES, getWhatsAppLink } from '../constants';
 import ButterflyLogo from '../components/ButterflyLogo';
+import ImageWithFallback from '../components/ImageWithFallback';
 
 const Services: React.FC = () => {
   useEffect(() => {
@@ -54,10 +55,12 @@ const Services: React.FC = () => {
               <div className={`flex flex-col lg:flex-row items-stretch ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
                 
                 {/* Imagem Full-Bleed no Mobile / Compacta no Desktop */}
-                <div className="w-full lg:w-1/2 bg-gray-100 relative min-h-[220px] sm:min-h-[280px] lg:min-h-[340px] flex items-center justify-center overflow-hidden">
-                  <img 
+                <div className="w-full lg:w-1/2 bg-gray-950 relative min-h-[220px] sm:min-h-[280px] lg:min-h-[340px] flex items-center justify-center overflow-hidden">
+                  <ImageWithFallback 
                     src={service.image} 
                     alt={`procedimento de ${service.title.toLowerCase()} em Curitiba para mulheres maduras`} 
+                    fallbackTitle={service.title}
+                    fallbackCategory="Divas da Micro"
                     className="w-full h-full object-cover object-center" 
                     loading="lazy" 
                   />

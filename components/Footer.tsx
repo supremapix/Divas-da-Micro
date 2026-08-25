@@ -32,6 +32,7 @@ export function SupremaCredit() {
               alt="Suprema" 
               className="h-[14px] w-auto inline select-none shrink-0" 
               referrerPolicy="no-referrer"
+              onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }}
             />
           </a>
         </p>

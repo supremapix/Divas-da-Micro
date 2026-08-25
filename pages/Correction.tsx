@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Zap, ShieldCheck, History, ArrowRight, MessageCircle, Info, CheckCircle2, Sparkles } from 'lucide-react';
 import { getWhatsAppLink, PROCEDURES_TIPS } from '../constants';
 import FacebookFeed from '../components/FacebookFeed';
+import ImageWithFallback from '../components/ImageWithFallback';
 
 const Correction: React.FC = () => {
   useEffect(() => {
@@ -21,9 +22,11 @@ const Correction: React.FC = () => {
       {/* Hero - Compacto com Padrão Validado */}
       <section className="bg-gray-950 text-white py-10 sm:py-16 md:py-20 relative overflow-hidden border-b border-pink-900/30">
         <div className="absolute inset-0 z-0 opacity-25">
-          <img 
-            src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
+          <ImageWithFallback 
+            src="/images/luxury_spa_banner.webp" 
             alt="Luxury Spa Banner - Correção de Micropigmentação" 
+            fallbackTitle="Correção de Micropigmentação Antiga"
+            fallbackCategory="Pele Madura 60+"
             className="w-full h-full object-cover" 
           />
         </div>
@@ -96,10 +99,12 @@ const Correction: React.FC = () => {
 
             {/* Imagem de Antes e Depois */}
             <div className="space-y-2.5">
-              <div className="relative rounded-2xl overflow-hidden shadow-xs border border-gray-200 bg-gray-100 max-h-[380px] flex items-center justify-center">
-                <img 
-                  src="https://img.supremasite.com.br/divas/correcao-sobrancelas.jpg" 
+              <div className="relative rounded-2xl overflow-hidden shadow-xs border border-gray-200 bg-gray-950 max-h-[380px] flex items-center justify-center">
+                <ImageWithFallback 
+                  src="/images/correcao-sobrancelas.jpg" 
                   alt="antes e depois de correção de micropigmentação de sobrancelha em Curitiba" 
+                  fallbackTitle="Correção de Sobrancelhas Antigas"
+                  fallbackCategory="Antes e Depois"
                   className="w-full h-full object-cover object-center max-h-[380px]" 
                   loading="lazy" 
                 />

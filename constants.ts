@@ -37,7 +37,7 @@ export const SERVICES: Service[] = [
     description: 'Recuperação de design e cor para sobrancelhas antigas.',
     details: 'Especialistas em reverter pigmentos cinzas ou vermelhos. Procedimento indolor com anestésico premium para um olhar rejuvenescido e natural.',
     icon: 'Sparkles',
-    image: 'https://img.supremasite.com.br/divas/harmonizacao-de-sobrancelhas.jpg'
+    image: '/images/harmonizacao-de-sobrancelhas.jpg'
   },
   {
     id: 'olhos',
@@ -45,7 +45,7 @@ export const SERVICES: Service[] = [
     description: 'Ajuste de delineados que perderam a definição.',
     details: 'Técnica indolor exclusiva para peles maduras. Conforto total com anestésicos manipulados premium para corrigir traços expandidos.',
     icon: 'Eye',
-    image: 'https://img.supremasite.com.br/divas/correcao-de-olhos.jpg'
+    image: '/images/correcao-de-olhos.jpg'
   },
   {
     id: 'labios',
@@ -53,7 +53,7 @@ export const SERVICES: Service[] = [
     description: 'Revitalização de cor e contorno para lábios desbotados.',
     details: 'Neutralização de tons e volume visual. 100% indolor com protocolos especiais Divas para lábios mais vivos e definidos.',
     icon: 'Heart',
-    image: 'https://img.supremasite.com.br/divas/corecao-labial.jpg'
+    image: '/images/corecao-labial.jpg'
   }
 ];
 

@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import ButterflyLogo from '../components/ButterflyLogo';
 import MarqueeRibbon from '../components/MarqueeRibbon';
+import ImageWithFallback from '../components/ImageWithFallback';
 import { SERVICES, FAQS, CONTACT_INFO, getWhatsAppLink, PROCEDURES_TIPS, ALL_LOCATIONS, GOOGLE_REVIEWS } from '../constants';
 import ReviewMarquee from '../components/ReviewMarquee';
 import InteractiveGallery from '../components/InteractiveGallery';
@@ -118,9 +119,11 @@ const Home: React.FC = () => {
         {/* Capa Larga Full-Bleed no Mobile / Contida com Arredondamento Suave em Telas Maiores */}
         <div className="w-full sm:max-w-7xl sm:mx-auto sm:px-6 md:px-8 sm:pt-4">
           <div className="relative w-full aspect-[16/7] sm:aspect-[21/8] md:h-[320px] lg:h-[360px] rounded-none sm:rounded-3xl overflow-hidden bg-gray-950 shadow-inner group flex items-center justify-center">
-            <img 
-              src="https://img.supremasite.com.br/divas/luxury_spa_banner.webp" 
+            <ImageWithFallback 
+              src="/images/luxury_spa_banner.webp" 
               alt="Capa Divas da Micro - Especialistas em Pele Madura em Curitiba" 
+              fallbackTitle="Divas da Micro • Especialistas em Pele Madura"
+              fallbackCategory="Atendimento VIP Curitiba e RMC"
               className="w-full h-full object-cover object-center opacity-95 group-hover:scale-105 transition-transform duration-700 select-none"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
@@ -567,9 +570,11 @@ const Home: React.FC = () => {
                 className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:min-h-[440px] overflow-hidden bg-gray-950 cursor-pointer group flex items-center justify-center"
                 title="Clique para ampliar o procedimento em tamanho máximo"
               >
-                <img 
+                <ImageWithFallback 
                   src={SERVICES[0].image} 
                   alt={`${SERVICES[0].title} - Correção e Harmonização em Curitiba`}
+                  fallbackTitle={SERVICES[0].title}
+                  fallbackCategory="Sobrancelhas 50+"
                   className="w-full h-full object-contain sm:object-cover object-center group-hover:scale-105 transition-transform duration-500 select-none"
                 />
                 
@@ -661,9 +666,11 @@ const Home: React.FC = () => {
                 className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:min-h-[440px] overflow-hidden bg-gray-950 cursor-pointer group flex items-center justify-center"
                 title="Clique para ampliar o procedimento em tamanho máximo"
               >
-                <img 
+                <ImageWithFallback 
                   src={SERVICES[1].image} 
                   alt={`${SERVICES[1].title} - Ajuste de delineado em Curitiba`}
+                  fallbackTitle={SERVICES[1].title}
+                  fallbackCategory="Olhos 55+"
                   className="w-full h-full object-contain sm:object-cover object-center group-hover:scale-105 transition-transform duration-500 select-none"
                 />
                 
@@ -754,9 +761,11 @@ const Home: React.FC = () => {
                 className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:min-h-[440px] overflow-hidden bg-gray-950 cursor-pointer group flex items-center justify-center"
                 title="Clique para ampliar o procedimento em tamanho máximo"
               >
-                <img 
+                <ImageWithFallback 
                   src={SERVICES[2].image} 
                   alt={`${SERVICES[2].title} - Revitalização Labial em Curitiba`}
+                  fallbackTitle={SERVICES[2].title}
+                  fallbackCategory="Lábios 60+"
                   className="w-full h-full object-contain sm:object-cover object-center group-hover:scale-105 transition-transform duration-500 select-none"
                 />
                 
@@ -833,13 +842,64 @@ const Home: React.FC = () => {
                 </span>
               </div>
 
-              <div className="p-4 sm:p-6 space-y-2">
+              <div className="p-4 sm:p-6 space-y-3">
                 <h3 className="text-lg sm:text-xl lg:text-2xl font-serif font-bold text-gray-900 leading-snug tracking-tight">
                   Resultados Reais & Transformações em Curitiba
                 </h3>
                 <p className="text-sm sm:text-base text-gray-700 font-normal leading-relaxed">
-                  Arraste para comparar o antes e depois das nossas clientes e veja como é possível rejuvenescer o olhar com naturalidade.
+                  Confira a comparação real do antes e depois de procedimentos corrigidos e nossa galeria de trabalhos em mulheres maduras.
                 </p>
+
+                {/* Destaque Comparativo Antes e Depois */}
+                <div className="p-3 sm:p-4 bg-[#FAF5F8] rounded-2xl border border-pink-200/80 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs sm:text-sm font-bold text-gray-900 font-serif flex items-center gap-1.5">
+                      <Sparkles size={15} className="text-[#D4567D]" />
+                      Caso Clínico: Correção de Sobrancelha Antiga
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-semibold text-[#D4567D] bg-white px-2.5 py-0.5 rounded-full border border-pink-200">
+                      100% Indolor
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    {/* Imagem Antes */}
+                    <div className="space-y-1">
+                      <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-gray-950 border border-gray-300 shadow-inner flex items-center justify-center">
+                        <ImageWithFallback 
+                          src="/images/antes.png" 
+                          alt="Micropigmentação antiga manchada antes da correção - Divas da Micro" 
+                          fallbackTitle="Antes: Pigmento Antigo Escurecido"
+                          fallbackCategory="Antes"
+                          className="w-full h-full object-cover" 
+                          loading="lazy"
+                        />
+                        <div className="absolute top-2 left-2 bg-black/80 backdrop-blur-xs text-white px-2.5 py-1 rounded-md text-[10px] sm:text-xs font-bold tracking-wide border border-white/20">
+                          Antes (Pigmento Antigo)
+                        </div>
+                      </div>
+                      <p className="text-center text-[11px] sm:text-xs font-medium text-gray-600">Pigmento chumbo, cinza e formato artificial</p>
+                    </div>
+
+                    {/* Imagem Depois */}
+                    <div className="space-y-1">
+                      <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-gray-950 border border-pink-300 shadow-inner flex items-center justify-center">
+                        <ImageWithFallback 
+                          src="/images/depois.png" 
+                          alt="Resultado pós-correção com harmonização - Divas da Micro" 
+                          fallbackTitle="Depois: Harmonização & Naturalidade"
+                          fallbackCategory="Depois"
+                          className="w-full h-full object-cover" 
+                          loading="lazy"
+                        />
+                        <div className="absolute top-2 left-2 bg-[#D4567D] text-white px-2.5 py-1 rounded-md text-[10px] sm:text-xs font-bold tracking-wide shadow-md border border-white/20">
+                          Depois (Técnica Divas)
+                        </div>
+                      </div>
+                      <p className="text-center text-[11px] sm:text-xs font-bold text-[#D4567D]">Design harmônico, cor suave e olhar iluminado</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="px-2 sm:px-4 pb-4">
@@ -1136,9 +1196,11 @@ const Home: React.FC = () => {
                 }`}
                 onClick={() => setIsModalZoomed(!isModalZoomed)}
               >
-                <img 
+                <ImageWithFallback 
                   src={SERVICES[selectedServiceIndex].image} 
                   alt={`${SERVICES[selectedServiceIndex].title} - Especialistas em Pele Madura em Curitiba - Divas da Micro`}
+                  fallbackTitle={SERVICES[selectedServiceIndex].title}
+                  fallbackCategory="Divas da Micro"
                   className="max-w-full max-h-full object-contain select-none"
                 />
               </div>

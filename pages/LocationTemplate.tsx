@@ -4,6 +4,7 @@ import { Shield, User, Home as HomeIcon, Star, Clock, MapPin, Heart, Info, Messa
 import { ALL_LOCATIONS, CONTACT_INFO, getWhatsAppLink, PROCEDURES_TIPS } from '../constants';
 import FacebookFeed from '../components/FacebookFeed';
 import ReviewMarquee from '../components/ReviewMarquee';
+import ImageWithFallback from '../components/ImageWithFallback';
 import { motion } from 'framer-motion';
 
 const LocationTemplate: React.FC = () => {
@@ -326,10 +327,12 @@ const LocationTemplate: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-gray-100 border border-gray-200 shadow-inner">
-                    <img 
-                      src="https://img.supremasite.com.br/divas/antes.png" 
+                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-gray-950 border border-gray-200 shadow-inner flex items-center justify-center">
+                    <ImageWithFallback 
+                      src="/images/antes.png" 
                       alt={`Micropigmentação antiga manchada antes da correção em ${locationName}`} 
+                      fallbackTitle="Antes: Pigmento Antigo Escurecido"
+                      fallbackCategory="Antes"
                       className="w-full h-full object-cover" 
                       loading="lazy"
                     />
@@ -341,10 +344,12 @@ const LocationTemplate: React.FC = () => {
                 </div>
 
                 <div className="space-y-1.5">
-                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-gray-100 border border-pink-300 shadow-inner">
-                    <img 
-                      src="https://img.supremasite.com.br/divas/depois.png" 
+                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-gray-950 border border-pink-300 shadow-inner flex items-center justify-center">
+                    <ImageWithFallback 
+                      src="/images/depois.png" 
                       alt={`Resultado de correção de sobrancelha harmônica em ${locationName}`} 
+                      fallbackTitle="Depois: Harmonização & Naturalidade"
+                      fallbackCategory="Depois"
                       className="w-full h-full object-cover" 
                       loading="lazy"
                     />
