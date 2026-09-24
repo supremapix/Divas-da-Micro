@@ -135,13 +135,13 @@ const Home: React.FC = () => {
           <div className="px-1 sm:px-4 pb-3">
             
             {/* Bloco Avatar Sobreposto + Informações do Perfil */}
-            <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4 -mt-10 sm:-mt-14 md:-mt-16 mb-3 relative z-10">
+            <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-3 sm:gap-4 mb-3 relative z-10">
               
               {/* Esquerda: Avatar Sobreposto + Nome + Metadados */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-end gap-3 sm:gap-5 w-full md:w-auto">
+              <div className="flex flex-row items-start sm:items-end gap-3 sm:gap-5 w-full md:w-auto min-w-0">
                 
-                {/* Avatar Circular Sobreposto (Metade sobre a capa, metade sobre o fundo branco) */}
-                <div className="relative shrink-0 ml-2 sm:ml-0">
+                {/* Avatar Circular Sobreposto: apenas o avatar sobrepõe a foto de capa */}
+                <div className="-mt-11 sm:-mt-14 md:-mt-16 relative shrink-0 ml-1 sm:ml-0 z-20">
                   <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full border-4 border-white bg-gradient-to-br from-[#FDF2F8] via-[#FCE7F3] to-pink-100 shadow-xl flex items-center justify-center p-2 ring-1 ring-black/5 overflow-hidden">
                     <ButterflyLogo size={56} className="transform hover:scale-105 transition-transform" />
                   </div>
@@ -154,42 +154,39 @@ const Home: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Nome e Linha Compacta de Metadados (Estilo Facebook) */}
-                <div className="space-y-1 pt-1 sm:pt-0 pb-1 min-w-0 flex-1 w-full">
+                {/* Nome e Linha de Metadados: 100% sobre o fundo branco, nunca sobre a imagem de capa */}
+                <div className="pt-2 sm:pt-4 pb-1 min-w-0 flex-1">
                   <div className="flex items-center gap-2">
                     <h1 className="text-xl sm:text-2xl md:text-3xl font-serif font-extrabold text-gray-900 tracking-tight leading-tight">
-                      Divas da Micro <span className="text-[#D4567D]">Curitiba</span>
+                      Divas da Micro
                     </h1>
                   </div>
 
-                  {/* Linha Única e Compacta de Metadados separada por "·" (100% em uma linha, com scroll suave touch e respiro direito) */}
-                  <div className="w-full max-w-full overflow-x-auto no-scrollbar py-0.5 touch-pan-x">
-                    <p className="text-[10.5px] xs:text-[11px] sm:text-xs md:text-sm text-gray-600 font-medium whitespace-nowrap flex items-center leading-normal pr-6">
-                      <span className="text-[#D4567D] font-bold shrink-0">Oficial 60+</span>
-                      <span className="mx-1 text-gray-400 shrink-0">·</span>
-                      <span className="text-yellow-700 font-semibold inline-flex items-center gap-0.5 shrink-0">
-                        ⭐ 5.0 (+500 avaliações)
-                      </span>
-                      <span className="mx-1 text-gray-400 shrink-0">·</span>
-                      <span className="text-gray-700 font-normal shrink-0">📍 Batel & Domiciliar VIP</span>
-                      <span className="hidden lg:inline-flex items-center shrink-0">
-                        <span className="mx-1 text-gray-400">·</span>
-                        <span className="text-gray-500">🕒 Seg a Sex, 10h às 20h</span>
-                      </span>
-                    </p>
+                  {/* Metadados responsivos e elegantes sem barra de rolagem */}
+                  <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs text-gray-600 font-medium pt-0.5">
+                    <span className="text-[#D4567D] font-bold shrink-0">Especialista 60+</span>
+                    <span className="text-gray-300 shrink-0">·</span>
+                    <span className="text-gray-800 font-semibold shrink-0">Correção de Micropigmentação</span>
+                    <span className="text-gray-300 shrink-0">·</span>
+                    <span className="text-gray-600 shrink-0">📍 Batel & Domiciliar VIP</span>
+                    <span className="hidden lg:inline-flex items-center shrink-0">
+                      <span className="mx-1 text-gray-300">·</span>
+                      <span className="text-gray-500">🕒 Seg a Sex, 10h às 20h</span>
+                    </span>
                   </div>
                 </div>
               </div>
 
-              {/* Direita: Botões de Ação Principais (Perfeitamente contidos dentro da largura da tela no mobile) */}
-              <div className="flex items-center justify-center md:justify-end gap-1.5 sm:gap-2 w-full md:w-auto shrink-0 pt-1 pb-1">
+              {/* Direita: Botões de Ação Principais (sem corte ou elipses no mobile e telas quadradas) */}
+              <div className="flex items-center gap-2 w-full md:w-auto shrink-0 pt-2 pb-1">
                 <Link
                   id="page-cta-agendar"
                   to="/agenda"
-                  className="flex-1 md:flex-initial min-w-0 h-10 px-2.5 sm:px-5 rounded-xl bg-[#D4567D] hover:bg-[#B84A6B] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-sm transition-all active:scale-95 text-center whitespace-nowrap"
+                  className="flex-1 md:flex-initial h-10 px-3 sm:px-5 rounded-xl bg-[#D4567D] hover:bg-[#B84A6B] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-sm transition-all active:scale-95 text-center whitespace-nowrap"
                 >
                   <Calendar size={15} className="shrink-0" />
-                  <span className="truncate">Agendar Horário</span>
+                  <span className="hidden sm:inline">Agendar Horário</span>
+                  <span className="sm:hidden">Agendar</span>
                 </Link>
 
                 <a
@@ -197,10 +194,10 @@ const Home: React.FC = () => {
                   href={getWhatsAppLink('Hero Card Home')}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 md:flex-initial min-w-0 h-10 px-2.5 sm:px-5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-sm transition-all active:scale-95 text-center whitespace-nowrap"
+                  className="flex-1 md:flex-initial h-10 px-3 sm:px-5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-sm transition-all active:scale-95 text-center whitespace-nowrap"
                 >
                   <MessageCircle size={16} className="shrink-0" />
-                  <span className="truncate">WhatsApp</span>
+                  <span>WhatsApp</span>
                 </a>
 
                 <a
@@ -219,7 +216,7 @@ const Home: React.FC = () => {
             {/* Parágrafo de Descrição como Texto Corrido (Sem card separado) */}
             <div className="pt-1 pb-3 text-left max-w-4xl">
               <p className="text-xs sm:text-sm md:text-base text-gray-700 font-normal leading-relaxed">
-                Especialistas em correção de micropigmentação antiga para mulheres 60+ com <strong className="font-semibold text-gray-900">procedimento 100% indolor</strong> e atendimento domiciliar VIP em Curitiba e Região Metropolitana.
+                Sobrancelhas, olhos e lábios com técnicas adaptadas às características de cada pele, incluindo atendimento especializado para pele madura e opção domiciliar em Curitiba e RMC.
               </p>
             </div>
 
@@ -259,6 +256,21 @@ const Home: React.FC = () => {
 
           </div>
 
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* PRIMEIRO BLOCO AIO (RESPOSTA DIRETA 50-80 PALAVRAS)                      */}
+      {/* ========================================================================= */}
+      <section className="bg-pink-50/70 border-b border-pink-100 py-6 sm:py-8 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-pink-200">
+          <div className="flex items-center gap-2 mb-2 text-[#D4567D] font-bold uppercase tracking-wider text-xs">
+            <Sparkles size={16} />
+            <span>Resposta Direta • AIO & Busca Inteligente</span>
+          </div>
+          <p className="text-xs sm:text-sm text-gray-800 leading-relaxed font-normal">
+            A <strong>Divas da Micro</strong> realiza correção e harmonização de micropigmentação em Curitiba para sobrancelhas, olhos e lábios. O atendimento inclui avaliação cuidadosa do pigmento existente, formato, tonalidade e características da pele madura ou adulta, definindo a técnica mais adequada para cada caso, com opção de atendimento no estúdio do Batel ou domiciliar.
+          </p>
         </div>
       </section>
 

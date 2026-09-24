@@ -35,7 +35,7 @@ export const SERVICES: Service[] = [
     id: 'sobrancelhas',
     title: 'Harmonização de Sobrancelhas',
     description: 'Recuperação de design e cor para sobrancelhas antigas.',
-    details: 'Especialistas em reverter pigmentos cinzas ou vermelhos. Procedimento indolor com anestésico premium para um olhar rejuvenescido e natural.',
+    details: 'Especialistas em reverter pigmentos cinzas ou vermelhos. Procedimento confortável com anestésico premium para um olhar rejuvenescido e natural.',
     icon: 'Sparkles',
     image: '/images/harmonizacao-de-sobrancelhas.jpg'
   },
@@ -43,7 +43,7 @@ export const SERVICES: Service[] = [
     id: 'olhos',
     title: 'Correção de Olhos',
     description: 'Ajuste de delineados que perderam a definição.',
-    details: 'Técnica indolor exclusiva para peles maduras. Conforto total com anestésicos manipulados premium para corrigir traços expandidos.',
+    details: 'Técnica exclusiva para peles maduras com foco no conforto. Conforto total com anestésicos manipulados premium para corrigir traços expandidos.',
     icon: 'Eye',
     image: '/images/correcao-de-olhos.jpg'
   },
@@ -51,7 +51,7 @@ export const SERVICES: Service[] = [
     id: 'labios',
     title: 'Correção Labial',
     description: 'Revitalização de cor e contorno para lábios desbotados.',
-    details: 'Neutralização de tons e volume visual. 100% indolor com protocolos especiais Divas para lábios mais vivos e definidos.',
+    details: 'Neutralização de tons e volume visual. Realizado com protocolos especiais Divas para lábios mais vivos, definidos e confortáveis.',
     icon: 'Heart',
     image: '/images/corecao-labial.jpg'
   }
@@ -127,7 +127,7 @@ export const PROCEDURES_TIPS = [
   "Delineado de olhos realça o olhar sem parecer artificial.",
   "A Divas da Micro foca em beleza natural, não em exageros.",
   "Atendimento domiciliar reduz o estresse do pós-procedimento.",
-  "Nossa biossegurança segue padrões hospitalares rigorosos.",
+  "Nossos protocolos de biossegurança seguem rigorosos padrões de higiene e materiais descartáveis.",
   "O uso de EPIs é obrigatório durante todo o atendimento.",
   "Ferramentas de precisão alemã para resultados superiores.",
   "Correção de sobrancelhas avermelhadas com pigmentos frios.",
