@@ -34,11 +34,11 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    document.title = "Divas da Micro | Micropigmentação para Mulheres 60+ em Curitiba";
+    document.title = "Correção de Micropigmentação em Curitiba | Divas da Micro";
     
     let metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', "Especialista em correção de micropigmentação de sobrancelhas, olhos e lábios para mulheres 60+ em Curitiba e Região Metropolitana. Atendimento domiciliar e procedimento 100% indolor.");
+      metaDesc.setAttribute('content', "Correção e harmonização de micropigmentação de sobrancelhas, olhos e lábios em Curitiba, com atenção especial à pele madura. Atendimento no Batel e domiciliar mediante consulta.");
     }
     
     let canonical = document.querySelector('link[rel="canonical"]');
@@ -315,7 +315,7 @@ const Home: React.FC = () => {
                 <div className="flex items-start gap-2.5">
                   <Zap className="text-[#D4567D] shrink-0 mt-0.5" size={16} />
                   <div className="leading-snug">
-                    <strong className="text-gray-900 font-semibold">Protocolo 100% Indolor:</strong> Anestésicos Manipulados
+                    <strong className="text-gray-900 font-semibold">Antes do procedimento:</strong> Converse com a profissional
                   </div>
                 </div>
 
@@ -351,7 +351,7 @@ const Home: React.FC = () => {
                   { name: 'Harmonização de Sobrancelhas', to: '/servicos', icon: '✨' },
                   { name: 'Correção de Olhos & Delineado', to: '/servicos', icon: '👁️' },
                   { name: 'Correção Labial & Revitalização', to: '/servicos', icon: '💋' },
-                  { name: 'Especial Mulheres 60+ (Indolor)', to: '/mulheres-maduras', icon: '🌸', highlight: true },
+                  { name: 'Especial Mulheres 60+', to: '/mulheres-maduras', icon: '🌸', highlight: true },
                   { name: 'Atendimento Domiciliar VIP', to: '/agenda', icon: '🏠' },
                   { name: 'Guia de Cuidados Pós-Procedimento', to: '/cuidados', icon: '📋' },
                   { name: 'Fale Conosco & Agendamento', to: '/agenda', icon: '📅' },
@@ -415,7 +415,7 @@ const Home: React.FC = () => {
             <div className="bg-gradient-to-br from-[#FDF2F8] to-[#FCE7F3] rounded-2xl p-4 sm:p-5 lg:p-6 border border-pink-200 space-y-2 sm:space-y-2.5">
               <div className="flex items-center gap-2 text-[#D4567D] font-bold text-xs sm:text-sm uppercase tracking-wider">
                 <ShieldCheck size={18} />
-                <span>Garantia de Conforto</span>
+                <span>Atendimento Individual</span>
               </div>
               <h4 className="text-base sm:text-lg font-serif font-bold text-gray-900 leading-snug">
                 Biossegurança Hospitalar & Materiais Descartáveis
@@ -467,7 +467,7 @@ const Home: React.FC = () => {
               {/* Conteúdo do Post Fixado */}
               <div className="p-3.5 sm:p-5 lg:p-6 space-y-2.5 sm:space-y-3">
                 <h3 className="text-base sm:text-lg lg:text-xl font-serif font-bold text-gray-900 leading-snug tracking-tight">
-                  Pele Madura: Cuidado Delicado, Reversão de Cores e Procedimento 100% Indolor
+                  Pele Madura: Converse Sobre a Correção de Micropigmentação
                 </h3>
                 
                 <p className="text-xs sm:text-sm text-gray-700 leading-[1.45] font-normal">
@@ -607,7 +607,7 @@ const Home: React.FC = () => {
                     </h4>
                   </div>
                   <span className="text-pink-200 text-[10px] sm:text-xs font-medium drop-shadow">
-                    Protocolo 100% Indolor
+                    Converse com a Profissional
                   </span>
                 </div>
               </div>
@@ -699,7 +699,7 @@ const Home: React.FC = () => {
                       Resultado Real
                     </span>
                     <h4 className="text-white font-serif font-bold text-sm sm:text-xl drop-shadow-md">
-                      Olhar Rejuvenescido e Definido sem Dor
+                      Conheça a Correção de Micropigmentação dos Olhos
                     </h4>
                   </div>
                   <span className="text-pink-200 text-[10px] sm:text-xs font-medium drop-shadow">
@@ -870,7 +870,7 @@ const Home: React.FC = () => {
                       Caso Clínico: Correção de Sobrancelha Antiga
                     </span>
                     <span className="text-[10px] sm:text-xs font-semibold text-[#D4567D] bg-white px-2.5 py-0.5 rounded-full border border-pink-200">
-                      100% Indolor
+                      Atendimento Individual
                     </span>
                   </div>
 
@@ -1217,9 +1217,9 @@ const Home: React.FC = () => {
                 />
               </div>
 
-              {/* Selo 100% Indolor */}
+              {/* Selo Atendimento Individual */}
               <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-3 py-1 rounded-full text-pink-300 text-xs font-semibold border border-pink-400/30">
-                ⭐ Técnica 100% Indolor & Natural
+                ⭐ Consulte os Detalhes do Procedimento
               </div>
 
               {/* Dica mobile */}

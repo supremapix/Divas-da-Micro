@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
             </div>
 
             <p className="text-xs text-gray-600 leading-[1.45]">
-              Especialistas em correção, clareamento e harmonização de micropigmentação em pele madura. Atendimento com biossegurança e protocolo 100% indolor.
+              Especialistas em correção, clareamento e harmonização de micropigmentação em pele madura. Converse com a profissional sobre o procedimento.
             </p>
 
             <div className="pt-1">

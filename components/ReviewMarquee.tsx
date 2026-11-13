@@ -56,7 +56,7 @@ const ReviewMarquee: React.FC = () => {
           
           {/* Parágrafo com Line-Height Compacto e Alinhado */}
           <p className="text-xs sm:text-sm text-gray-700 leading-[1.45] font-normal">
-            Especialistas em mulheres de 35 a 100 anos (com foco especial em 50+ e 60+). Atendimento 100% indolor, no conforto da sua residência ou em nosso estúdio.
+            Especialistas em mulheres de 35 a 100 anos (com foco especial em 50+ e 60+). Consulte o atendimento em sua residência ou em nosso estúdio.
           </p>
           
           {/* Botão WhatsApp & Apoio com Espaçamento Ajustado */}

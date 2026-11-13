@@ -16,7 +16,7 @@ export interface GalleryItem {
 export const GALLERY_IMAGES: GalleryItem[] = [
   {
     title: "Harmonização e Simetria Facial",
-    desc: "Alinhamento e simetria delicada para valorizar a expressão natural em pele madura, com técnica 100% indolor.",
+    desc: "Alinhamento e simetria delicada para valorizar a expressão natural em pele madura.",
     url: "/images/armonizacao-simetria-facial.jpg",
     alt: "Harmonização e simetria facial em mulher madura, Curitiba",
     cat: "Harmonização 50+"
@@ -289,7 +289,7 @@ const InteractiveGallery: React.FC = () => {
             {/* Rodapé com Informações Técnicas e CTA WhatsApp */}
             <div className="p-4 sm:p-5 bg-gray-900 border-t border-gray-800 shrink-0 space-y-3">
               <p className="text-gray-200 text-xs sm:text-sm leading-relaxed">
-                {currentItem.desc} Atendimento com anestésico manipulado 100% indolor em Curitiba e RMC.
+                {currentItem.desc} Converse com a profissional sobre o procedimento em Curitiba e RMC.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">

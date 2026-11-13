@@ -69,7 +69,7 @@ export const GOOGLE_REVIEWS = [
 export const FAQS: FAQItem[] = [
   {
     question: "O procedimento de correção dói?",
-    answer: "Não! Utilizamos anestésicos tópicos manipulados de alta potência, desenvolvidos especificamente para o conforto das nossas Divas. A maioria das nossas clientes relata que o procedimento é extremamente relaxante e praticamente indolor."
+    answer: "A experiência pode variar. Converse com a profissional durante a avaliação."
   },
   {
     question: "Como funciona o atendimento em casa?",

@@ -7,7 +7,7 @@ interface MarqueeRibbonProps {
 
 const ITEMS = [
   { text: "Atendimento VIP Curitiba e RMC", icon: MapPin },
-  { text: "100% Indolor", icon: Zap },
+  { text: "Converse com a Profissional", icon: Zap },
   { text: "+500 Avaliações 5.0 ★", icon: Star },
   { text: "Atendimento Domiciliar", icon: ShieldCheck },
   { text: "Especialistas 60+", icon: Sparkles },
