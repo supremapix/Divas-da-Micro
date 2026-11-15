@@ -80,18 +80,18 @@ const Contact: React.FC = () => {
       ? `Estimativa de chegada: entre ${travelTime - 20} e ${travelTime + 20} minutos após saída do Batel.`
       : '';
 
-    const text = `*NOVO AGENDAMENTO DIVAS DA MICRO*%0A%0A` +
-      `*CLIENTE:* ${formData.nome}%0A` +
-      `*WHATSAPP:* ${formData.whatsapp}%0A` +
-      `*SERVIÇO:* ${formData.servico}%0A%0A` +
-      `*ENDEREÇO:* ${formData.rua}, ${formData.numero}%0A` +
-      `*BAIRRO:* ${formData.bairro} | *CEP:* ${formData.cep}%0A%0A` +
-      `*DATA PREFERENCIAL:* ${formData.data} às ${formData.horario}%0A` +
-      `${distance ? `*DISTÂNCIA DO BATEL:* ${distance}km%0A` : ''}` +
-      `${timeWindow ? `*LOGÍSTICA:* ${timeWindow}%0A` : ''}%0A` +
+    const text = `*SOLICITAÇÃO DE AGENDAMENTO DIVAS DA MICRO*\n\n` +
+      `*CLIENTE:* ${formData.nome}\n` +
+      `*WHATSAPP:* ${formData.whatsapp}\n` +
+      `*SERVIÇO:* ${formData.servico}\n\n` +
+      `*ENDEREÇO:* ${formData.rua}, ${formData.numero}\n` +
+      `*BAIRRO:* ${formData.bairro} | *CEP:* ${formData.cep}\n\n` +
+      `*DATA PREFERENCIAL:* ${formData.data} às ${formData.horario}\n` +
+      `${distance ? `*DISTÂNCIA DO BATEL:* ${distance}km\n` : ''}` +
+      `${timeWindow ? `*LOGÍSTICA:* ${timeWindow}\n` : ''}\n` +
       `*OBSERVAÇÕES:* ${formData.mensagem || 'Nenhuma'}`;
     
-    window.open(`https://wa.me/${CONTACT_INFO.whatsapp}?text=${text}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const steps = [
@@ -114,7 +114,7 @@ const Contact: React.FC = () => {
             Agende Sua <span className="text-[#D4567D]">Avaliação Gratuita</span>
           </h1>
           <p className="text-xs sm:text-sm text-gray-700 max-w-xl mx-auto leading-[1.45] font-normal">
-            Preencha seus dados para organizarmos seu atendimento em domicílio ou estúdio em Curitiba e RMC.
+            Preencha os dados para preparar uma solicitação de atendimento em Curitiba e RMC. Revise e envie a mensagem no WhatsApp; data, horário e local dependem da confirmação da equipe.
           </p>
         </div>
       </section>
@@ -400,7 +400,7 @@ const Contact: React.FC = () => {
                     Tudo Pronto, {formData.nome.split(' ')[0]}!
                   </h2>
                   <p className="text-xs sm:text-sm text-gray-600 font-normal">
-                    Clique abaixo para enviar ao WhatsApp da especialista.
+                    Abra o WhatsApp, revise os dados e envie a mensagem. O agendamento depende da confirmação da equipe.
                   </p>
                 </div>
 
@@ -432,7 +432,7 @@ const Contact: React.FC = () => {
                     className="flex-1 min-h-[40px] h-10 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-xs active:scale-98"
                   >
                     <MessageCircle size={18} />
-                    <span>Enviar Agendamento no WhatsApp</span>
+                    <span>Revisar no WhatsApp</span>
                   </button>
                 </div>
               </motion.div>
